@@ -286,7 +286,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                   primary: primary), // Selected date color
                               buttonTheme: ButtonThemeData(
                                 textTheme:
-                                ButtonTextTheme.primary, // Buttons color
+                                    ButtonTextTheme.primary, // Buttons color
                               ),
                             ),
                             child: child!,
@@ -296,14 +296,14 @@ class _CreateAccountState extends State<CreateAccount> {
                       if (pickedDate != null) {
                         setState(() {
                           dobController.text =
-                          "${pickedDate.toLocal()}".split(' ')[0];
+                              "${pickedDate.toLocal()}".split(' ')[0];
                         });
                       }
                     }),
                 SizedBox(height: 15),
                 Text("Gender",
                     style:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                 Row(
                   children: [
                     Radio<String>(
@@ -355,7 +355,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 SizedBox(height: 15),
                 Text("Store Details",
                     style:
-                    TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                 SizedBox(height: 15),
                 TextButtonWidget(
                   hint: "Store Name",
@@ -379,7 +379,7 @@ class _CreateAccountState extends State<CreateAccount> {
                 SizedBox(height: 15),
                 Text("Bank Details",
                     style:
-                    TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                 SizedBox(height: 15),
                 TextButtonWidget(
                   hint: "Account Number",
@@ -430,9 +430,9 @@ class _CreateAccountState extends State<CreateAccount> {
             child: isLoading
                 ? CircularProgressIndicator()
                 : Text(
-              "Submit",
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            )),
+                    "Submit",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  )),
       ),
     );
   }
@@ -693,14 +693,14 @@ class _TextFilePickWidgetState extends State<TextFilePickWidget> {
             SizedBox(width: 10),
             widget.imagePathController.text != ''
                 ? Image.file(
-              File(widget.imagePathController.text),
-              height: 70.0,
-              width: 70.0,
-            )
+                    File(widget.imagePathController.text),
+                    height: 70.0,
+                    width: 70.0,
+                  )
                 : Text(
-              widget.hint,
-              style: TextStyle(fontSize: 16, color: Colors.grey),
-            ),
+                    widget.hint,
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
             Spacer(),
             GestureDetector(
               onTap: () => getImage(context, ImgSource.Both),

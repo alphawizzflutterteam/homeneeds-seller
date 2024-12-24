@@ -32,10 +32,8 @@ dependencies:
   jaguar_jwt: ^3.0.0
   shared_preferences: ^2.0.11
   connectivity_plus: ^2.1.0
-#  firebase_auth: ^3.3.3
   firebase_auth: ^4.12.0
   cached_network_image: ^3.2.0
-#  firebase_core: ^1.10.5
   firebase_core: ^2.20.0
   country_code_picker: 3.0.0
   intl: any
@@ -50,7 +48,6 @@ dependencies:
   #for file pick like video,image etc.
   flutter_local_notifications: ^9.1.5
   firebase_messaging: ^14.0.1
-  #flutter_quill: ^2.0.13
   sticky_headers: ^0.2.0
   flutter_html: ^2.2.1
   fluttertoast: ^8.0.8
