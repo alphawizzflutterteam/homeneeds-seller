@@ -816,8 +816,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               logo: logo,
               bankPass: bankPass,
               proPic: proPic,
-              
-
             );
           }
           setState(() {
@@ -1802,7 +1800,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       children: [
         // getCustomerButton(),
         getSoldOutProduct(),
-        getRattingButton(),
+        // getRattingButton(),
       ],
     );
   }
@@ -1842,53 +1840,50 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     );
   }
 
-  // getCustomerButton() {
-  //   return Expanded(
-  //     flex: 1,
-  //     child: InkWell(
-  //       onTap: () {
-  //         Navigator.push(
-  //           context,
-  //           MaterialPageRoute(
-  //             builder: (context) => Customers(),
-  //           ),
-  //         );
-  //       },
-  //       child: Card(
-  //         elevation: 0,
-  //         child: Padding(
-  //           padding: const EdgeInsets.all(18.0),
-  //           child: Column(
-  //             children: [
-  //               Icon(
-  //                 Icons.group,
-  //                 color: primary,
-  //               ),
-  //               Text(
-  //                 getTranslated(context, "CUSTOMER_LBL")!,
-  //                 style: TextStyle(
-  //                   color: grey,
-  //                 ),
-  //                 overflow: TextOverflow.ellipsis,
-  //               ),
-  //               Text(
-  //                 totalcustCount ?? "",
-  //                 style: TextStyle(
-  //                   color: black,
-  //                   fontWeight: FontWeight.bold,
-  //                 ),
-  //                 overflow: TextOverflow.ellipsis,
-  //               )
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-//==============================================================================
-//========================= Third Row Implimentation ===========================
+  getCustomerButton() {
+    return Expanded(
+      flex: 1,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Customers(),
+            ),
+          );
+        },
+        child: Card(
+          elevation: 0,
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.group,
+                  color: primary,
+                ),
+                Text(
+                  getTranslated(context, "CUSTOMER_LBL")!,
+                  style: TextStyle(
+                    color: grey,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Text(
+                  totalcustCount ?? "",
+                  style: TextStyle(
+                    color: black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   thirdHeader() {
     return Row(
