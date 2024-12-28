@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="24 dec">
+    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="24 dec commit by anjali">
+      <change afterPath="$PROJECT_DIR$/homeneedsseller.jks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Helper/Constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/Constant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buransseller.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,15 +70,19 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android/app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Ankush\homeneeds-seller\android" />
       <recent name="C:\Ankush\homeneeds-seller\android\app" />
       <recent name="C:\Abhishek\seller\flickhitch-seller\android\app\src\main\res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Ankush\homeneeds-seller" />
     </key>
   </component>
   <component name="RunManager">
@@ -98,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735033023625</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="24 dec commit by anjali">
+      <option name="closed" value="true" />
+      <created>1735038966409</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1735038966409</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +132,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="24 dec" />
-    <option name="LAST_COMMIT_MESSAGE" value="24 dec" />
+    <MESSAGE value="24 dec commit by anjali" />
+    <option name="LAST_COMMIT_MESSAGE" value="24 dec commit by anjali" />
   </component>
 </project>

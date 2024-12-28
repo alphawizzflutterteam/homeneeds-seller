@@ -168,8 +168,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
 //==============================================================================
@@ -456,7 +455,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                       setPass(),
                       loginBtn(),
                       termAndPolicyTxt(),
-                      loginTxt(),
+                      // loginTxt(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.10,
                       ),
@@ -470,36 +469,38 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       ),
     );
   }
+
   loginTxt() {
-   // var colors;
+    // var colors;
     return Padding(
-        padding: EdgeInsetsDirectional.only(
-          top: 50,
-          start: 25.0,
-          end: 25.0,
-        ),
-         child: Row(
-           mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-             Text("Don't have an account?"),
-             InkWell(
-               onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>CreateAccount()));
-               },
-               child: Text(
-                " Sign Up ",
-                 style: Theme.of(context).textTheme.caption!.copyWith(
-                   color: primary,
-                   decoration: TextDecoration.underline,
-                   fontWeight: FontWeight.bold,
-                   fontSize: 16,
-                 ),
-               ),
-             )
-      ],
-         ),
+      padding: EdgeInsetsDirectional.only(
+        top: 50,
+        start: 25.0,
+        end: 25.0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Don't have an account?"),
+          InkWell(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CreateAccount()));
+            },
+            child: Text(
+              " Sign Up ",
+              style: Theme.of(context).textTheme.caption!.copyWith(
+                    color: primary,
+                    decoration: TextDecoration.underline,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+            ),
+          )
+        ],
+      ),
     );
-    }
+  }
 
   Widget setSignInLabel() {
     return Padding(
