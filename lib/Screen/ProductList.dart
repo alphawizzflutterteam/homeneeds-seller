@@ -93,7 +93,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
-      floatingActionButton: floatingBtn(),
+      // floatingActionButton: floatingBtn(),
       backgroundColor: lightWhite,
       appBar: getAppbar(),
       key: _scaffoldKey,
@@ -143,6 +143,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
       ),
     );
   }
+
   floatingBtn() {
     return FloatingActionButton(
       backgroundColor: white,
@@ -454,8 +455,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   getAppbar() {
@@ -509,7 +509,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
         //   ),
         // ),
         Container(
-          margin: EdgeInsets.symmetric(vertical: 10,horizontal: 25),
+          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
           child: InkWell(
             borderRadius: BorderRadius.circular(4),
             onTap: () {

@@ -226,7 +226,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         appBar: getAppBar(context),
         drawer: getDrawer(context),
         body: getBodyPart(),
-        floatingActionButton: floatingBtn(),
+        // floatingActionButton: floatingBtn(),
       ),
     );
   }
