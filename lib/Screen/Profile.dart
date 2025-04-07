@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:time_picker_sheet/widget/sheet.dart';
-import 'package:time_picker_sheet/widget/time_picker.dart';
+// import 'package:time_picker_sheet/widget/sheet.dart';
+// import 'package:time_picker_sheet/widget/time_picker.dart';
 import 'change_password_page.dart';
 
 class Profile extends StatefulWidget {
@@ -824,7 +824,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                     return Theme(
                       data: ThemeData.light().copyWith(
                         primaryColor: primary,
-                        accentColor: primary,
+                        hintColor: primary,
                         colorScheme: ColorScheme.light(
                             primary: primary), // Selected date color
                         buttonTheme: ButtonThemeData(
@@ -4362,7 +4362,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
 //==============================================================================
 //========================= everything is completed ============================
   void _openTimePickerSheet(BuildContext context, String vel) async {
-    final result = await TimePicker.show<DateTime?>(
+    /*final result = await TimePicker.show<DateTime?>(
       context: context,
       sheet: TimePickerSheet(
         sheetTitle: 'Select meeting schedule',
@@ -4370,8 +4370,8 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
         hourTitle: 'Hour',
         saveButtonText: 'Save',
       ),
-    );
-
+    );*/
+var result ;
     if (result != null) {
       setState(() {
         dateTimeSelected = result;

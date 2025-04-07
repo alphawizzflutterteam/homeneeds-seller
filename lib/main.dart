@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Helper/Color.dart';
+import 'Helper/notification_service.dart';
 import 'Localization/Demo_Localization.dart';
 import 'Localization/Language_Constant.dart';
 import 'Screen/Splash_/SplashScreen.dart';
@@ -13,7 +14,19 @@ import 'Screen/Splash_/SplashScreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  LocalNotificationService.initialize();
+
   FirebaseMessaging.onBackgroundMessage(myForgroundMessageHandler);
+
+  FirebaseMessaging.instance.getToken().then((value) {
+    String  fcmToken = value!;
+
+
+    print("fcm is ${fcmToken}");
+  });
+
+
   runApp(MyApp());
 }
 

@@ -1088,7 +1088,7 @@ print(delBoyList);
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 8.0),
                                   child: DropdownButtonFormField(
-                                    dropdownColor: lightBlack,
+                                    dropdownColor: white,//lightBlack,
                                     isDense: true,
                                     iconEnabledColor: primary,
                                     hint: Text(
@@ -1151,7 +1151,7 @@ print(delBoyList);
 //==============================================================================
 //============================ Select Delivery Boy =============================
 
-                        delPermission == '1'
+                        delPermission == '1' && false
                             ? Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 5.0),
