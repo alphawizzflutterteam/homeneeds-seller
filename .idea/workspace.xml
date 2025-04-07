@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="28 dec live process commit by anjali">
+      <change afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Helper/notification_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/SetNewPassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/SetNewPassword.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Screen/ProductList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/ProductList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/change_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/change_password_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -61,22 +75,25 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alphawizz/StudioProjects/homeneeds-seller/android/app/src/main/res/drawable&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alphawizz\StudioProjects\homeneeds-seller\android\app\src\main\res\drawable" />
+      <recent name="C:\Users\Alphawizz\StudioProjects\homeneeds-seller\lib\Helper" />
+      <recent name="C:\Users\Alphawizz\StudioProjects\homeneeds-seller\android" />
       <recent name="C:\Ankush\homeneeds-seller\android" />
       <recent name="C:\Ankush\homeneeds-seller\android\app" />
-      <recent name="C:\Abhishek\seller\flickhitch-seller\android\app\src\main\res" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Ankush\homeneeds-seller" />

@@ -204,7 +204,7 @@ class _ChangePassPageState extends State<ChangePassPage> {
             padding: const EdgeInsets.fromLTRB(45, 20, 45, 0),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: primary,
+                  backgroundColor: primary,
                   maximumSize: Size(100, 40)
                 ),
                 onPressed: (){
