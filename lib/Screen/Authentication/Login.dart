@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../Home.dart';
+import 'NumberVerify.dart';
 import 'SendOtp.dart';
 
 class Login extends StatefulWidget {
@@ -455,7 +456,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                       setPass(),
                       loginBtn(),
                       termAndPolicyTxt(),
-                      // loginTxt(),
+                      loginTxt(),
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.10,
                       ),
@@ -485,7 +486,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
           InkWell(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CreateAccount()));
+                  MaterialPageRoute(builder: (context) => NumberVerify()));
             },
             child: Text(
               " Sign Up ",

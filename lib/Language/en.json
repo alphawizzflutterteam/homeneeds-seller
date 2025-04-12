@@ -112,7 +112,7 @@
   "AWAITING_LBL":"Awaiting",
   "DELIVERED_LBL":"Delivered",
   "SHIPED_LBL":"Shipped",
-  "PROCESSED_LBL":"Processed",
+  "PROCESSED_LBL":"accepted",
   "RECEIVED_LBL":"Received",
   "ORDER":"Orders",
   "SEARCH":"search",

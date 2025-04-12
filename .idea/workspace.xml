@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="28 dec live process commit by anjali">
+    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="20 feb production bundle done  commit by anjali">
+      <change afterPath="$PROJECT_DIR$/lib/Screen/Authentication/NumberVerify.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Screen/Authentication/NumberVerifyOtp.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Helper/String.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/String.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Language/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/ProductList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/ProductList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,13 +72,14 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/lib/Screen/Authentication&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Ankush\homeneeds-seller\lib\Screen\Authentication" />
       <recent name="C:\Ankush\homeneeds-seller\android" />
       <recent name="C:\Ankush\homeneeds-seller\android\app" />
       <recent name="C:\Abhishek\seller\flickhitch-seller\android\app\src\main\res" />
@@ -121,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735388880463</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="20 feb production bundle done  commit by anjali">
+      <option name="closed" value="true" />
+      <created>1740034120241</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740034120241</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,6 +153,7 @@
     <MESSAGE value="24 dec" />
     <MESSAGE value="24 dec commit by anjali" />
     <MESSAGE value="28 dec live process commit by anjali" />
-    <option name="LAST_COMMIT_MESSAGE" value="28 dec live process commit by anjali" />
+    <MESSAGE value="20 feb production bundle done  commit by anjali" />
+    <option name="LAST_COMMIT_MESSAGE" value="20 feb production bundle done  commit by anjali" />
   </component>
 </project>

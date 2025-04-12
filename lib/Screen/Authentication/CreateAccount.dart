@@ -11,6 +11,12 @@ import 'package:http/http.dart' as http;
 import '../../Helper/Color.dart';
 
 class CreateAccount extends StatefulWidget {
+  final String mobileNumber;
+  CreateAccount({
+    Key? key,
+    required this.mobileNumber,
+  })  : assert(mobileNumber != null),
+        super(key: key);
   @override
   State<CreateAccount> createState() => _CreateAccountState();
 }
@@ -57,6 +63,12 @@ class _CreateAccountState extends State<CreateAccount> {
   TextEditingController profileController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    mobileController.text = widget.mobileNumber.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,17 +148,56 @@ class _CreateAccountState extends State<CreateAccount> {
                   },
                 ),
                 SizedBox(height: 15),
-                TextButtonWidget(
+                // TextButtonWidget(
+                //   keyboardType: TextInputType.number,
+                //   prefix: Padding(
+                //     padding: const EdgeInsets.all(13.0),
+                //     child: Text(
+                //       "+91",
+                //       style: TextStyle(color: Colors.grey),
+                //     ),
+                //   ),
+                //   hint: "Enter Mobile Number",
+                //   controller: mobileController,
+                //   validator: (value) {
+                //     if (value == null || value.isEmpty) {
+                //       return 'Please enter your mobile number';
+                //     } else if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {
+                //       return 'Please enter a valid mobile number';
+                //     }
+                //     return null;
+                //   },
+                // ),
+                TextFormField(
+                  controller: mobileController,
+                  readOnly: true,
                   keyboardType: TextInputType.number,
-                  prefix: Padding(
-                    padding: const EdgeInsets.all(13.0),
-                    child: Text(
-                      "+91",
-                      style: TextStyle(color: Colors.grey),
+                  decoration: InputDecoration(
+                    hintText: "Enter Mobile Number",
+                    prefix: Padding(
+                      padding: const EdgeInsets.all(13.0),
+                      child: Text(
+                        "+91",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey),
                     ),
                   ),
-                  hint: "Enter Mobile Number",
-                  controller: mobileController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your mobile number';
@@ -156,6 +207,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     return null;
                   },
                 ),
+
                 SizedBox(height: 15),
                 TextButtonWidget(
                   keyboardType: TextInputType.emailAddress,

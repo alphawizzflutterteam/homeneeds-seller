@@ -35,6 +35,7 @@ final Uri updateUserApi = Uri.parse(baseUrl + 'update_user');
 final Uri getDeliveryBoysApi = Uri.parse(baseUrl + 'get_delivery_boys');
 final Uri getDeleteProduct = Uri.parse(baseUrl + 'delete_product');
 final Uri registerUserApi = Uri.parse(baseUrl + 'seller_register');
+final Uri verifySellerApi = Uri.parse(baseUrl + 'verify_seller');
 
 //==============================================================================
 //========================= Parameter for API's ================================
@@ -86,9 +87,6 @@ final String fromTime1 = "from_time1";
 final String toTime1 = "to_time1";
 final String fromTime2 = "from_time2";
 final String toTime2 = "to_time2";
-
-
-
 
 //==============================================================================
 //========================= Other String's =====================================
@@ -250,7 +248,8 @@ const String END_DATE = 'end_date';
 const String STREET = 'street';
 const String BALANCE = 'balance';
 const String ORDERID = 'order_id';
-const String ORDERITEMID = 'order_item_id';
+// const String ORDERITEMID = 'order_item_id';
+const String ORDERITEMID = 'order_id';
 const String DEL_BOY_ID = 'delivery_boy_id';
 const String ATTACHMENT = 'attachment';
 const String Title = 'title';
