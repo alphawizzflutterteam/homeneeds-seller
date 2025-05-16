@@ -944,6 +944,15 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
                 style: TextStyle(color: lightBlack2),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 3),
+              child: Text(
+                tempList[0].roomNumber != null
+                    ? capitalize(tempList[0].roomNumber!)
+                    : "",
+                style: TextStyle(color: lightBlack2),
+              ),
+            ),
             InkWell(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),

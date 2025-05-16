@@ -54,6 +54,7 @@ bool readProduct = true;
 bool readOrder = true;
 
 const String Mobile = 'mobile';
+const String roomNumber = 'room_no';
 const String Password = 'password';
 const String STATUS = "status";
 const String Delivery_Boy_Id = "delivery_boy_id";

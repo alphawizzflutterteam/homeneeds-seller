@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="20 feb production bundle done  commit by anjali">
-      <change afterPath="$PROJECT_DIR$/lib/Screen/Authentication/NumberVerify.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Screen/Authentication/NumberVerifyOtp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="12 april 2025 commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Helper/String.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/String.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Language/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Model/OrdersModel/OrderModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Model/OrdersModel/OrderModel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Screen/Profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Profile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -72,7 +71,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/lib/Screen/Authentication&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/AnjaliCollection/multistore/user/TradersConnect-master/TradersConnect-master&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
@@ -135,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740034120241</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="12 april 2025 commit">
+      <option name="closed" value="true" />
+      <created>1744463609913</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744463609913</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +161,7 @@
     <MESSAGE value="24 dec commit by anjali" />
     <MESSAGE value="28 dec live process commit by anjali" />
     <MESSAGE value="20 feb production bundle done  commit by anjali" />
-    <option name="LAST_COMMIT_MESSAGE" value="20 feb production bundle done  commit by anjali" />
+    <MESSAGE value="12 april 2025 commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="12 april 2025 commit" />
   </component>
 </project>

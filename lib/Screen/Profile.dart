@@ -976,109 +976,109 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "ADD_NAME_LBL")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: sellernameKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) =>
-                                  validateUserName(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: nameC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = sellernameKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                name = nameC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "ADD_NAME_LBL")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: sellernameKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) =>
+          //                         validateUserName(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: nameC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = sellernameKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       name = nameC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -1185,107 +1185,107 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addEmail")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: emailKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                      color: lightBlack,
-                                      fontWeight: FontWeight.normal),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: emailC,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = emailKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                email = emailC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addEmail")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: emailKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                             color: lightBlack,
+          //                             fontWeight: FontWeight.normal),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: emailC,
+          //                   ),
+          //                 ),
+          //               )
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = emailKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       email = emailC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             ),
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -1343,108 +1343,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            'City', //   getTranslated(context, "AddAddress")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: addressKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: cityController,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = cityKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                // address = addressC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   'City', //   getTranslated(context, "AddAddress")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: addressKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: cityController,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = cityKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       // address = addressC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -1502,108 +1502,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "AddAddress")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: addressKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: addressC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = addressKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                address = addressC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "AddAddress")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: addressKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: addressC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = addressKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       address = addressC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -1684,108 +1684,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addStoreName")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: storenameKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: storenameC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = storenameKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                storename = storenameC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addStoreName")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: storenameKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: storenameC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = storenameKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       storename = storenameC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -1841,108 +1841,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addURL")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: storeurlKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: storeurlC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = storeurlKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                storeurl = storeurlC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addURL")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: storeurlKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: storeurlC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = storeurlKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       storeurl = storeurlC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -1999,108 +1999,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addDescription")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: storeDescKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: storeDescC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = storeDescKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                storeDesc = storeDescC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addDescription")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: storeDescKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: storeDescC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = storeDescKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       storeDesc = storeDescC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -2186,108 +2186,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addAccontNumber")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: accnumberKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: accnumberC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = accnumberKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                accNo = accnumberC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addAccontNumber")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: accnumberKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: accnumberC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = accnumberKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       accNo = accnumberC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -2343,108 +2343,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addAccountName")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: accnameKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: accnameC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = accnameKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                accname = accnameC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addAccountName")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: accnameKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: accnameC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = accnameKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       accname = accnameC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -2500,108 +2500,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addBankCode")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: bankcodeKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: bankcodeC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = bankcodeKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                bankcode = bankcodeC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addBankCode")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: bankcodeKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: bankcodeC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = bankcodeKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       bankcode = bankcodeC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -2657,108 +2657,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addBankName")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: banknameKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: banknameC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = banknameKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                bankname = banknameC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addBankName")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: banknameKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: banknameC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = banknameKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       bankname = banknameC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -3178,108 +3178,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "AddLatitute")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: latitututeKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: latitututeC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = latitututeKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                latitutute = latitututeC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "AddLatitute")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: latitututeKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: latitututeC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = latitututeKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       latitutute = latitututeC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -3335,108 +3335,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "AddLongitude")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: longituteKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: longituteC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = longituteKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                longitude = longituteC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "AddLongitude")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: longituteKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: longituteC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = longituteKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       longitude = longituteC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -3492,108 +3492,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addTaxName")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: taxnameKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: taxnameC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = taxnameKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                taxname = taxnameC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addTaxName")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: taxnameKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: taxnameC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = taxnameKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       taxname = taxnameC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -3649,108 +3649,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addTaxNumber")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: taxnumberKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: taxnumberC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = taxnumberKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                taxnumber = taxnumberC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addTaxNumber")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: taxnumberKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: taxnumberC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = taxnumberKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       taxnumber = taxnumberC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
@@ -3806,108 +3806,108 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             ),
           ),
           Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.edit,
-              size: 20,
-              color: lightBlack,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: const EdgeInsets.all(0),
-                    elevation: 2.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
-                      ),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                          child: Text(
-                            getTranslated(context, "addPanNumber")!,
-                            style: Theme.of(this.context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(color: fontColor),
-                          ),
-                        ),
-                        Divider(color: lightBlack),
-                        Form(
-                          key: pannumberKey,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                            child: TextFormField(
-                              keyboardType: TextInputType.text,
-                              style: Theme.of(this.context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(
-                                    color: lightBlack,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                              validator: (val) => validateField(val, context),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              controller: pannumberC,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "CANCEL")!,
-                          style: TextStyle(
-                            color: lightBlack,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(
-                            () {
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                      new ElevatedButton(
-                        child: Text(
-                          getTranslated(context, "SAVE_LBL")!,
-                          style: TextStyle(
-                            color: fontColor,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        onPressed: () {
-                          final form = pannumberKey.currentState!;
-                          if (form.validate()) {
-                            form.save();
-                            setState(
-                              () {
-                                pannumber = pannumberC!.text;
-                                Navigator.pop(context);
-                              },
-                            );
-                          }
-                        },
-                      )
-                    ],
-                  );
-                },
-              );
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.edit,
+          //     size: 20,
+          //     color: lightBlack,
+          //   ),
+          //   onPressed: () {
+          //     showDialog(
+          //       context: context,
+          //       barrierDismissible: false,
+          //       builder: (BuildContext context) {
+          //         return AlertDialog(
+          //           contentPadding: const EdgeInsets.all(0),
+          //           elevation: 2.0,
+          //           shape: RoundedRectangleBorder(
+          //             borderRadius: BorderRadius.all(
+          //               Radius.circular(5.0),
+          //             ),
+          //           ),
+          //           content: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             crossAxisAlignment: CrossAxisAlignment.start,
+          //             children: [
+          //               Padding(
+          //                 padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+          //                 child: Text(
+          //                   getTranslated(context, "addPanNumber")!,
+          //                   style: Theme.of(this.context)
+          //                       .textTheme
+          //                       .subtitle1!
+          //                       .copyWith(color: fontColor),
+          //                 ),
+          //               ),
+          //               Divider(color: lightBlack),
+          //               Form(
+          //                 key: pannumberKey,
+          //                 child: Padding(
+          //                   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+          //                   child: TextFormField(
+          //                     keyboardType: TextInputType.text,
+          //                     style: Theme.of(this.context)
+          //                         .textTheme
+          //                         .subtitle1!
+          //                         .copyWith(
+          //                           color: lightBlack,
+          //                           fontWeight: FontWeight.normal,
+          //                         ),
+          //                     validator: (val) => validateField(val, context),
+          //                     autovalidateMode:
+          //                         AutovalidateMode.onUserInteraction,
+          //                     controller: pannumberC,
+          //                   ),
+          //                 ),
+          //               ),
+          //             ],
+          //           ),
+          //           actions: <Widget>[
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "CANCEL")!,
+          //                 style: TextStyle(
+          //                   color: lightBlack,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 setState(
+          //                   () {
+          //                     Navigator.pop(context);
+          //                   },
+          //                 );
+          //               },
+          //             ),
+          //             new ElevatedButton(
+          //               child: Text(
+          //                 getTranslated(context, "SAVE_LBL")!,
+          //                 style: TextStyle(
+          //                   color: fontColor,
+          //                   fontSize: 15,
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               onPressed: () {
+          //                 final form = pannumberKey.currentState!;
+          //                 if (form.validate()) {
+          //                   form.save();
+          //                   setState(
+          //                     () {
+          //                       pannumber = pannumberC!.text;
+          //                       Navigator.pop(context);
+          //                     },
+          //                   );
+          //                 }
+          //               },
+          //             )
+          //           ],
+          //         );
+          //       },
+          //     );
+          //   },
+          // )
         ],
       ),
     );
