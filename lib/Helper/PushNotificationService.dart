@@ -16,17 +16,28 @@ class PushNotificationService {
   ApiBaseHelper apiBaseHelper = ApiBaseHelper();
   PushNotificationService({required this.context});
 
-//==============================================================================
-//============================= initialise =====================================
+  String? fcmToken;
+
+  //==============================================================================
+  //============================= initialise =====================================
 
   Future initialise() async {
-
     iOSPermission();
+
     messaging.getToken().then(
       (token) async {
-        if (CUR_USERID != null && CUR_USERID != "") _registerToken(token);
+        fcmToken = token;
+        print("FCM Token: $fcmToken");
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('fcm_token', fcmToken ?? '');
+
+        if (CUR_USERID != null && CUR_USERID != "") {
+          _registerToken(token);
+        }
       },
-    );
+    ).catchError((e) {
+      print(" Error getting FCM token: $e");
+    });
 
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('ic_launcher');
@@ -53,9 +64,9 @@ class PushNotificationService {
       },
     );
 
-//==============================================================================
-//============================= onMessage ======================================
-// when app in foreground (running state) (open)
+    //==============================================================================
+    //============================= onMessage ======================================
+    // when app in foreground (running state) (open)
 
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
@@ -69,9 +80,9 @@ class PushNotificationService {
       },
     );
 
-//==============================================================================
-//============================= onMessage ======================================
-// when app in terminated state
+    //==============================================================================
+    //============================= onMessage ======================================
+    // when app in terminated state
 
     messaging.getInitialMessage().then(
       (RemoteMessage? message) async {
@@ -98,9 +109,9 @@ class PushNotificationService {
       },
     );
 
-//==============================================================================
-//========================= onMessageOpenedApp =================================
-// when app is background
+    //==============================================================================
+    //========================= onMessageOpenedApp =================================
+    // when app is background
 
     FirebaseMessaging.onMessageOpenedApp.listen(
       (RemoteMessage message) async {
@@ -108,8 +119,6 @@ class PushNotificationService {
         if (message != null) {
           var type = message.data['type'] ?? '';
           if (type == "commission") {
-            // try to add login or not condition here.
-            // if login then redirect to home scren else login screen
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -130,12 +139,9 @@ class PushNotificationService {
     );
   }
 
-//==============================================================================
-//========================= iOSPermission ======================================
-//done
-
+  //==============================================================================
+  //========================= iOSPermission ======================================
   void iOSPermission() async {
-
     await messaging.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
@@ -143,33 +149,24 @@ class PushNotificationService {
     );
   }
 
-//==============================================================================
-//========================= _registerToken =====================================
-
+  //==============================================================================
+  //========================= _registerToken =====================================
   void _registerToken(String? token) async {
- 
-
     var parameter = {
       'user_id': CUR_USERID,
       FCMID: token,
     };
     apiBaseHelper.postAPICall(updateFcmApi, parameter).then(
-      (getdata) async {
-  
-      },
-      onError: (error) {},
-    );
+          (getdata) async {},
+          onError: (error) {},
+        );
   }
 }
-
-//done above
 
 //==============================================================================
 //========================= myForgroundMessageHandler ==========================
 
 Future<dynamic> myForgroundMessageHandler(RemoteMessage message) async {
-
-
   await setPrefrenceBool(iSFROMBACK, true);
   bool back = await getPrefrenceBool(iSFROMBACK);
   return Future<void>.value();
@@ -200,6 +197,3 @@ Future<void> generateSimpleNotication(
     payload: type,
   );
 }
-
-//==============================================================================
-//==============================================================================

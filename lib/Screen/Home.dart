@@ -19,6 +19,7 @@ import 'package:eshopmultivendor/Screen/OrderList.dart';
 import 'package:eshopmultivendor/Screen/TermFeed/Privacy_Policy.dart';
 import 'package:eshopmultivendor/Screen/ProductList.dart';
 import 'package:eshopmultivendor/Screen/WalletHistory.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Helper/Indicator.dart';
+import '../Helper/notification_service.dart';
 import '../main.dart';
 import 'Profile.dart';
 import 'TermFeed/Terms_Conditions.dart';
@@ -133,6 +135,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       systemNavigationBarColor: Colors.transparent,
     ));
     final pushNotificationService = PushNotificationService(context: context);
+    //LocalNotificationService.initialize();
+
     pushNotificationService.initialise();
     offset = 0;
     total = 0;

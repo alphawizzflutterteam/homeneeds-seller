@@ -7,6 +7,7 @@ import 'package:eshopmultivendor/Helper/Session.dart';
 import 'package:eshopmultivendor/Helper/String.dart';
 import 'package:eshopmultivendor/Model/OrdersModel/OrderModel.dart';
 import 'package:eshopmultivendor/Screen/OrderDetail.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -106,6 +107,8 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
         getOrder();
       }
     });
+
+    initNotification();
 
     super.initState();
   }
@@ -1159,6 +1162,14 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
           ),
         ),
       ],
+    );
+  }
+
+  initNotification() {
+    FirebaseMessaging.onMessage.listen(
+      (RemoteMessage message) {
+        getOrder();
+      },
     );
   }
 }

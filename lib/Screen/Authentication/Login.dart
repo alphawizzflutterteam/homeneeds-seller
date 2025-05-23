@@ -8,10 +8,12 @@ import 'package:eshopmultivendor/Helper/String.dart';
 import 'package:eshopmultivendor/Screen/Authentication/CreateAccount.dart';
 import 'package:eshopmultivendor/Screen/TermFeed/Privacy_Policy.dart';
 import 'package:eshopmultivendor/Screen/TermFeed/Terms_Conditions.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Home.dart';
 import 'NumberVerify.dart';
 import 'SendOtp.dart';
@@ -68,9 +70,17 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
 
 //==============================================================================
 //============================= INIT Method ====================================
+  String? fcmToken;
+  getToken() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      fcmToken = value!;
+    });
+    print("fcm is ${fcmToken}");
+  }
 
   @override
   void initState() {
+    getToken();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -223,10 +233,14 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
 //============================= LOGIN API ======================================
 
   Future<void> getLoginUser() async {
-    var data = {
-      Mobile: mobile,
-      Password: password,
-    };
+    print("fcm is ${fcmToken}");
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // FirebaseMessaging.instance.getToken().then((value) {
+    //   String fcmToken = value!;
+    //
+    //   print("fcm is ${fcmToken}");
+    // });
+    var data = {Mobile: mobile, Password: password, "fcm_id": fcmToken};
 
     apiBaseHelper.postAPICall(getUserLoginApi, data).then(
       (getdata) async {

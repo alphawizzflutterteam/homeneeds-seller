@@ -2,6 +2,8 @@
     package="com.homeneeds.seller">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
 
     <application
         android:icon="@mipmap/ic_launcher"

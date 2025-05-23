@@ -9,7 +9,13 @@ import 'String.dart';
 import 'package:shimmer/shimmer.dart';
 
 //oredrlist
-String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
+String capitalize(String s) {
+  if (s == '') {
+    return '';
+  } else {
+    return s[0].toUpperCase() + s.substring(1);
+  }
+}
 
 //==============================================================================
 //============================= name verification ==============================
