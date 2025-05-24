@@ -45,7 +45,7 @@ class LocalNotificationService {
       (message) {
         print("FirebaseMessaging.onMessage______________");
         if (message.notification != null) {
-          // display(message);
+          display(message);
           //
           // handleNotification(message.data);
         }

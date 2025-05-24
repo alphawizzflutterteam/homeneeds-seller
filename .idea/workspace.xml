@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="16may">
-      <change afterPath="$PROJECT_DIR$/lib/Helper/notification_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="23may client point done commit by anjali">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Helper/PushNotificationService.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/PushNotificationService.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Helper/Session.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/Session.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Helper/notification_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/notification_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,6 +87,7 @@
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="additionalArgs" value="--release" />
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
@@ -159,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747397126255</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="23may client point done commit by anjali">
+      <option name="closed" value="true" />
+      <created>1747982652364</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747982652364</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,7 +178,8 @@
     <MESSAGE value="20 feb production bundle done  commit by anjali" />
     <MESSAGE value="12 april 2025 commit" />
     <MESSAGE value="16may" />
-    <option name="LAST_COMMIT_MESSAGE" value="16may" />
+    <MESSAGE value="23may client point done commit by anjali" />
+    <option name="LAST_COMMIT_MESSAGE" value="23may client point done commit by anjali" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
