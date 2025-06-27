@@ -5,7 +5,6 @@ import 'package:eshopmultivendor/Helper/Color.dart';
 import 'package:eshopmultivendor/Helper/ContainerDesing.dart';
 import 'package:eshopmultivendor/Helper/Session.dart';
 import 'package:eshopmultivendor/Helper/String.dart';
-import 'package:eshopmultivendor/Screen/Authentication/CreateAccount.dart';
 import 'package:eshopmultivendor/Screen/TermFeed/Privacy_Policy.dart';
 import 'package:eshopmultivendor/Screen/TermFeed/Terms_Conditions.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -13,8 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../../Helper/Color.dart';
 import '../Home.dart';
+import 'CreateAccount.dart';
 import 'NumberVerify.dart';
 import 'SendOtp.dart';
 
@@ -68,8 +68,6 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       storeLogo;
   bool _isNetworkAvail = true;
 
-//==============================================================================
-//============================= INIT Method ====================================
   String? fcmToken;
   getToken() {
     FirebaseMessaging.instance.getToken().then((value) {
@@ -78,9 +76,11 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
     print("fcm is ${fcmToken}");
   }
 
+//==============================================================================
+//============================= INIT Method ====================================
+
   @override
   void initState() {
-    getToken();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -88,6 +88,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
       statusBarIconBrightness: Brightness.light,
     ));
     super.initState();
+    getToken();
     buttonController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
 
@@ -231,15 +232,11 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
 
 //==============================================================================
 //============================= LOGIN API ======================================
-
+  bool isLoading = false;
   Future<void> getLoginUser() async {
-    print("fcm is ${fcmToken}");
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // FirebaseMessaging.instance.getToken().then((value) {
-    //   String fcmToken = value!;
-    //
-    //   print("fcm is ${fcmToken}");
-    // });
+    isLoading = true;
+    setState(() {});
+    print("this is fcm Token $fcmToken");
     var data = {Mobile: mobile, Password: password, "fcm_id": fcmToken};
 
     apiBaseHelper.postAPICall(getUserLoginApi, data).then(
@@ -593,72 +590,163 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
     );
   }
 
+  // setPass() {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width * 0.85,
+  //     padding: EdgeInsets.only(
+  //       top: 15.0,
+  //     ),
+  //     child: TextFormField(
+  //       onFieldSubmitted: (v) {
+  //         FocusScope.of(context).requestFocus(passFocus);
+  //       },
+  //       keyboardType: TextInputType.text,
+  //       obscureText: true,
+  //       controller: passwordController,
+  //       style: TextStyle(
+  //         color: fontColor,
+  //         fontWeight: FontWeight.normal,
+  //       ),
+  //       focusNode: passFocus,
+  //       textInputAction: TextInputAction.next,
+  //       validator: (val) => validatePass(val!, context),
+  //       onSaved: (String? value) {
+  //         password = value;
+  //       },
+  //       decoration: InputDecoration(
+  //         focusedBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: primary),
+  //           borderRadius: BorderRadius.circular(7.0),
+  //         ),
+  //         prefixIcon: SvgPicture.asset(
+  //           "assets/images/password.svg",
+  //         ),
+  //         suffixIcon: InkWell(
+  //           onTap: () {
+  //             Navigator.push(
+  //               context,
+  //               MaterialPageRoute(
+  //                 builder: (context) => SendOtp(
+  //                   checkForgot: "true",
+  //                   title: getTranslated(context, "FORGOT_PASS_TITLE")!,
+  //                 ),
+  //               ),
+  //             );
+  //           },
+  //           // child: Text(
+  //           //   getTranslated(context, "FORGOT_PASSWORD_LBL")!,
+  //           //   style: TextStyle(
+  //           //     color: primary,
+  //           //     fontSize: 12,
+  //           //     fontWeight: FontWeight.bold,
+  //           //   ),
+  //           // ),
+  //         ),
+  //         hintText: getTranslated(context, "PASSHINT_LBL"),
+  //         hintStyle: Theme.of(this.context)
+  //             .textTheme
+  //             .subtitle2!
+  //             .copyWith(color: lightBlack2, fontWeight: FontWeight.normal),
+  //         fillColor: white,
+  //         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+  //         suffixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
+  //         prefixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
+  //         enabledBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: lightBlack2),
+  //           borderRadius: BorderRadius.circular(7.0),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+  bool _obscureText = true;
+
   setPass() {
     return Container(
       width: MediaQuery.of(context).size.width * 0.85,
-      padding: EdgeInsets.only(
-        top: 15.0,
-      ),
-      child: TextFormField(
-        onFieldSubmitted: (v) {
-          FocusScope.of(context).requestFocus(passFocus);
-        },
-        keyboardType: TextInputType.text,
-        obscureText: true,
-        controller: passwordController,
-        style: TextStyle(
-          color: fontColor,
-          fontWeight: FontWeight.normal,
-        ),
-        focusNode: passFocus,
-        textInputAction: TextInputAction.next,
-        validator: (val) => validatePass(val!, context),
-        onSaved: (String? value) {
-          password = value;
-        },
-        decoration: InputDecoration(
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: primary),
-            borderRadius: BorderRadius.circular(7.0),
-          ),
-          prefixIcon: SvgPicture.asset(
-            "assets/images/password.svg",
-          ),
-          suffixIcon: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => SendOtp(
-                    checkForgot: "true",
-                    title: getTranslated(context, "FORGOT_PASS_TITLE")!,
-                  ),
-                ),
-              );
+      padding: EdgeInsets.only(top: 15.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            onFieldSubmitted: (v) {
+              FocusScope.of(context).requestFocus(passFocus);
             },
-            child: Text(
-              getTranslated(context, "FORGOT_PASSWORD_LBL")!,
-              style: TextStyle(
-                color: primary,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
+            keyboardType: TextInputType.text,
+            obscureText: _obscureText,
+            controller: passwordController,
+            style: TextStyle(
+              color: fontColor,
+              fontWeight: FontWeight.normal,
+            ),
+            focusNode: passFocus,
+            textInputAction: TextInputAction.next,
+            validator: (val) => validatePass(val!, context),
+            onSaved: (String? value) {
+              password = value;
+            },
+            decoration: InputDecoration(
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: primary),
+                borderRadius: BorderRadius.circular(7.0),
+              ),
+              prefixIcon: SvgPicture.asset(
+                "assets/images/password.svg",
+              ),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: fontColor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              ),
+              hintText: getTranslated(context, "PASSHINT_LBL"),
+              hintStyle: Theme.of(context)
+                  .textTheme
+                  .subtitle2!
+                  .copyWith(color: lightBlack2, fontWeight: FontWeight.normal),
+              fillColor: white,
+              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              suffixIconConstraints:
+                  BoxConstraints(minWidth: 40, maxHeight: 20),
+              prefixIconConstraints:
+                  BoxConstraints(minWidth: 40, maxHeight: 20),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: lightBlack2),
+                borderRadius: BorderRadius.circular(7.0),
               ),
             ),
           ),
-          hintText: getTranslated(context, "PASSHINT_LBL"),
-          hintStyle: Theme.of(this.context)
-              .textTheme
-              .subtitle2!
-              .copyWith(color: lightBlack2, fontWeight: FontWeight.normal),
-          fillColor: white,
-          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          suffixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
-          prefixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: lightBlack2),
-            borderRadius: BorderRadius.circular(7.0),
+          SizedBox(height: 5),
+          Align(
+            alignment: Alignment.centerRight,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SendOtp(
+                      checkForgot: "true",
+                      title: getTranslated(context, "FORGOT_PASS_TITLE")!,
+                    ),
+                  ),
+                );
+              },
+              child: Text(
+                getTranslated(context, "FORGOT_PASSWORD_LBL")!,
+                style: TextStyle(
+                  color: primary,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

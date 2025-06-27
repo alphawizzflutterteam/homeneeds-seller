@@ -5,6 +5,7 @@ import 'package:eshopmultivendor/Helper/String.dart';
 import 'package:eshopmultivendor/Screen/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -391,15 +392,31 @@ class _CreateAccountState extends State<CreateAccount> {
                   ],
                 ),
                 SizedBox(height: 15),
+                // TextButtonWidget(
+                //   hint: "Tax Name",
+                //   controller: taxNameController,
+                // ),
                 TextButtonWidget(
                   hint: "Tax Name",
                   controller: taxNameController,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Please enter Tax Name';
+                    }
+                    final pattern = RegExp(r'^[A-Za-z ]+$');
+                    if (!pattern.hasMatch(value)) {
+                      return 'Tax Name can only contain letters and spaces';
+                    }
+                    return null;
+                  },
                 ),
+
                 SizedBox(height: 15),
                 TextButtonWidget(
                   hint: "Tax Number",
                   controller: taxNumberController,
                 ),
+
                 SizedBox(height: 15),
                 TextButtonWidget(
                     hint: "Pan Number", controller: panNumberController),
@@ -433,20 +450,94 @@ class _CreateAccountState extends State<CreateAccount> {
                     style:
                         TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
                 SizedBox(height: 15),
-                TextButtonWidget(
-                  hint: "Account Number",
+                // TextButtonWidget(
+                //   hint: "Account Number",
+                //   controller: accountNumberController,
+                // ),
+                TextField(
                   controller: accountNumberController,
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                    hintText: 'Account Number',
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                  ),
                 ),
+
                 SizedBox(height: 15),
                 TextButtonWidget(
                   hint: "Account Holder Name",
                   controller: accountNameController,
                 ),
                 SizedBox(height: 15),
+
+                // TextField(
+                //   controller: bankCodeController,
+                //   keyboardType: TextInputType.number,
+                //   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                //   decoration: InputDecoration(
+                //     contentPadding:
+                //         EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                //     hintText: 'IFSC Code',
+                //     filled: true,
+                //     fillColor: Colors.white,
+                //     border: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(8),
+                //       borderSide: BorderSide(color: Colors.grey),
+                //     ),
+                //     enabledBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(8),
+                //       borderSide: BorderSide(color: Colors.grey),
+                //     ),
+                //     focusedBorder: OutlineInputBorder(
+                //       borderRadius: BorderRadius.circular(8),
+                //       borderSide: BorderSide(color: Colors.grey),
+                //     ),
+                //   ),
+                // ),
+
+                // TextButtonWidget(
+                //   hint: "IFSC Code",
+                //   controller: bankCodeController,
+                //   validator: (value) {
+                //     if (value == null || value.isEmpty) {
+                //       return 'Please enter your IFSC Code';
+                //     }
+                //     return null;
+                //   },
+                // ),
+
                 TextButtonWidget(
                   hint: "IFSC Code",
                   controller: bankCodeController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your IFSC Code';
+                    }
+                    final pattern = RegExp(r'^[A-Z]{4}0[A-Z0-9]{6}$');
+                    if (!pattern.hasMatch(value)) {
+                      return 'Invalid IFSC code format. Must be 11 chars, uppercase.';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.text,
                 ),
+
                 SizedBox(height: 15),
                 TextButtonWidget(
                   hint: "Bank Name",
@@ -623,6 +714,7 @@ class TextButtonWidget extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final Widget? suffix;
   final Widget? prefix;
+  final Widget? inputFormatters;
   final TextInputType? keyboardType;
 
   TextButtonWidget({
@@ -632,6 +724,7 @@ class TextButtonWidget extends StatefulWidget {
     this.validator,
     this.suffix,
     this.prefix,
+    this.inputFormatters,
     this.keyboardType,
   });
 
@@ -744,11 +837,17 @@ class _TextFilePickWidgetState extends State<TextFilePickWidget> {
           children: [
             SizedBox(width: 10),
             widget.imagePathController.text != ''
-                ? Image.file(
-                    File(widget.imagePathController.text),
-                    height: 70.0,
-                    width: 70.0,
-                  )
+                ? widget.imagePathController.text.contains("http")
+                    ? Image.network(
+                        widget.imagePathController.text,
+                        height: 70.0,
+                        width: 70.0,
+                      )
+                    : Image.file(
+                        File(widget.imagePathController.text),
+                        height: 70.0,
+                        width: 70.0,
+                      )
                 : Text(
                     widget.hint,
                     style: TextStyle(fontSize: 16, color: Colors.grey),

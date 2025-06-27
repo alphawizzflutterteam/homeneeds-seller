@@ -21,7 +21,8 @@ class VerifyOtp extends StatefulWidget {
       {Key? key,
       required String this.mobileNumber,
       this.countryCode,
-      this.title, this.otp})
+      this.title,
+      this.otp})
       : assert(mobileNumber != null),
         super(key: key);
 
@@ -37,6 +38,11 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
   late String _verificationId;
   String signature = "";
   bool _isClickable = false;
+  bool isResendEnabled = true;
+  int _start = 60;
+  Timer? _timer;
+  String? _errorMessage;
+
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -79,6 +85,26 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  void startResendTimer() {
+    setState(() {
+      isResendEnabled = false;
+      _start = 60;
+    });
+
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_start == 0) {
+        setState(() {
+          isResendEnabled = true;
+          timer.cancel();
+        });
+      } else {
+        setState(() {
+          _start--;
+        });
+      }
+    });
   }
 
   Future<void> getSingature() async {
@@ -147,11 +173,10 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
-  void verifiedOtpCheck ()async {
+  void verifiedOtpCheck() async {
     if (widget.otp.toString() == otp.toString()) {
       // SettingProvider settingsProvider = Provider.of<SettingProvider>(context, listen: false);
 
@@ -162,13 +187,14 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
         Future.delayed(Duration(seconds: 2)).then((_) {
           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      SetPass(mobileNumber: widget.mobileNumber!),),);
+            context,
+            MaterialPageRoute(
+              builder: (context) => SetPass(mobileNumber: widget.mobileNumber!),
+            ),
+          );
         });
       }
-    }else{
+    } else {
       print("OTP not match!!!");
     }
   }
@@ -279,8 +305,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         setSnackbar(error.toString());
 
         await buttonController!.reverse();
-      }
-      );
+      });
     } else {
       setSnackbar(getTranslated(context, "ENTEROTP")!);
     }
@@ -310,21 +335,23 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       statusBarIconBrightness: Brightness.light,
     ));
     buttonController!.dispose();
+    _timer?.cancel();
+
     super.dispose();
   }
 
   monoVarifyText() {
     return Padding(
-        padding: EdgeInsets.only(
-          top: 30.0,
-        ),
-        child: Center(
-          child: new Text(getTranslated(context, "MOBILE_NUMBER_VARIFICATION")!,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1!
-                  .copyWith(color: fontColor, fontWeight: FontWeight.bold)),
-        ),
+      padding: EdgeInsets.only(
+        top: 30.0,
+      ),
+      child: Center(
+        child: new Text(getTranslated(context, "MOBILE_NUMBER_VARIFICATION")!,
+            style: Theme.of(context)
+                .textTheme
+                .subtitle1!
+                .copyWith(color: fontColor, fontWeight: FontWeight.bold)),
+      ),
     );
   }
 
@@ -361,12 +388,11 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                     fontWeight: FontWeight.normal,
                   ),
             ),
-            Text('OTP-${widget.otp}')
+            // Text('OTP-${widget.otp}')
           ],
         ),
       ),
     );
-    
   }
 
   otpLayout() {
@@ -397,38 +423,76 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     );
   }
 
-  resendText() {
+  // resendText() {
+  //   return Padding(
+  //     padding: EdgeInsets.only(
+  //       bottom: 30.0,
+  //       left: 25.0,
+  //       right: 25.0,
+  //       top: 10.0,
+  //     ),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Text(
+  //           getTranslated(context, "DIDNT_GET_THE_CODE")!,
+  //           style: Theme.of(context).textTheme.caption!.copyWith(
+  //                 color: fontColor,
+  //                 fontWeight: FontWeight.normal,
+  //               ),
+  //         ),
+  //         InkWell(
+  //           onTap: () async {
+  //             await buttonController!.reverse();
+  //             checkNetworkOtp();
+  //           },
+  //           child: Text(
+  //             getTranslated(context, "RESEND_OTP")!,
+  //             style: Theme.of(context).textTheme.caption!.copyWith(
+  //                   color: fontColor,
+  //                   decoration: TextDecoration.underline,
+  //                   fontWeight: FontWeight.normal,
+  //                 ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+  Widget resendText() {
     return Padding(
-      padding: EdgeInsets.only(
-        bottom: 30.0,
-        left: 25.0,
-        right: 25.0,
-        top: 10.0,
-      ),
+      padding: const EdgeInsetsDirectional.only(top: 30.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            getTranslated(context, "DIDNT_GET_THE_CODE")!,
+            isResendEnabled
+                ? getTranslated(context, 'DIDNT_GET_THE_CODE')!
+                : "Resend OTP available in $_start s",
             style: Theme.of(context).textTheme.caption!.copyWith(
                   color: fontColor,
                   fontWeight: FontWeight.normal,
                 ),
           ),
           InkWell(
-            onTap: () async {
-              await buttonController!.reverse();
-              checkNetworkOtp();
-            },
+            onTap: isResendEnabled
+                ? () async {
+                    await buttonController!.reverse();
+                    checkNetworkOtp();
+                    startResendTimer();
+                  }
+                : null,
             child: Text(
-              getTranslated(context, "RESEND_OTP")!,
+              getTranslated(context, 'RESEND_OTP')!,
               style: Theme.of(context).textTheme.caption!.copyWith(
-                    color: fontColor,
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.normal,
+                    color: isResendEnabled
+                        ? Theme.of(context).colorScheme.primary
+                        : Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'ubuntu',
                   ),
             ),
-          ),
+          )
         ],
       ),
     );
@@ -454,9 +518,9 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 monoVarifyText(),
-                otpText(),
+                // otpText(),
                 mobText(),
-                Text("${widget.otp}"),
+                // Text("${widget.otp}"),
                 otpLayout(),
                 verifyBtn(),
                 resendText(),
@@ -525,7 +589,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                         height: MediaQuery.of(context).size.height * 0.10,
                       ),
                       monoVarifyText(),
-                      otpText(),
+                      // otpText(),
                       mobText(),
                       otpLayout(),
                       verifyBtn(),

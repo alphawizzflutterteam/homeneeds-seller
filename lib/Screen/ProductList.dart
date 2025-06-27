@@ -367,6 +367,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
           TOP_RETAED: top,
           FLAG: flag
         };
+        print("ghsdfhgk____${parameter}");
         if (selId != null && selId != "") {
           parameter[AttributeValueIds] = selId;
         }
@@ -491,23 +492,6 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
         },
       ),
       actions: <Widget>[
-        // Container(
-        //   margin: EdgeInsets.symmetric(vertical: 10),
-        //   child: InkWell(
-        //     borderRadius: BorderRadius.circular(4),
-        //     onTap: () {
-        //       stockFilter();
-        //     },
-        //     child: Padding(
-        //       padding: const EdgeInsets.all(4.0),
-        //       child: Icon(
-        //         Icons.filter_alt_outlined,
-        //         color: primary,
-        //         size: 25,
-        //       ),
-        //     ),
-        //   ),
-        // ),
         Container(
           margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
           child: InkWell(
@@ -530,76 +514,6 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
             ),
           ),
         ),
-        // Container(
-        //   margin: EdgeInsets.symmetric(vertical: 10),
-        //   child: Material(
-        //     color: Colors.transparent,
-        //     child: InkWell(
-        //       borderRadius: BorderRadius.circular(4),
-        //       child: Padding(
-        //         padding: const EdgeInsets.all(4.0),
-        //         child: Icon(
-        //           listType ? Icons.grid_view : Icons.list,
-        //           color: primary,
-        //           size: 25,
-        //         ),
-        //       ),
-        //       onTap: () {
-        //         productList.length != 0
-        //             ? setState(() {
-        //                 listType = !listType;
-        //               })
-        //             : null;
-        //       },
-        //     ),
-        //   ),
-        // ),
-        // Container(
-        //   width: 40,
-        //   margin: EdgeInsetsDirectional.only(top: 10, bottom: 10, end: 5),
-        //   child: Material(
-        //     color: Colors.transparent,
-        //     child: PopupMenuButton(
-        //       padding: EdgeInsets.zero,
-        //       onSelected: (dynamic value) {
-        //         switch (value) {
-        //           case 0:
-        //             return filterDialog();
-        //             break;
-        //           case 1:
-        //             return sortDialog();
-        //             break;
-        //         }
-        //       },
-        //       itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-        //         PopupMenuItem(
-        //           value: 0,
-        //           child: ListTile(
-        //             dense: true,
-        //             contentPadding:
-        //                 EdgeInsetsDirectional.only(start: 0.0, end: 0.0),
-        //             leading: Icon(
-        //               Icons.tune,
-        //               color: fontColor,
-        //               size: 25,
-        //             ),
-        //             title: Text(getTranslated(context, "Filter")!),
-        //           ),
-        //         ),
-        //         PopupMenuItem(
-        //           value: 1,
-        //           child: ListTile(
-        //             dense: true,
-        //             contentPadding:
-        //                 EdgeInsetsDirectional.only(start: 0.0, end: 0.0),
-        //             leading: Icon(Icons.sort, color: fontColor, size: 20),
-        //             title: Text(getTranslated(context, "Sort")!),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

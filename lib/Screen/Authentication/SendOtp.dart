@@ -93,8 +93,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   Widget noInternet(BuildContext context) {
@@ -137,6 +136,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
 
   Future<void> getVerifyUser() async {
     var data = {Mobile: mobile, "forgot_otp": widget.checkForgot};
+    print("ghhhhhhhhh_____${data}");
 
     apiBaseHelper.postAPICall(verifyUserApi, data).then(
       (getdata) async {
@@ -146,7 +146,6 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         print(data);
         await buttonController!.reverse();
         if (widget.title == getTranslated(context, "SEND_OTP_TITLE")!) {
-
           if (!error) {
             int otp = getdata["data"]["otp"];
             // setSnackbar(msg!);
@@ -308,14 +307,31 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
     );
   }
 
-  verifyBtn() {
+  // verifyBtn() {
+  //   return AppBtn(
+  //     title: widget.title == getTranslated(context, "SEND_OTP_TITLE")
+  //         ? getTranslated(context, "Send OTP")!
+  //         : getTranslated(context, "GET_PASSWORD")!,
+  //     btnAnim: buttonSqueezeanimation,
+  //     btnCntrl: buttonController,
+  //     onBtnSelected: () async {
+  //       validateAndSubmit();
+  //     },
+  //   );
+  // }
+  Widget verifyBtn() {
     return AppBtn(
-      title: widget.title == getTranslated(context, "SEND_OTP_TITLE")
-          ? getTranslated(context, "Send OTP")!
-          : getTranslated(context, "GET_PASSWORD")!,
+      title: widget.title == getTranslated(context, 'SEND_OTP_TITLE')
+          ? getTranslated(context, 'SEND_OTP')
+          : getTranslated(context, 'GET_PASSWORD'),
       btnAnim: buttonSqueezeanimation,
       btnCntrl: buttonController,
       onBtnSelected: () async {
+        if (mobileController.text.trim().length != 10) {
+          setSnackbar("Please enter a valid 10 digit mobile number");
+          await buttonController!.reverse();
+          return;
+        }
         validateAndSubmit();
       },
     );

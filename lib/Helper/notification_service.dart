@@ -99,12 +99,12 @@ class LocalNotificationService {
       int id = random.nextInt(1000);
       const NotificationDetails notificationDetails = NotificationDetails(
           android: AndroidNotificationDetails(
-        "default_notification_channel",
-        "HomeNeeds",
+        'channel_sound_test', 'default_notification_channel',
+        // "HomeNeeds",
         importance: Importance.max,
         priority: Priority.high,
         playSound: true,
-        // sound: RawResourceAndroidNotificationSound('test'),
+        sound: RawResourceAndroidNotificationSound('test'),
         // icon: '@mipmap/ic_launcher'
       ));
       //print("my id is ${id.toString()}");

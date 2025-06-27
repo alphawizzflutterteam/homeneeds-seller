@@ -119,6 +119,7 @@ class _WalletHistoryState extends State<WalletHistory>
     _isNetworkAvail = await isNetworkAvailable();
     if (_isNetworkAvail) {
       var parameter = {UserId: CUR_USERID};
+      print("vnblbb____${parameter}");
       apiBaseHelper.postAPICall(getWithDrawalRequestApi, parameter).then(
         (getdata) async {
           bool error = getdata["error"];
@@ -287,8 +288,7 @@ class _WalletHistoryState extends State<WalletHistory>
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   _showDialog() async {
@@ -441,8 +441,12 @@ class _WalletHistoryState extends State<WalletHistory>
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh, color: primary, size: 30,),
-            onPressed: (){
+            icon: Icon(
+              Icons.refresh,
+              color: primary,
+              size: 30,
+            ),
+            onPressed: () {
               _refresh();
             },
           ),
@@ -541,7 +545,8 @@ class _WalletHistoryState extends State<WalletHistory>
       back = red;
     if (tranList[index].status == "1" || tranList[index].status == ACCEPTEd) {
       back = Colors.green;
-    } else if (tranList[index].status == "1" || tranList[index].status == PENDINg)
+    } else if (tranList[index].status == "1" ||
+        tranList[index].status == PENDINg)
       back = Colors.yellow;
     else
       back = red;
@@ -570,7 +575,6 @@ class _WalletHistoryState extends State<WalletHistory>
                   Text(tranList[index].dateCreated!),
                   // Text(tranList[index].
                   // ),
-
                 ],
               ),
               Divider(),
@@ -594,13 +598,13 @@ class _WalletHistoryState extends State<WalletHistory>
                     ),
                     child: tranList[index].status == "1"
                         ? Text(
-                      capitalize(tranList[index].status!),
-                      style: TextStyle(color: white),
-                    )
+                            capitalize(tranList[index].status!),
+                            style: TextStyle(color: white),
+                          )
                         : Text(
-                      capitalize(tranList[index].status!),
-                      style: TextStyle(color: white),
-                    ),
+                            capitalize(tranList[index].status!),
+                            style: TextStyle(color: white),
+                          ),
                   )
                 ],
               ),
@@ -617,6 +621,10 @@ class _WalletHistoryState extends State<WalletHistory>
                       " : " +
                       tranList[index].paymentType!)
                   : Container(),
+              tranList[index].remarks != null &&
+                      tranList[index].remarks!.isNotEmpty
+                  ? Text("Remarks : ${tranList[index].remarks}")
+                  : SizedBox.shrink(),
             ],
           ),
         ),

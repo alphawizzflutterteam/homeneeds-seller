@@ -60,6 +60,8 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    firebaseNotificationListener();
+
     scrollOffset = 0;
     Future.delayed(Duration.zero, this.getOrder);
     // getOrder();
@@ -111,6 +113,18 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
     initNotification();
 
     super.initState();
+  }
+
+  void initNotification() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      if (mounted) {
+        setState(() {
+          scrollOffset = 0;
+          scrollLoadmore = true;
+        });
+        getOrder();
+      }
+    });
   }
 
   _transactionscrollListener() {
@@ -802,7 +816,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                         ],
                       ),
                       onTap: () {
-                        //  _launchCaller(index);
+                        // _launchCaller(index);
                       },
                     ),
                   ],
@@ -1165,11 +1179,9 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
     );
   }
 
-  initNotification() {
-    FirebaseMessaging.onMessage.listen(
-      (RemoteMessage message) {
-        getOrder();
-      },
-    );
+  void firebaseNotificationListener() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      initState();
+    });
   }
 }

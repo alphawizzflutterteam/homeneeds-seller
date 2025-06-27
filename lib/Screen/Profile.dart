@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -12,6 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:time_picker_sheet/widget/sheet.dart';
 import 'package:time_picker_sheet/widget/time_picker.dart';
 import 'change_password_page.dart';
+import 'package:http/http.dart' as http;
 
 class Profile extends StatefulWidget {
   @override
@@ -103,7 +105,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
   ApiBaseHelper apiBaseHelper = ApiBaseHelper();
   AnimationController? buttonController;
 
-  String gender = 'Male';
+  String gender = 'male';
 
   String pinCode = '';
   String masterCategoryId = '1';
@@ -230,6 +232,10 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
     pannumber = await getPrefrence(panNumber);
     status = await getPrefrence(STATUS);
     storelogo = await getPrefrence(StoreLogo);
+
+    gender = await getPrefrence(Gender) ?? 'Male';
+    // gender = gender == "male" ? "Male" : gender;
+    // gender = gender == "female" ? "Female" : gender;
     mobileC!.text = mobile ?? "";
     nameC!.text = name ?? "";
     emailC!.text = email ?? "";
@@ -255,16 +261,25 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
 
     cityController!.text = await getPrefrence(City) ?? "";
     pinCode = await getPrefrence(Pincode) ?? "";
-    gender = await getPrefrence(Gender) ?? "";
+    //gender = await getPrefrence(Gender) ?? "";
     pinCode = await getPrefrence(Pincode) ?? "";
     dobController!.text = await getPrefrence(Dob) ?? "";
     masterCategoryId = await getPrefrence(Master_category) ?? "";
 
-    foodLicController!.text = await getPrefrence(Food_lic) ?? "";
-    gstFileController!.text = await getPrefrence(Gst_file) ?? "";
-    addressProfController!.text = await getPrefrence(Address_proof) ?? "";
-    logoController!.text = await getPrefrence(Logo) ?? "";
-    bankPassController!.text = await getPrefrence(Bank_pass) ?? "";
+    // Add https://homeneedsyourplace.in/ before url if exist
+    String addBaseUrlIfNeeded(String? url) {
+      if (url == null || url.isEmpty) return "";
+      if (url.startsWith("http")) return url;
+      return "https://homeneedsyourplace.in/$url";
+    }
+
+    foodLicController!.text = addBaseUrlIfNeeded(await getPrefrence(Food_lic));
+    gstFileController!.text = addBaseUrlIfNeeded(await getPrefrence(Gst_file));
+    addressProfController!.text =
+        addBaseUrlIfNeeded(await getPrefrence(Address_proof));
+    logoController!.text = addBaseUrlIfNeeded(await getPrefrence(Logo));
+    bankPassController!.text =
+        addBaseUrlIfNeeded(await getPrefrence(Bank_pass));
     proPicController!.text = await getPrefrence(Pro_pic) ?? "";
 
     if (masterCategoryId == '1') {
@@ -365,50 +380,92 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
 
 //==============================================================================
 //========================= For Update Saller API  =============================
+// Import http package at the top of your file:
+// import 'package:http/http.dart' as http;
 
   Future<void> setUpdateUser() async {
-    var parameter = {
-      Id: CUR_USERID,
-      Name: name ?? "",
-      Mobile: mobile ?? "",
-      Email: email ?? "",
-      Address: address ?? "",
-      Storename: storename ?? "",
-      Storeurl: storeurl ?? "",
-      storeDescription: storeDesc ?? "",
-      accountNumber: accNo ?? "",
-      accountName: accname ?? "",
-      bankCode: bankcode ?? "",
-      bankName: bankname ?? "",
-      Latitude: latitutute ?? "",
-      Longitude: longitude ?? "",
-      taxName: taxname ?? "",
-      taxNumber: taxnumber ?? "",
-      panNumber: pannumber ?? "",
-      STATUS: status ?? "1",
-      Morning: "morning",
-      fromTime: "${mstController.text}",
-      toTime: "${metController.text}",
-      Evening: "evening",
-      fromTime1: "${estController.text}",
-      toTime1: "${eetController.text}",
-      Night: "night",
-      fromTime2: "${nstController.text}",
-      toTime2: "${netController.text}",
-      City: "${cityController!.text}",
-      Pincode: "${pinCode}",
-      Dob: "${dobController!.text}",
-      Gender: "${gender}",
-      Master_category: "${masterCategoryId}",
-      Food_lic: "${foodLicController!.text}",
-      Gst_file: "${gstFileController!.text}",
-      Address_proof: "${addressProfController!.text}",
-      Logo: "${logoController!.text}",
-      Bank_pass: "${bankPassController!.text}",
-      Pro_pic: "${proPicController!.text}",
-    };
+    var uri = updateUserApi;
+
+    var request = http.MultipartRequest('POST', uri);
+
+    // Add text fields
+    request.fields[Id] = CUR_USERID ?? "";
+    request.fields[Name] = name ?? "";
+    request.fields[Mobile] = mobile ?? "";
+    request.fields[Email] = email ?? "";
+    request.fields[Address] = address ?? "";
+    request.fields[Storename] = storename ?? "";
+    request.fields[Storeurl] = storeurl ?? "";
+    request.fields[storeDescription] = storeDesc ?? "";
+    request.fields[accountNumber] = accNo ?? "";
+    request.fields[accountName] = accname ?? "";
+    request.fields[bankCode] = bankcode ?? "";
+    request.fields[bankName] = bankname ?? "";
+    request.fields[Latitude] = latitutute ?? "";
+    request.fields[Longitude] = longitude ?? "";
+    request.fields[taxName] = taxname ?? "";
+    request.fields[taxNumber] = taxnumber ?? "";
+    request.fields[panNumber] = pannumber ?? "";
+    request.fields[STATUS] = status ?? "1";
+    request.fields["Morning"] = "morning";
+    request.fields[fromTime] = mstController.text;
+    request.fields[toTime] = metController.text;
+    request.fields["Evening"] = "evening";
+    request.fields[fromTime1] = estController.text;
+    request.fields[toTime1] = eetController.text;
+    request.fields["Night"] = "night";
+    request.fields[fromTime2] = nstController.text;
+    request.fields[toTime2] = netController.text;
+    request.fields[City] = cityController?.text ?? "";
+    request.fields[Pincode] = pinCode;
+    request.fields[Dob] = dobController?.text ?? "";
+    request.fields[Gender] = gender;
+    request.fields[Master_category] = masterCategoryId;
+    // request.fields[Logo] = logoController?.text ?? "";
+    // request.fields[Pro_pic] = proPicController?.text ?? "";
+
+    // Add files if present
+    if (addressProfController != null &&
+        addressProfController!.text != '' &&
+        !addressProfController!.text.contains("http")) {
+      request.files.add(await http.MultipartFile.fromPath(
+          'address_proof', addressProfController!.text));
+    }
+    if (logoController != null &&
+        logoController!.text != '' &&
+        !logoController!.text.contains("http")) {
+      request.files.add(await http.MultipartFile.fromPath(
+          'store_logo', logoController!.text));
+    }
+    if (gstFileController != null &&
+        gstFileController!.text != '' &&
+        !gstFileController!.text.contains("http")) {
+      request.files.add(await http.MultipartFile.fromPath(
+          'gst_file', gstFileController!.text));
+    }
+    if (foodLicController != null &&
+        foodLicController!.text != '' &&
+        !foodLicController!.text.contains("http")) {
+      request.files.add(await http.MultipartFile.fromPath(
+          'food_lic', foodLicController!.text));
+    }
+    if (bankPassController != null &&
+        bankPassController!.text != '' &&
+        !bankPassController!.text.contains("http")) {
+      request.files.add(await http.MultipartFile.fromPath(
+          'bank_pass', bankPassController!.text));
+    }
+    if (proPicController != null &&
+        proPicController!.text != '' &&
+        !proPicController!.text.contains("http") &&
+        !proPicController!.text.contains("png")) {
+      request.files.add(
+          await http.MultipartFile.fromPath('pro_pic', proPicController!.text));
+    }
+
     print(updateUserApi);
-    print(parameter);
+    print(request.fields);
+
     if (mstController.text.isEmpty ||
         metController.text.isEmpty ||
         estController.text.isEmpty ||
@@ -416,24 +473,44 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
         nstController.text.isEmpty ||
         netController.text.isEmpty) {
       setSnackbar("Please Select Time Slot");
-    } else {
-      apiBaseHelper.postAPICall(updateUserApi, parameter).then(
-        (getdata) async {
-          bool error = getdata["error"];
-          String? msg = getdata["message"];
-          if (!error) {
-            await buttonController!.reverse();
-            setSnackbar(msg!);
-          } else {
-            await buttonController!.reverse();
-            setSnackbar(msg!);
-            setState(() {});
-          }
-        },
-        onError: (error) {
-          setSnackbar(error.toString());
-        },
-      );
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      var streamedResponse = await request.send();
+      var response = await http.Response.fromStream(streamedResponse);
+
+      if (response.statusCode == 200) {
+        var getdata =
+            jsonDecode(response.body); //apiBaseHelper.parseResponse();
+        bool error = getdata["error"];
+        String? msg = getdata["message"];
+        if (!error) {
+          await buttonController!.reverse();
+          getSallerDetail();
+          setSnackbar(msg!);
+        } else {
+          await buttonController!.reverse();
+          setSnackbar(msg!);
+          setState(() {});
+        }
+      } else {
+        await buttonController!.reverse();
+        setSnackbar("Something went wrong! Code: ${response.statusCode}");
+        setState(() {});
+      }
+    } catch (error) {
+      await buttonController!.reverse();
+      setSnackbar(error.toString());
+      setState(() {});
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -485,7 +562,8 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                   getSecondHeader(),
                   getThirdHeader(),
                   getFurthHeader(),
-                  // getImageUploadHeader(),
+
+                  getImageUploadHeader(),
                   changePass(),
 
                   //getFifthHeader(),
@@ -636,7 +714,9 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 imagePathController: addressProfController!),
             SizedBox(height: 15),
             TextFilePickWidget(
-                hint: "Gst File", imagePathController: gstFileController!),
+              hint: "Gst File",
+              imagePathController: gstFileController!,
+            ),
             SizedBox(height: 15),
             TextFilePickWidget(
                 hint: "Food License", imagePathController: foodLicController!),
@@ -645,10 +725,10 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 hint: "Bank Passbook",
                 imagePathController: bankPassController!),
             SizedBox(height: 15),
-            TextFilePickWidget(
-                hint: "Profile Picture",
-                imagePathController: proPicController!),
-            SizedBox(height: 15),
+            // TextFilePickWidget(
+            //     hint: "Profile Picture",
+            //     imagePathController: proPicController!),
+            // SizedBox(height: 15),
           ],
         ),
       ),
@@ -692,35 +772,76 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
     );
   }
 
+  // getMasterCategory() {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       SizedBox(
+  //         height: 10,
+  //       ),
+  //       Container(
+  //         padding: EdgeInsets.only(left: 20),
+  //         child: Text("Master Category",
+  //             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+  //       ),
+  //       Container(
+  //         padding: EdgeInsets.symmetric(horizontal: 20),
+  //         child: SizedBox(
+  //           height: 59,
+  //           child: DropdownButtonFormField<String>(
+  //             value: dropdownValue,
+  //             onChanged: (String? newValue) {
+  //               setState(() {
+  //                 dropdownValue = newValue!;
+  //               });
+  //             },
+  //             items: categories.map<DropdownMenuItem<String>>((String value) {
+  //               return DropdownMenuItem<String>(
+  //                 value: value,
+  //                 child: Text(value),
+  //               );
+  //             }).toList(),
+  //             decoration: InputDecoration(
+  //               filled: true,
+  //               fillColor: Colors.white,
+  //               border: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(8),
+  //                 borderSide: BorderSide(color: Colors.transparent),
+  //               ),
+  //               enabledBorder: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(8),
+  //                 borderSide: BorderSide(color: Colors.transparent),
+  //               ),
+  //               focusedBorder: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(8),
+  //                 borderSide: BorderSide(color: Colors.transparent),
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
   getMasterCategory() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         Container(
           padding: EdgeInsets.only(left: 20),
-          child: Text("Select Master Category",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          child: Text(
+            "Master Category",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: SizedBox(
             height: 59,
-            child: DropdownButtonFormField<String>(
-              value: dropdownValue,
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue = newValue!;
-                });
-              },
-              items: categories.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+            child: TextFormField(
+              initialValue: dropdownValue,
+              enabled: false, // readonly
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
@@ -732,11 +853,12 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: Colors.transparent),
                 ),
-                focusedBorder: OutlineInputBorder(
+                disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: Colors.transparent),
                 ),
               ),
+              style: TextStyle(color: Colors.black), // text color
             ),
           ),
         ),
@@ -796,52 +918,92 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
     );
   }
 
+  // getDob() {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       SizedBox(
+  //         height: 10,
+  //       ),
+  //       Container(
+  //         padding: EdgeInsets.only(left: 20),
+  //         child: Text("Date of Birth",
+  //             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+  //       ),
+  //       Container(
+  //         padding: EdgeInsets.symmetric(horizontal: 20),
+  //         child: TextButtonWidget(
+  //             hint: "DOB",
+  //             suffix: Icon(Icons.calendar_month),
+  //             controller: dobController,
+  //             onTap: () async {
+  //               DateTime? pickedDate = await showDatePicker(
+  //                 context: context,
+  //                 initialDate: DateTime.now(),
+  //                 firstDate: DateTime(1900),
+  //                 lastDate: DateTime(2100),
+  //                 builder: (BuildContext context, Widget? child) {
+  //                   return Theme(
+  //                     data: ThemeData.light().copyWith(
+  //                       primaryColor: primary,
+  //                       accentColor: primary,
+  //                       colorScheme: ColorScheme.light(
+  //                           primary: primary), // Selected date color
+  //                       buttonTheme: ButtonThemeData(
+  //                         textTheme: ButtonTextTheme.primary, // Buttons color
+  //                       ),
+  //                     ),
+  //                     child: child!,
+  //                   );
+  //                 },
+  //               );
+  //               if (pickedDate != null) {
+  //                 setState(() {
+  //                   dobController!.text =
+  //                       "${pickedDate.toLocal()}".split(' ')[0];
+  //                 });
+  //               }
+  //             }),
+  //       ),
+  //     ],
+  //   );
+  // }
   getDob() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 10,
-        ),
+        SizedBox(height: 10),
         Container(
           padding: EdgeInsets.only(left: 20),
-          child: Text("Date of Birth",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          child: Text(
+            "Date of Birth",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: TextButtonWidget(
-              hint: "DOB",
-              suffix: Icon(Icons.calendar_month),
+          child: SizedBox(
+            height: 59,
+            child: TextFormField(
               controller: dobController,
-              onTap: () async {
-                DateTime? pickedDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(1900),
-                  lastDate: DateTime(2100),
-                  builder: (BuildContext context, Widget? child) {
-                    return Theme(
-                      data: ThemeData.light().copyWith(
-                        primaryColor: primary,
-                        accentColor: primary,
-                        colorScheme: ColorScheme.light(
-                            primary: primary), // Selected date color
-                        buttonTheme: ButtonThemeData(
-                          textTheme: ButtonTextTheme.primary, // Buttons color
-                        ),
-                      ),
-                      child: child!,
-                    );
-                  },
-                );
-                if (pickedDate != null) {
-                  setState(() {
-                    dobController!.text =
-                        "${pickedDate.toLocal()}".split(' ')[0];
-                  });
-                }
-              }),
+              enabled: false,
+              decoration: InputDecoration(
+                hintText: "DOB",
+                // suffixIcon: Icon(Icons.calendar_month),
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+              ),
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
         ),
       ],
     );
@@ -867,7 +1029,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
               Row(
                 children: [
                   Radio<String>(
-                    value: "Male",
+                    value: "male",
                     groupValue: gender,
                     onChanged: (String? value) {
                       setState(() {
@@ -881,7 +1043,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
               Row(
                 children: [
                   Radio<String>(
-                    value: "Female",
+                    value: "female",
                     groupValue: gender,
                     onChanged: (String? value) {
                       setState(() {
@@ -3915,7 +4077,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
 
 //==============================================================================
 //============================ Change Pass =====================================
-
+  bool _isObscure = true;
   changePass() {
     return Container(
       height: 60,
@@ -3944,16 +4106,325 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
           ),
           onTap: () {
             _showDialog();
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => ChangePassPage()),
-            // );
-            // _showDialog();
           },
         ),
       ),
     );
   }
+
+  // _showDialog() async {
+  //   await showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return StatefulBuilder(
+  //         builder: (BuildContext context, StateSetter setStater) {
+  //           return AlertDialog(
+  //             contentPadding: const EdgeInsets.all(0.0),
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.all(
+  //                 Radius.circular(5.0),
+  //               ),
+  //             ),
+  //             content: SingleChildScrollView(
+  //               scrollDirection: Axis.vertical,
+  //               child: Column(
+  //                 crossAxisAlignment: CrossAxisAlignment.start,
+  //                 mainAxisSize: MainAxisSize.min,
+  //                 children: [
+  //                   Padding(
+  //                     padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
+  //                     child: Text(
+  //                       getTranslated(context, "CHANGE_PASS_LBL")!,
+  //                       style: Theme.of(this.context)
+  //                           .textTheme
+  //                           .subtitle1!
+  //                           .copyWith(color: fontColor),
+  //                     ),
+  //                   ),
+  //                   Divider(color: lightBlack),
+  //                   Form(
+  //                     key: _formKey,
+  //                     child: new Column(
+  //                       children: <Widget>[
+  //                         // Padding(
+  //                         //   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+  //                         //   child: TextFormField(
+  //                         //     keyboardType: TextInputType.text,
+  //                         //     validator: (val) => validatePass(val, context),
+  //                         //     autovalidateMode:
+  //                         //         AutovalidateMode.onUserInteraction,
+  //                         //     decoration: InputDecoration(
+  //                         //       hintText:
+  //                         //           getTranslated(context, "CUR_PASS_LBL")!,
+  //                         //       hintStyle: Theme.of(this.context)
+  //                         //           .textTheme
+  //                         //           .subtitle1!
+  //                         //           .copyWith(
+  //                         //               color: lightBlack,
+  //                         //               fontWeight: FontWeight.normal),
+  //                         //       suffixIcon: IconButton(
+  //                         //         icon: Icon(_showCurPassword
+  //                         //             ? Icons.visibility
+  //                         //             : Icons.visibility_off),
+  //                         //         iconSize: 20,
+  //                         //         color: lightBlack,
+  //                         //         onPressed: () {
+  //                         //           setStater(
+  //                         //             () {
+  //                         //               _showCurPassword = !_showCurPassword;
+  //                         //             },
+  //                         //           );
+  //                         //         },
+  //                         //       ),
+  //                         //     ),
+  //                         //     obscureText: !_showCurPassword,
+  //                         //     controller: curPassC,
+  //                         //   ),
+  //                         // ),
+  //                         // Padding(
+  //                         //   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+  //                         //   child: TextFormField(
+  //                         //     keyboardType: TextInputType.text,
+  //                         //     validator: (val) => validatePass(val, context),
+  //                         //     autovalidateMode:
+  //                         //         AutovalidateMode.onUserInteraction,
+  //                         //     decoration: new InputDecoration(
+  //                         //       hintText:
+  //                         //           getTranslated(context, "NEW_PASS_LBL")!,
+  //                         //       hintStyle: Theme.of(this.context)
+  //                         //           .textTheme
+  //                         //           .subtitle1!
+  //                         //           .copyWith(
+  //                         //               color: lightBlack,
+  //                         //               fontWeight: FontWeight.normal),
+  //                         //       suffixIcon: IconButton(
+  //                         //         icon: Icon(_showPassword
+  //                         //             ? Icons.visibility
+  //                         //             : Icons.visibility_off),
+  //                         //         iconSize: 20,
+  //                         //         color: lightBlack,
+  //                         //         onPressed: () {
+  //                         //           setStater(
+  //                         //             () {
+  //                         //               _showPassword = !_showPassword;
+  //                         //             },
+  //                         //           );
+  //                         //         },
+  //                         //       ),
+  //                         //     ),
+  //                         //     obscureText: !_showPassword,
+  //                         //     controller: newPassC,
+  //                         //   ),
+  //                         // ),
+  //                         // Padding(
+  //                         //   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
+  //                         //   child: TextFormField(
+  //                         //     keyboardType: TextInputType.text,
+  //                         //     validator: (value) {
+  //                         //
+  //                         //       if (value!.length == 0)
+  //                         //         return getTranslated(
+  //                         //             context, "CON_PASS_REQUIRED_MSG")!;
+  //                         //       if (value != newPass) {
+  //                         //         confPassC!.text = "";
+  //                         //         return getTranslated(
+  //                         //             context, "CON_PASS_NOT_MATCH_MSG")!;
+  //                         //       }
+  //                         //       else {
+  //                         //         return null;
+  //                         //       }
+  //                         //     },
+  //                         //     autovalidateMode:
+  //                         //         AutovalidateMode.onUserInteraction,
+  //                         //     decoration: new InputDecoration(
+  //                         //         hintText: getTranslated(
+  //                         //             context, "CONFIRMPASSHINT_LBL")!,
+  //                         //         hintStyle: Theme.of(this.context)
+  //                         //             .textTheme
+  //                         //             .subtitle1!
+  //                         //             .copyWith(
+  //                         //                 color: lightBlack,
+  //                         //                 fontWeight: FontWeight.normal),
+  //                         //         suffixIcon: IconButton(
+  //                         //           icon: Icon(_showCmPassword
+  //                         //               ? Icons.visibility
+  //                         //               : Icons.visibility_off),
+  //                         //           iconSize: 20,
+  //                         //           color: lightBlack,
+  //                         //           onPressed: () {
+  //                         //             setStater(() {
+  //                         //               _showCmPassword = !_showCmPassword;
+  //                         //             });
+  //                         //           },
+  //                         //         )),
+  //                         //     obscureText: !_showCmPassword,
+  //                         //     controller: confPassC,
+  //                         //     onChanged: (v) => setState(
+  //                         //       () {
+  //                         //         confPass = v;
+  //                         //       },
+  //                         //     ),
+  //                         //   ),
+  //                         // ),
+  //
+  //                         Padding(
+  //                           padding: const EdgeInsets.all(5),
+  //                           child: TextField(
+  //                             cursorColor: Color(0xffFF00FF),
+  //                             controller: curPassController,
+  //                             keyboardType: TextInputType.text,
+  //                             decoration: InputDecoration(
+  //                               border: OutlineInputBorder(),
+  //                               enabledBorder: OutlineInputBorder(
+  //                                 borderSide: BorderSide(
+  //                                     color: Color(0xffFF00FF), width: 0.0),
+  //                               ),
+  //                               focusedBorder: OutlineInputBorder(
+  //                                 borderSide: BorderSide(
+  //                                     color: Color(0xffFF00FF), width: 2),
+  //                               ),
+  //
+  //                               hintText: "Current Password",
+  //                               // suffixIcon: IconButton(
+  //                               //   icon: Icon(_showCurPassword
+  //                               //       ? Icons.visibility
+  //                               //       : Icons.visibility_off),
+  //                               //   iconSize: 20,
+  //                               //   color: lightBlack,
+  //                               //   onPressed: () {
+  //                               //     setState(() {
+  //                               //       _showCurPassword=! _showCurPassword;
+  //                               //     });
+  //                               //   },
+  //                               // ),
+  //                             ),
+  //                             obscureText: _showCurPassword,
+  //                           ),
+  //                         ),
+  //                         Padding(
+  //                           padding: const EdgeInsets.all(5),
+  //                           child: TextField(
+  //                             controller: newPassController,
+  //                             cursorColor: Color(0xffFF00FF),
+  //                             keyboardType: TextInputType.text,
+  //                             decoration: InputDecoration(
+  //                               border: OutlineInputBorder(),
+  //                               enabledBorder: OutlineInputBorder(
+  //                                 borderSide: BorderSide(
+  //                                     color: Color(0xffFF00FF), width: 0.0),
+  //                               ),
+  //                               focusedBorder: OutlineInputBorder(
+  //                                 borderSide: BorderSide(
+  //                                     color: Color(0xffFF00FF), width: 2),
+  //                               ),
+  //
+  //                               hintText: "New Password",
+  //                               // suffixIcon: IconButton(
+  //                               //   icon: Icon(_showPassword
+  //                               //       ? Icons.visibility
+  //                               //       : Icons.visibility_off),
+  //                               //   iconSize: 20,
+  //                               //   color: lightBlack,
+  //                               //   onPressed: () {
+  //                               //     setState(() {
+  //                               //       _showPassword=! _showPassword;
+  //                               //     });
+  //                               //   },
+  //                               // )
+  //                             ),
+  //                             obscureText: _showPassword,
+  //                           ),
+  //                         ),
+  //                         Padding(
+  //                           padding: const EdgeInsets.all(5),
+  //                           child: TextField(
+  //                             controller: againPassController,
+  //                             cursorColor: Color(0xffFF00FF),
+  //                             keyboardType: TextInputType.text,
+  //                             decoration: InputDecoration(
+  //                               border: OutlineInputBorder(),
+  //                               enabledBorder: OutlineInputBorder(
+  //                                 borderSide: BorderSide(
+  //                                     color: Color(0xffFF00FF), width: 0.0),
+  //                               ),
+  //                               focusedBorder: OutlineInputBorder(
+  //                                 borderSide: BorderSide(
+  //                                     color: Color(0xffFF00FF), width: 2),
+  //                               ),
+  //
+  //                               hintText: "Confirm Password",
+  //                               // suffixIcon: IconButton(
+  //                               //   icon: Icon(_showCmPassword
+  //                               //       ? Icons.visibility
+  //                               //       : Icons.visibility_off),
+  //                               //   iconSize: 20,
+  //                               //   color: lightBlack,
+  //                               //   onPressed: () {
+  //                               //     setState(() {
+  //                               //       _showCmPassword=! _showCmPassword;
+  //                               //     });
+  //                               //   },
+  //                               // )
+  //                             ),
+  //                             obscureText: _showCmPassword,
+  //                           ),
+  //                         ),
+  //                       ],
+  //                     ),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //             actions: <Widget>[
+  //               new ElevatedButton(
+  //                   child: Text(
+  //                     getTranslated(context, "CANCEL")!,
+  //                     style: Theme.of(this.context)
+  //                         .textTheme
+  //                         .subtitle2!
+  //                         .copyWith(
+  //                             color: lightBlack, fontWeight: FontWeight.bold),
+  //                   ),
+  //                   onPressed: () {
+  //                     Navigator.pop(context);
+  //                   }),
+  //               new ElevatedButton(
+  //                 child: Text(
+  //                   getTranslated(context, "SAVE_LBL")!,
+  //                   style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+  //                       color: fontColor, fontWeight: FontWeight.bold),
+  //                 ),
+  //                 onPressed: () {
+  //                   // final form = _formKey.currentState!;
+  //                   // if (form.validate()) {
+  //                   //   curPass = curPassC!.text;
+  //                   //   newPass = newPassC!.text;
+  //                   //   form.save();
+  //                   //   setState(
+  //                   //     () {
+  //                   //       Navigator.pop(context);
+  //                   //     },
+  //                   //   );
+  //                   //    changePassWord();
+  //                   // }
+  //                   if (curPassController.text.isNotEmpty) {
+  //                     if (newPassController.text == againPassController.text) {
+  //                       changePassWord();
+  //                     } else {
+  //                       setSnackbar("Password Not Match");
+  //                     }
+  //                   } else {
+  //                     setSnackbar("Current Password is Required");
+  //                   }
+  //                 },
+  //               )
+  //             ],
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   _showDialog() async {
     await showDialog(
@@ -3964,9 +4435,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
             return AlertDialog(
               contentPadding: const EdgeInsets.all(0.0),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5.0),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
               ),
               content: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
@@ -3987,135 +4456,15 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                     Divider(color: lightBlack),
                     Form(
                       key: _formKey,
-                      child: new Column(
+                      child: Column(
                         children: <Widget>[
-                          // Padding(
-                          //   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                          //   child: TextFormField(
-                          //     keyboardType: TextInputType.text,
-                          //     validator: (val) => validatePass(val, context),
-                          //     autovalidateMode:
-                          //         AutovalidateMode.onUserInteraction,
-                          //     decoration: InputDecoration(
-                          //       hintText:
-                          //           getTranslated(context, "CUR_PASS_LBL")!,
-                          //       hintStyle: Theme.of(this.context)
-                          //           .textTheme
-                          //           .subtitle1!
-                          //           .copyWith(
-                          //               color: lightBlack,
-                          //               fontWeight: FontWeight.normal),
-                          //       suffixIcon: IconButton(
-                          //         icon: Icon(_showCurPassword
-                          //             ? Icons.visibility
-                          //             : Icons.visibility_off),
-                          //         iconSize: 20,
-                          //         color: lightBlack,
-                          //         onPressed: () {
-                          //           setStater(
-                          //             () {
-                          //               _showCurPassword = !_showCurPassword;
-                          //             },
-                          //           );
-                          //         },
-                          //       ),
-                          //     ),
-                          //     obscureText: !_showCurPassword,
-                          //     controller: curPassC,
-                          //   ),
-                          // ),
-                          // Padding(
-                          //   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                          //   child: TextFormField(
-                          //     keyboardType: TextInputType.text,
-                          //     validator: (val) => validatePass(val, context),
-                          //     autovalidateMode:
-                          //         AutovalidateMode.onUserInteraction,
-                          //     decoration: new InputDecoration(
-                          //       hintText:
-                          //           getTranslated(context, "NEW_PASS_LBL")!,
-                          //       hintStyle: Theme.of(this.context)
-                          //           .textTheme
-                          //           .subtitle1!
-                          //           .copyWith(
-                          //               color: lightBlack,
-                          //               fontWeight: FontWeight.normal),
-                          //       suffixIcon: IconButton(
-                          //         icon: Icon(_showPassword
-                          //             ? Icons.visibility
-                          //             : Icons.visibility_off),
-                          //         iconSize: 20,
-                          //         color: lightBlack,
-                          //         onPressed: () {
-                          //           setStater(
-                          //             () {
-                          //               _showPassword = !_showPassword;
-                          //             },
-                          //           );
-                          //         },
-                          //       ),
-                          //     ),
-                          //     obscureText: !_showPassword,
-                          //     controller: newPassC,
-                          //   ),
-                          // ),
-                          // Padding(
-                          //   padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                          //   child: TextFormField(
-                          //     keyboardType: TextInputType.text,
-                          //     validator: (value) {
-                          //
-                          //       if (value!.length == 0)
-                          //         return getTranslated(
-                          //             context, "CON_PASS_REQUIRED_MSG")!;
-                          //       if (value != newPass) {
-                          //         confPassC!.text = "";
-                          //         return getTranslated(
-                          //             context, "CON_PASS_NOT_MATCH_MSG")!;
-                          //       }
-                          //       else {
-                          //         return null;
-                          //       }
-                          //     },
-                          //     autovalidateMode:
-                          //         AutovalidateMode.onUserInteraction,
-                          //     decoration: new InputDecoration(
-                          //         hintText: getTranslated(
-                          //             context, "CONFIRMPASSHINT_LBL")!,
-                          //         hintStyle: Theme.of(this.context)
-                          //             .textTheme
-                          //             .subtitle1!
-                          //             .copyWith(
-                          //                 color: lightBlack,
-                          //                 fontWeight: FontWeight.normal),
-                          //         suffixIcon: IconButton(
-                          //           icon: Icon(_showCmPassword
-                          //               ? Icons.visibility
-                          //               : Icons.visibility_off),
-                          //           iconSize: 20,
-                          //           color: lightBlack,
-                          //           onPressed: () {
-                          //             setStater(() {
-                          //               _showCmPassword = !_showCmPassword;
-                          //             });
-                          //           },
-                          //         )),
-                          //     obscureText: !_showCmPassword,
-                          //     controller: confPassC,
-                          //     onChanged: (v) => setState(
-                          //       () {
-                          //         confPass = v;
-                          //       },
-                          //     ),
-                          //   ),
-                          // ),
-
                           Padding(
                             padding: const EdgeInsets.all(5),
                             child: TextField(
-                              cursorColor: Color(0xffFF00FF),
                               controller: curPassController,
+                              cursorColor: Color(0xffFF00FF),
                               keyboardType: TextInputType.text,
+                              obscureText: !_showCurPassword,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
@@ -4126,22 +4475,20 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                                   borderSide: BorderSide(
                                       color: Color(0xffFF00FF), width: 2),
                                 ),
-
                                 hintText: "Current Password",
-                                // suffixIcon: IconButton(
-                                //   icon: Icon(_showCurPassword
-                                //       ? Icons.visibility
-                                //       : Icons.visibility_off),
-                                //   iconSize: 20,
-                                //   color: lightBlack,
-                                //   onPressed: () {
-                                //     setState(() {
-                                //       _showCurPassword=! _showCurPassword;
-                                //     });
-                                //   },
-                                // ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _showCurPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setStater(() {
+                                      _showCurPassword = !_showCurPassword;
+                                    });
+                                  },
+                                ),
                               ),
-                              obscureText: _showCurPassword,
                             ),
                           ),
                           Padding(
@@ -4150,6 +4497,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                               controller: newPassController,
                               cursorColor: Color(0xffFF00FF),
                               keyboardType: TextInputType.text,
+                              obscureText: !_showPassword,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
@@ -4160,22 +4508,20 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                                   borderSide: BorderSide(
                                       color: Color(0xffFF00FF), width: 2),
                                 ),
-
                                 hintText: "New Password",
-                                // suffixIcon: IconButton(
-                                //   icon: Icon(_showPassword
-                                //       ? Icons.visibility
-                                //       : Icons.visibility_off),
-                                //   iconSize: 20,
-                                //   color: lightBlack,
-                                //   onPressed: () {
-                                //     setState(() {
-                                //       _showPassword=! _showPassword;
-                                //     });
-                                //   },
-                                // )
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _showPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setStater(() {
+                                      _showPassword = !_showPassword;
+                                    });
+                                  },
+                                ),
                               ),
-                              obscureText: _showPassword,
                             ),
                           ),
                           Padding(
@@ -4184,6 +4530,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                               controller: againPassController,
                               cursorColor: Color(0xffFF00FF),
                               keyboardType: TextInputType.text,
+                              obscureText: !_showCmPassword,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 enabledBorder: OutlineInputBorder(
@@ -4194,22 +4541,20 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                                   borderSide: BorderSide(
                                       color: Color(0xffFF00FF), width: 2),
                                 ),
-
                                 hintText: "Confirm Password",
-                                // suffixIcon: IconButton(
-                                //   icon: Icon(_showCmPassword
-                                //       ? Icons.visibility
-                                //       : Icons.visibility_off),
-                                //   iconSize: 20,
-                                //   color: lightBlack,
-                                //   onPressed: () {
-                                //     setState(() {
-                                //       _showCmPassword=! _showCmPassword;
-                                //     });
-                                //   },
-                                // )
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _showCmPassword
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setStater(() {
+                                      _showCmPassword = !_showCmPassword;
+                                    });
+                                  },
+                                ),
                               ),
-                              obscureText: _showCmPassword,
                             ),
                           ),
                         ],
@@ -4219,37 +4564,23 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 ),
               ),
               actions: <Widget>[
-                new ElevatedButton(
-                    child: Text(
-                      getTranslated(context, "CANCEL")!,
-                      style: Theme.of(this.context)
-                          .textTheme
-                          .subtitle2!
-                          .copyWith(
-                              color: lightBlack, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    }),
-                new ElevatedButton(
+                ElevatedButton(
+                  child: Text(
+                    getTranslated(context, "CANCEL")!,
+                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                        color: lightBlack, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                ElevatedButton(
                   child: Text(
                     getTranslated(context, "SAVE_LBL")!,
                     style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
                         color: fontColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
-                    // final form = _formKey.currentState!;
-                    // if (form.validate()) {
-                    //   curPass = curPassC!.text;
-                    //   newPass = newPassC!.text;
-                    //   form.save();
-                    //   setState(
-                    //     () {
-                    //       Navigator.pop(context);
-                    //     },
-                    //   );
-                    //    changePassWord();
-                    // }
                     if (curPassController.text.isNotEmpty) {
                       if (newPassController.text == againPassController.text) {
                         changePassWord();
@@ -4260,7 +4591,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                       setSnackbar("Current Password is Required");
                     }
                   },
-                )
+                ),
               ],
             );
           },
@@ -4268,6 +4599,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
       },
     );
   }
+
 //==============================================================================
 //==================== Same API But Only PassPassword ==========================
 
@@ -4295,6 +4627,8 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
         STATUS: status ?? "1",
         OLDPASS: curPassController.text,
         NEWPASS: newPassController.text,
+        Gender: gender,
+        Dob: dobController!.text ?? '',
       };
       apiBaseHelper.postAPICall(updateUserApi, parameter).then(
         (getdata) async {
@@ -4510,6 +4844,126 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
 
   DateTime dateTimeSelected = DateTime.now();
   String twoDigits(int n) => n.toString().padLeft(2, '0');
+
+  Future<Null> getSallerDetail() async {
+    _isNetworkAvail = await isNetworkAvailable();
+    if (_isNetworkAvail) {
+      CUR_USERID = await getPrefrence(Id);
+
+      var parameter = {Id: CUR_USERID};
+      apiBaseHelper.postAPICall(getSellerDetails, parameter).then(
+        (getdata) async {
+          bool error = getdata["error"];
+          String? msg = getdata["message"];
+
+          if (!error) {
+            var data = getdata["data"][0];
+            print("Seller data : $data");
+            CUR_BALANCE = double.parse(data[BALANCE]).toStringAsFixed(2);
+            LOGO = data["logo"].toString();
+            RATTING = data[Rating] ?? "";
+            NO_OFF_RATTING = data[NoOfRatings] ?? "";
+            NO_OFF_RATTING = data[NoOfRatings] ?? "";
+            var id = data[Id];
+            var username = data[Username];
+            var email = data[Email];
+            var mobile = data[Mobile];
+            var address = data[Address];
+            CUR_USERID = id!;
+            CUR_USERNAME = username!;
+            var srorename = data[Storename];
+            var storeurl = data[Storeurl];
+            var storeDesc = data[storeDescription];
+            var accNo = data[accountNumber];
+            var accname = data[accountName];
+            var bankCode = data[BankCOde];
+            var bankName = data[bankNAme];
+            var latitutute = data[Latitude];
+            var longitude = data[Longitude];
+            var taxname = data[taxName];
+            var tax_number = data[taxNumber];
+            var pan_number = data[panNumber];
+            var status = data[STATUS];
+            var storeLogo = data[StoreLogo];
+            var fromtime = data[fromTime];
+            var totime = data[toTime];
+            var fromtime1 = data[fromTime1];
+            var totime1 = data[toTime1];
+            var fromtime2 = data[fromTime2];
+            var totime2 = data[toTime2];
+
+            var city = data[City];
+            var pincode = data[Pincode];
+            var dob = data[Dob];
+            var gender = data[Gender];
+            var masterCategoryId = data[Master_category];
+            var foodLic = data[Food_lic];
+            var gstFile = data[Gst_file];
+            var addressProof = data[Address_proof];
+            var logo = data[Logo];
+            var bankPass = data[Bank_pass];
+            var proPic = data[Pro_pic];
+
+            print("bank name : $bankName");
+            saveUserDetail(
+              userId: id!,
+              name: username!,
+              email: email!,
+              mobile: mobile!,
+              address: address!,
+              storename: srorename!,
+              storeurl: storeurl!,
+              storeDesc: storeDesc!,
+              Fromtime: fromtime,
+              Totime: totime,
+              Fromtime1: fromtime1,
+              Totime1: totime1,
+              Fromtime2: fromtime2,
+              Totime2: totime2,
+              accNo: accNo!,
+              accname: accname!,
+              bankCode: bankCode ?? "",
+              bankName: bankName ?? "",
+              latitutute: latitutute ?? "",
+              longitude: longitude ?? "",
+              taxname: taxname ?? "",
+              tax_number: tax_number!,
+              pan_number: pan_number!,
+              status: status!,
+              storelogo: storeLogo!,
+              city: city,
+              pinCode: pincode,
+              dob: dob,
+              gender: gender,
+              masterCID: masterCategoryId,
+              foodLic: foodLic,
+              gstFile: gstFile,
+              addressProf: addressProof,
+              logo: logo,
+              bankPass: bankPass,
+              proPic: proPic,
+            );
+          }
+          setState(() {
+            _isLoading = false;
+          });
+
+          getUserDetails();
+        },
+        onError: (error) {
+          setSnackbar(error.toString());
+        },
+      );
+    } else {
+      if (mounted)
+        setState(() {
+          _isNetworkAvail = false;
+          _isLoading = false;
+        });
+    }
+
+    return null;
+  }
 }
 
 class TextButtonWidget extends StatefulWidget {
