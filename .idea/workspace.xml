@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="24 notification bug fix commit by anjali">
-      <change afterPath="$PROJECT_DIR$/assets/images/notificationlottie.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/test.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/raw/notification.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/raw/test.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Helper/notification_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Helper/notification_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Language/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Language/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/NumberVerifyOtp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/NumberVerifyOtp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/SendOtp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/SendOtp.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/SetNewPassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/SetNewPassword.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/VerifyOTP.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/VerifyOTP.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/ProductList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/ProductList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/WalletHistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/WalletHistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,18 +69,18 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android/app/src/main/res/raw&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Ankush\homeneeds-seller\android\app\src\main\res\raw" />
       <recent name="C:\Ankush\homeneeds-seller\android\app\src\main\res\drawable" />
       <recent name="C:\Ankush\homeneeds-seller\assets" />
       <recent name="C:\Ankush\homeneeds-seller\lib\Helper" />
       <recent name="C:\Ankush\homeneeds-seller\android\app" />
-      <recent name="C:\Ankush\homeneeds-seller\lib\Screen\Authentication" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Ankush\homeneeds-seller\assets\images" />
@@ -183,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748080225134</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="24 notification bug fix commit by anjali">
+      <option name="closed" value="true" />
+      <created>1751026732292</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1751026732292</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
