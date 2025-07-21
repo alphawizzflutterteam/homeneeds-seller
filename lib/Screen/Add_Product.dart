@@ -3364,9 +3364,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                 TextButton(
                   style: curSelPos == 0
                       ? TextButton.styleFrom(
-                          primary: Colors.white,
-                          backgroundColor: primary,
-                          onSurface: Colors.grey,
+                          foregroundColor: Colors.white, backgroundColor: primary, disabledForegroundColor: Colors.grey.withOpacity(0.38),
                         )
                       : null,
                   onPressed: () {
@@ -3403,9 +3401,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                     ? TextButton(
                         style: curSelPos == 2
                             ? TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: primary,
-                                onSurface: Colors.grey,
+                                foregroundColor: Colors.white, backgroundColor: primary, disabledForegroundColor: Colors.grey.withOpacity(0.38),
                               )
                             : null,
                         onPressed: () {

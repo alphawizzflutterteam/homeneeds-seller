@@ -464,7 +464,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return Scaffold(
       key: _scaffoldKey,
       body: _isNetworkAvail

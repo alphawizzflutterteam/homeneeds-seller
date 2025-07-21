@@ -334,7 +334,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           return Theme(
                             data: ThemeData.light().copyWith(
                               primaryColor: primary,
-                              accentColor: primary,
+                              hintColor: primary,
                               colorScheme: ColorScheme.light(
                                   primary: primary), // Selected date color
                               buttonTheme: ButtonThemeData(
