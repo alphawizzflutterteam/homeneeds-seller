@@ -1,6 +1,6 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\src\flutter_windows_3.7.2-stable\flutter"
+export "FLUTTER_ROOT=C:\src\flutter_windows_3.16.0-stable\flutter"
 export "FLUTTER_APPLICATION_PATH=C:\Ankush\homeneeds-seller"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
