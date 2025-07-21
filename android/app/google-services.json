@@ -26,6 +26,25 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:794984587696:android:305bb2d0d2544b2e42b675",
+        "android_client_info": {
+          "package_name": "com.homeneeds.driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaxrgOjG4f5G0VljlQneXqU0TR4af-Ezs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:794984587696:android:c266e9127e64c8e642b675",
         "android_client_info": {
           "package_name": "com.homeneeds.seller"

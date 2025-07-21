@@ -77,8 +77,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   Widget noInternet(BuildContext context) {
@@ -184,16 +183,66 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  setPass() {
+  // setPass() {
+  //   return Padding(
+  //     padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 30.0),
+  //     child: TextFormField(
+  //       keyboardType: TextInputType.text,
+  //       obscureText: true,
+  //       style: Theme.of(this.context)
+  //           .textTheme
+  //           .subtitle2!
+  //           .copyWith(color: fontColor, fontWeight: FontWeight.normal),
+  //       controller: passwordController,
+  //       validator: (val) => validatePass(val, context),
+  //       onSaved: (String? value) {
+  //         password = value;
+  //       },
+  //       decoration: InputDecoration(
+  //         focusedBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: primary),
+  //           borderRadius: BorderRadius.circular(7.0),
+  //         ),
+  //         prefixIcon: SvgPicture.asset(
+  //           "assets/images/password.svg",
+  //           color: lightBlack2,
+  //         ),
+  //         hintText: getTranslated(context, "PASSHINT_LBL")!,
+  //         hintStyle: TextStyle(
+  //           color: lightBlack2,
+  //           fontWeight: FontWeight.normal,
+  //         ),
+  //         contentPadding: EdgeInsets.symmetric(
+  //           horizontal: 10,
+  //           vertical: 5,
+  //         ),
+  //         prefixIconConstraints: BoxConstraints(
+  //           minWidth: 40,
+  //           maxHeight: 25,
+  //         ),
+  //         enabledBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(
+  //             color: lightBlack2,
+  //           ),
+  //           borderRadius: BorderRadius.circular(7.0),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  bool _isObscure = true;
+
+  Widget setPass() {
     return Padding(
       padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 30.0),
       child: TextFormField(
         keyboardType: TextInputType.text,
-        obscureText: true,
-        style: Theme.of(this.context)
-            .textTheme
-            .subtitle2!
-            .copyWith(color: fontColor, fontWeight: FontWeight.normal),
+        obscureText: _isObscure,
+        style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+              color: fontColor,
+              fontWeight: FontWeight.normal,
+            ),
         controller: passwordController,
         validator: (val) => validatePass(val, context),
         onSaved: (String? value) {
@@ -222,30 +271,96 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
             maxHeight: 25,
           ),
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: BorderSide(color: lightBlack2),
+            borderRadius: BorderRadius.circular(7.0),
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isObscure ? Icons.visibility_off : Icons.visibility,
               color: lightBlack2,
             ),
-            borderRadius: BorderRadius.circular(7.0),
+            onPressed: () {
+              setState(() {
+                _isObscure = !_isObscure;
+              });
+            },
           ),
         ),
       ),
     );
   }
 
-  setConfirmpss() {
+  // setConfirmpss() {
+  //   return Padding(
+  //     padding: EdgeInsetsDirectional.only(start: 25.0, end: 25.0, top: 20.0),
+  //     child: TextFormField(
+  //       keyboardType: TextInputType.text,
+  //       obscureText: true,
+  //       style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+  //             color: fontColor,
+  //             fontWeight: FontWeight.normal,
+  //           ),
+  //       controller: confirmpassController,
+  //       validator: (value) {
+  //         if (value!.length == 0)
+  //           return getTranslated(context, "CON_PASS_REQUIRED_MSG")!;
+  //         if (value != password) {
+  //           return getTranslated(context, "CON_PASS_NOT_MATCH_MSG")!;
+  //         } else {
+  //           return null;
+  //         }
+  //       },
+  //       onSaved: (String? value) {
+  //         comfirmpass = value;
+  //       },
+  //       decoration: InputDecoration(
+  //         focusedBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: primary),
+  //           borderRadius: BorderRadius.circular(7.0),
+  //         ),
+  //         prefixIcon: SvgPicture.asset(
+  //           "assets/images/password.svg",
+  //           color: lightBlack2,
+  //         ),
+  //         hintText: getTranslated(context, "CONFIRMPASSHINT_LBL")!,
+  //         hintStyle: TextStyle(
+  //           color: lightBlack2,
+  //           fontWeight: FontWeight.normal,
+  //         ),
+  //         contentPadding: EdgeInsets.symmetric(
+  //           horizontal: 10,
+  //           vertical: 5,
+  //         ),
+  //         prefixIconConstraints: BoxConstraints(
+  //           minWidth: 40,
+  //           maxHeight: 25,
+  //         ),
+  //         enabledBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: lightBlack2),
+  //           borderRadius: BorderRadius.circular(10.0),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+  bool _isConfirmObscure = true;
+
+  Widget setConfirmpss() {
     return Padding(
       padding: EdgeInsetsDirectional.only(start: 25.0, end: 25.0, top: 20.0),
       child: TextFormField(
         keyboardType: TextInputType.text,
-        obscureText: true,
+        obscureText: _isConfirmObscure,
         style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
               color: fontColor,
               fontWeight: FontWeight.normal,
             ),
         controller: confirmpassController,
         validator: (value) {
-          if (value!.length == 0)
+          if (value!.isEmpty) {
             return getTranslated(context, "CON_PASS_REQUIRED_MSG")!;
+          }
           if (value != password) {
             return getTranslated(context, "CON_PASS_NOT_MATCH_MSG")!;
           } else {
@@ -280,6 +395,17 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: lightBlack2),
             borderRadius: BorderRadius.circular(10.0),
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _isConfirmObscure ? Icons.visibility_off : Icons.visibility,
+              color: lightBlack2,
+            ),
+            onPressed: () {
+              setState(() {
+                _isConfirmObscure = !_isConfirmObscure;
+              });
+            },
           ),
         ),
       ),

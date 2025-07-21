@@ -484,8 +484,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
 //------------------------------------------------------------------------------
@@ -2808,7 +2807,6 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
           Text(
             getTranslated(context, "Main Image * ")!,
           ),
-
           InkWell(
             child: Container(
               decoration: BoxDecoration(
@@ -3428,8 +3426,8 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            getTranslated(context, "Type Of Product")! + " :"),
+                        // child: Text(
+                        //     getTranslated(context, "Type Of Product")! + " :"),
                       ),
                       typeSelectionField(),
 
@@ -3441,7 +3439,6 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                       productType == 'simple_product'
                           ? simpleProductSpecialPrice()
                           : Container(),
-
                       CheckboxListTile(
                         title: Text(
                           getTranslated(context, "Enable Stock Management")!,
@@ -4995,23 +4992,23 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    productType != null
-                        ? Text(
-                            productType == 'simple_product'
-                                 ?getTranslated(context, "Simple Product")!
-                                 : getTranslated(context, "Variable Product")!,
-
-                    )
-                        : Text(
-                            getTranslated(context, "Select Type")!,
-                          ),
+                    // productType != null
+                    // ? Text(
+                    //     productType == 'simple_product'
+                    //         ? getTranslated(context, "Simple Product")!
+                    //         : getTranslated(context, "Variable Product")!,
+                    //   )
+                    // :
+                    Text(
+                      getTranslated(context, "Simple Product")!,
+                    ),
                   ],
                 ),
               ),
-              Icon(
-                Icons.arrow_drop_down,
-                color: primary,
-              )
+              // Icon(
+              //   Icons.arrow_drop_down,
+              //   color: primary,
+              // )
             ],
           ),
         ),
@@ -5046,13 +5043,13 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          getTranslated(context, "Select Type")!,
-                          style: Theme.of(this.context)
-                              .textTheme
-                              .subtitle1!
-                              .copyWith(color: fontColor),
-                        ),
+                        // Text(
+                        //   getTranslated(context, "Select Type")!,
+                        //   style: Theme.of(this.context)
+                        //       .textTheme
+                        //       .subtitle1!
+                        //       .copyWith(color: fontColor),
+                        // ),
                       ],
                     ),
                   ),
@@ -5614,41 +5611,53 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
         // Add necessary fields with null checks
         if (CUR_USERID != null) request.fields[SellerId] = CUR_USERID!;
         if (productName != null) request.fields[ProInputName] = productName!;
-        if (sortDescription != null) request.fields[ShortDescription] = sortDescription!;
+        if (sortDescription != null)
+          request.fields[ShortDescription] = sortDescription!;
         if (tags != null) request.fields[Tags] = tags!;
         if (taxId != null) request.fields[ProInputTax] = taxId!;
         if (indicatorValue != null) request.fields[Indicator] = indicatorValue!;
         if (madeIn != null) request.fields[MadeIn] = madeIn!;
-        if (totalAllowQuantity != null) request.fields[TotalAllowedQuantity] = totalAllowQuantity!;
-        if (minOrderQuantity != null) request.fields[MinimumOrderQuantity] = minOrderQuantity!;
-        if (quantityStepSize != null) request.fields[QuantityStepSize] = quantityStepSize!;
-        if (warrantyPeriod != null) request.fields[WarrantyPeriod] = warrantyPeriod!;
-        if (guaranteePeriod != null) request.fields[GuaranteePeriod] = guaranteePeriod!;
-        if (deliverabletypeValue != null) request.fields[DeliverableType] = deliverabletypeValue!;
+        if (totalAllowQuantity != null)
+          request.fields[TotalAllowedQuantity] = totalAllowQuantity!;
+        if (minOrderQuantity != null)
+          request.fields[MinimumOrderQuantity] = minOrderQuantity!;
+        if (quantityStepSize != null)
+          request.fields[QuantityStepSize] = quantityStepSize!;
+        if (warrantyPeriod != null)
+          request.fields[WarrantyPeriod] = warrantyPeriod!;
+        if (guaranteePeriod != null)
+          request.fields[GuaranteePeriod] = guaranteePeriod!;
+        if (deliverabletypeValue != null)
+          request.fields[DeliverableType] = deliverabletypeValue!;
         request.fields[DeliverableZipcodes] = deliverableZipcodes ?? "null";
-        if (taxincludedinPrice != null) request.fields[IsPricesInclusiveTax] = taxincludedinPrice!;
+        if (taxincludedinPrice != null)
+          request.fields[IsPricesInclusiveTax] = taxincludedinPrice!;
         if (isCODAllow != null) request.fields[CodAllowed] = isCODAllow!;
         if (isReturnable != null) request.fields[IsReturnable] = isReturnable!;
         if (isCancelable != null) request.fields[IsCancelable] = isCancelable!;
         if (productImage != null) request.fields[ProInputImage] = productImage;
-        if (tillwhichstatus != null) request.fields[CancelableTill] = tillwhichstatus!;
+        if (tillwhichstatus != null)
+          request.fields[CancelableTill] = tillwhichstatus!;
 
         // Add other photos
         if (otherPhotos.isNotEmpty) {
           request.fields[OtherImages] = otherPhotos.join(",");
         }
 
-        if (selectedTypeOfVideo != null) request.fields[VideoType] = selectedTypeOfVideo!;
+        if (selectedTypeOfVideo != null)
+          request.fields[VideoType] = selectedTypeOfVideo!;
         if (videoUrl != null) request.fields[Video] = videoUrl!;
         if (uploadedVideoName != '') {
           request.fields[ProInputVideo] = uploadedVideoName;
         }
-        if (description != null) request.fields[ProInputDescription] = description!;
+        if (description != null)
+          request.fields[ProInputDescription] = description!;
         if (selectedCatID != null) request.fields[CategoryId] = selectedCatID!;
 
         request.fields[AttributeValues] = attributesValuesIds.join(",");
         if (productType != null) request.fields[ProductType] = productType!;
-        if (variantStockLevelType != null) request.fields[VariantStockLevelType] = variantStockLevelType!;
+        if (variantStockLevelType != null)
+          request.fields[VariantStockLevelType] = variantStockLevelType!;
 
         // simple product
         if (productType == 'simple_product') {
@@ -5658,8 +5667,11 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
           }
           request.fields[SimpleProductStockStatus] = status ?? 'null';
           request.fields[SimplePrice] = simpleProductPriceController.text;
-          request.fields[SimpleSpecialPrice] = simpleProductSpecialPriceController.text;
-          if (_isStockSelected != null && _isStockSelected! && simpleproductSKU != null) {
+          request.fields[SimpleSpecialPrice] =
+              simpleProductSpecialPriceController.text;
+          if (_isStockSelected != null &&
+              _isStockSelected! &&
+              simpleproductSKU != null) {
             request.fields[ProductSku] = simpleproductSKU!;
             request.fields[ProductTotalStock] = simpleproductTotalStock!;
             request.fields[VariantStockStatus] = "0";
@@ -5667,12 +5679,21 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
         } else if (productType == 'variable_product') {
           String val = '', price = '', sprice = '', images = '';
           for (int i = 0; i < variationList.length; i++) {
-            val = val.isEmpty ? variationList[i].id!.replaceAll(',', ' ') : val + "," + variationList[i].id!.replaceAll(',', ' ');
-            price = price.isEmpty ? variationList[i].price! : price + "," + variationList[i].price!;
-            sprice = sprice.isEmpty ? (variationList[i].disPrice ?? ' ') : sprice + "," + (variationList[i].disPrice ?? ' ');
+            val = val.isEmpty
+                ? variationList[i].id!.replaceAll(',', ' ')
+                : val + "," + variationList[i].id!.replaceAll(',', ' ');
+            price = price.isEmpty
+                ? variationList[i].price!
+                : price + "," + variationList[i].price!;
+            sprice = sprice.isEmpty
+                ? (variationList[i].disPrice ?? ' ')
+                : sprice + "," + (variationList[i].disPrice ?? ' ');
 
-            if (variationList[i].images != null && variationList[i].images!.isNotEmpty) {
-              images = images.isEmpty ? variationList[i].images!.join(",") : images + ',' + variationList[i].images!.join(",");
+            if (variationList[i].images != null &&
+                variationList[i].images!.isNotEmpty) {
+              images = images.isEmpty
+                  ? variationList[i].images!.join(",")
+                  : images + ',' + variationList[i].images!.join(",");
             }
           }
 
@@ -5682,15 +5703,26 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
           request.fields[variant_images] = images;
 
           if (variantStockLevelType == 'product_level') {
-            if (variountProductSKUController != null) request.fields[SkuVariantType] = variountProductSKUController.text;
-            if (variountProductTotalStock != null) request.fields[TotalStockVariantType] = variountProductTotalStock.text;
-            if (stockStatus != null) request.fields[VariantStatus] = stockStatus!;
+            if (variountProductSKUController != null)
+              request.fields[SkuVariantType] =
+                  variountProductSKUController.text;
+            if (variountProductTotalStock != null)
+              request.fields[TotalStockVariantType] =
+                  variountProductTotalStock.text;
+            if (stockStatus != null)
+              request.fields[VariantStatus] = stockStatus!;
           } else if (variantStockLevelType == 'variable_level') {
             String sku = '', totalStock = '', stkStatus = '';
             for (int i = 0; i < variationList.length; i++) {
-              sku = sku.isEmpty ? variationList[i].sku! : sku + "," + variationList[i].sku!;
-              totalStock = totalStock.isEmpty ? variationList[i].stock! : totalStock + "," + variationList[i].stock!;
-              stkStatus = stkStatus.isEmpty ? variationList[i].stockStatus! : stkStatus + "," + variationList[i].stockStatus!;
+              sku = sku.isEmpty
+                  ? variationList[i].sku!
+                  : sku + "," + variationList[i].sku!;
+              totalStock = totalStock.isEmpty
+                  ? variationList[i].stock!
+                  : totalStock + "," + variationList[i].stock!;
+              stkStatus = stkStatus.isEmpty
+                  ? variationList[i].stockStatus!
+                  : stkStatus + "," + variationList[i].stockStatus!;
             }
 
             request.fields[VariantSku] = sku;
@@ -5721,7 +5753,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
       }
     } else if (mounted) {
       Future.delayed(Duration(seconds: 2)).then(
-            (_) async {
+        (_) async {
           if (buttonController != null) await buttonController!.reverse();
           setState(() {
             _isNetworkAvail = false;
@@ -5730,7 +5762,6 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
       );
     }
   }
-
 
 //==============================================================================
 //=========================== Body Part ========================================
@@ -5766,9 +5797,9 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
             selectedMainImageShow(),
             otherImages("other", 0), //only API panding
             uploadedOtherImageShow(),
-           //videoUpload(), // only API pandings
-           selectedVideoShow(),
-           videoType(),
+            //videoUpload(), // only API pandings
+            selectedVideoShow(),
+            videoType(),
             addUrlOfVideo(),
             longDescription(),
             // this one is long part
@@ -5818,10 +5849,12 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
       await addProductAPI(attributesValuesIds).then((value) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => ProductList(flag: '',)),
+          MaterialPageRoute(
+              builder: (context) => ProductList(
+                    flag: '',
+                  )),
         );
       });
-
     }
   }
 
@@ -5915,7 +5948,6 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
 
     return false;
   }
-
 
   @override
   Widget build(BuildContext context) {

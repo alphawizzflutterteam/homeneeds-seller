@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="28 dec live process commit by anjali">
-      <change afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/Helper/notification_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Add_Product.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/CreateAccount.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Authentication/SetNewPassword.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Authentication/SetNewPassword.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderDetail.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/OrderList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/OrderList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/ProductList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/ProductList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/Profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/Profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Screen/change_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Screen/change_password_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="bc89d911-ee60-4fba-9ecf-a669d1d64fc7" name="Changes" comment="sound notification bug fix commit by anjali" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -75,27 +58,27 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alphawizz/StudioProjects/homeneeds-seller/android/app/src/main/res/drawable&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Ankush/homeneeds-seller/android/app/src/main/res/raw&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Alphawizz\StudioProjects\homeneeds-seller\android\app\src\main\res\drawable" />
-      <recent name="C:\Users\Alphawizz\StudioProjects\homeneeds-seller\lib\Helper" />
-      <recent name="C:\Users\Alphawizz\StudioProjects\homeneeds-seller\android" />
-      <recent name="C:\Ankush\homeneeds-seller\android" />
+      <recent name="C:\Ankush\homeneeds-seller\android\app\src\main\res\raw" />
+      <recent name="C:\Ankush\homeneeds-seller\android\app\src\main\res\drawable" />
+      <recent name="C:\Ankush\homeneeds-seller\assets" />
+      <recent name="C:\Ankush\homeneeds-seller\lib\Helper" />
       <recent name="C:\Ankush\homeneeds-seller\android\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Ankush\homeneeds-seller\assets\images" />
       <recent name="C:\Ankush\homeneeds-seller" />
     </key>
   </component>
@@ -138,7 +121,63 @@
       <option name="project" value="LOCAL" />
       <updated>1735388880463</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="20 feb production bundle done  commit by anjali">
+      <option name="closed" value="true" />
+      <created>1740034120241</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740034120241</updated>
+    </task>
+    <task id="LOCAL-00005" summary="12 april 2025 commit">
+      <option name="closed" value="true" />
+      <created>1744463609913</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744463609913</updated>
+    </task>
+    <task id="LOCAL-00006" summary="16may">
+      <option name="closed" value="true" />
+      <created>1747397126255</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747397126255</updated>
+    </task>
+    <task id="LOCAL-00007" summary="23may client point done commit by anjali">
+      <option name="closed" value="true" />
+      <created>1747982652364</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747982652364</updated>
+    </task>
+    <task id="LOCAL-00008" summary="24 notification bug fix commit by anjali">
+      <option name="closed" value="true" />
+      <created>1748080225134</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748080225134</updated>
+    </task>
+    <task id="LOCAL-00009" summary="24 notification bug fix commit by anjali">
+      <option name="closed" value="true" />
+      <created>1751026732292</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1751026732292</updated>
+    </task>
+    <task id="LOCAL-00010" summary="sound notification bug fix commit by anjali">
+      <option name="closed" value="true" />
+      <created>1753091910554</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1753091910554</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +195,23 @@
     <MESSAGE value="24 dec" />
     <MESSAGE value="24 dec commit by anjali" />
     <MESSAGE value="28 dec live process commit by anjali" />
-    <option name="LAST_COMMIT_MESSAGE" value="28 dec live process commit by anjali" />
+    <MESSAGE value="20 feb production bundle done  commit by anjali" />
+    <MESSAGE value="12 april 2025 commit" />
+    <MESSAGE value="16may" />
+    <MESSAGE value="23may client point done commit by anjali" />
+    <MESSAGE value="24 notification bug fix commit by anjali" />
+    <MESSAGE value="sound notification bug fix commit by anjali" />
+    <option name="LAST_COMMIT_MESSAGE" value="sound notification bug fix commit by anjali" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/Screen/Home.dart</url>
+          <line>1427</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

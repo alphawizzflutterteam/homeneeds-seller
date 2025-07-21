@@ -13,11 +13,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-class VerifyOtp extends StatefulWidget {
+import '../../Helper/Color.dart';
+import 'CreateAccount.dart';
+
+class NumberVerifyOtp extends StatefulWidget {
   final String? mobileNumber, countryCode, title;
   final otp;
 
-  VerifyOtp(
+  NumberVerifyOtp(
       {Key? key,
       required String this.mobileNumber,
       this.countryCode,
@@ -30,7 +33,8 @@ class VerifyOtp extends StatefulWidget {
   _MobileOTPState createState() => new _MobileOTPState();
 }
 
-class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
+class _MobileOTPState extends State<NumberVerifyOtp>
+    with TickerProviderStateMixin {
   final dataKey = new GlobalKey();
   String? password, mobile, countrycode;
   String? otp;
@@ -176,26 +180,47 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         fontSize: 16.0);
   }
 
+  // void verifiedOtpCheck() async {
+  //   if (widget.otp.toString() == otp.toString()) {
+  //     // SettingProvider settingsProvider = Provider.of<SettingProvider>(context, listen: false);
+  //
+  //     setSnackbar(getTranslated(context, 'OTPMSG')!);
+  //     saveUserDetail(mobile: widget.mobileNumber);
+  //     // settingsProvider.setPrefrence(Mobile, widget.mobileNumber!);
+  //     // settingsProvider.setPrefrence(COUNTRY_CODE, widget.countryCode!);
+  //     if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
+  //       Future.delayed(Duration(seconds: 2)).then((_) {
+  //         Navigator.pushReplacement(
+  //           context,
+  //           MaterialPageRoute(
+  //             builder: (context) => SetPass(mobileNumber: widget.mobileNumber!),
+  //           ),
+  //         );
+  //       });
+  //     }
+  //   } else {
+  //     print("OTP not match!!!");
+  //   }
+  // }
   void verifiedOtpCheck() async {
     if (widget.otp.toString() == otp.toString()) {
-      // SettingProvider settingsProvider = Provider.of<SettingProvider>(context, listen: false);
-
       setSnackbar(getTranslated(context, 'OTPMSG')!);
       saveUserDetail(mobile: widget.mobileNumber);
-      // settingsProvider.setPrefrence(Mobile, widget.mobileNumber!);
-      // settingsProvider.setPrefrence(COUNTRY_CODE, widget.countryCode!);
-      if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
-        Future.delayed(Duration(seconds: 2)).then((_) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => SetPass(mobileNumber: widget.mobileNumber!),
-            ),
-          );
-        });
-      }
+
+      // if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
+      Future.delayed(Duration(seconds: 2)).then((_) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                CreateAccount(mobileNumber: widget.mobileNumber.toString()),
+          ),
+        );
+      });
+      // }
     } else {
-      print("OTP not match!!!");
+      setSnackbar(
+          getTranslated(context, 'INVALID_OTP') ?? "Please enter a valid OTP");
     }
   }
 
@@ -379,17 +404,32 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         top: 10.0,
       ),
       child: Center(
-        child: Column(
-          children: [
-            Text(
-              "+$countrycode-$mobile",
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    color: fontColor,
-                    fontWeight: FontWeight.normal,
-                  ),
-            ),
-            // Text('OTP-${widget.otp}')
-          ],
+        child: Text(
+          "+$countrycode-$mobile",
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                color: fontColor,
+                fontWeight: FontWeight.normal,
+              ),
+        ),
+      ),
+    );
+  }
+
+  OTP() {
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: 10.0,
+        left: 20.0,
+        right: 20.0,
+        top: 10.0,
+      ),
+      child: Center(
+        child: Text(
+          "${widget.otp}",
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                color: fontColor,
+                fontWeight: FontWeight.normal,
+              ),
         ),
       ),
     );
@@ -459,6 +499,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
   //     ),
   //   );
   // }
+
   Widget resendText() {
     return Padding(
       padding: const EdgeInsetsDirectional.only(top: 30.0),
@@ -521,6 +562,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                 // otpText(),
                 mobText(),
                 // Text("${widget.otp}"),
+                OTP(),
                 otpLayout(),
                 verifyBtn(),
                 resendText(),
@@ -538,13 +580,14 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: primary,
       key: _scaffoldKey,
       body: Stack(
         children: [
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: back(),
+            // decoration: back(),
           ),
           Image.asset(
             'assets/images/doodle.png',
@@ -591,6 +634,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                       monoVarifyText(),
                       // otpText(),
                       mobText(),
+                      // Text("${widget.otp}"),
                       otpLayout(),
                       verifyBtn(),
                       resendText(),

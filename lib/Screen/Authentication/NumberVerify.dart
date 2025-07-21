@@ -13,18 +13,20 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../TermFeed/Privacy_Policy.dart';
+import 'NumberVerifyOtp.dart';
 
-class SendOtp extends StatefulWidget {
+class NumberVerify extends StatefulWidget {
   String? title;
   final checkForgot;
 
-  SendOtp({Key? key, this.title, this.checkForgot}) : super(key: key);
+  NumberVerify({Key? key, this.title, this.checkForgot}) : super(key: key);
 
   @override
-  _SendOtpState createState() => new _SendOtpState();
+  _NumberVerifyState createState() => new _NumberVerifyState();
 }
 
-class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
+class _NumberVerifyState extends State<NumberVerify>
+    with TickerProviderStateMixin {
   bool visible = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final mobileController = TextEditingController();
@@ -135,67 +137,69 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
   }
 
   Future<void> getVerifyUser() async {
-    var data = {Mobile: mobile, "forgot_otp": widget.checkForgot};
-    print("ghhhhhhhhh_____${data}");
+    var data = {
+      Mobile: mobile,
+    };
+    print("jfffffffff_______${data}");
 
-    apiBaseHelper.postAPICall(verifyUserApi, data).then(
+    apiBaseHelper.postAPICall(verifySellerApi, data).then(
       (getdata) async {
         bool error = getdata["error"];
         String? msg = getdata["message"];
-        print(verifyUserApi);
         print(data);
         await buttonController!.reverse();
-        if (widget.title == getTranslated(context, "SEND_OTP_TITLE")!) {
-          if (!error) {
-            int otp = getdata["data"]["otp"];
-            // setSnackbar(msg!);
-            // setSnackbar(otp.toString());
+        // if (widget.title == getTranslated(context, "SEND_OTP_TITLE")!) {
+        if (!error) {
+          int otp = getdata["data"]["otp"];
+          print("jbjhjjhhjh ${otp}");
+          setSnackbar(msg!);
+          // setSnackbar(otp.toString());
 
-            setPrefrence(Mobile, mobile!);
-            setPrefrence(COUNTRY_CODE, countrycode!);
-            Future.delayed(Duration(seconds: 1)).then(
-              (_) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => VerifyOtp(
-                      otp: otp,
-                      mobileNumber: mobile!,
-                      countryCode: countrycode,
-                      title: getTranslated(context, "SEND_OTP_TITLE")!,
-                    ),
+          setPrefrence(Mobile, mobile!);
+          setPrefrence(COUNTRY_CODE, countrycode!);
+          Future.delayed(Duration(seconds: 1)).then(
+            (_) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NumberVerifyOtp(
+                    otp: otp,
+                    mobileNumber: mobile!,
+                    countryCode: countrycode,
+                    title: getTranslated(context, "SEND_OTP_TITLE")!,
                   ),
-                );
-              },
-            );
-          } else {
-            setSnackbar(msg!);
-          }
-        }
-        if (widget.title == getTranslated(context, "FORGOT_PASS_TITLE")!) {
-          if (!error) {
-            int otp = getdata["data"]["otp"];
-            // setSnackbar(msg!);
-            // setSnackbar(otp.toString());
-
-            setPrefrence(Mobile, mobile!);
-            setPrefrence(COUNTRY_CODE, countrycode!);
-
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => VerifyOtp(
-                  otp: otp,
-                  mobileNumber: mobile!,
-                  countryCode: countrycode,
-                  title: getTranslated(context, "FORGOT_PASS_TITLE")!,
                 ),
-              ),
-            );
-          } else {
-            setSnackbar(msg!);
-          }
+              );
+            },
+          );
+        } else {
+          setSnackbar(msg!);
         }
+        // }
+        // if (widget.title == getTranslated(context, "FORGOT_PASS_TITLE")!) {
+        //   if (!error) {
+        //     int otp = getdata["data"]["otp"];
+        //     // setSnackbar(msg!);
+        //     // setSnackbar(otp.toString());
+        //
+        //     setPrefrence(Mobile, mobile!);
+        //     setPrefrence(COUNTRY_CODE, countrycode!);
+        //
+        //     Navigator.pushReplacement(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: (context) => VerifyOtp(
+        //           otp: otp,
+        //           mobileNumber: mobile!,
+        //           countryCode: countrycode,
+        //           title: getTranslated(context, "FORGOT_PASS_TITLE")!,
+        //         ),
+        //       ),
+        //     );
+        //   } else {
+        //     setSnackbar(msg!);
+        //   }
+        // }
       },
       onError: (error) async {
         print(error);
@@ -307,31 +311,14 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
     );
   }
 
-  // verifyBtn() {
-  //   return AppBtn(
-  //     title: widget.title == getTranslated(context, "SEND_OTP_TITLE")
-  //         ? getTranslated(context, "Send OTP")!
-  //         : getTranslated(context, "GET_PASSWORD")!,
-  //     btnAnim: buttonSqueezeanimation,
-  //     btnCntrl: buttonController,
-  //     onBtnSelected: () async {
-  //       validateAndSubmit();
-  //     },
-  //   );
-  // }
-  Widget verifyBtn() {
+  verifyBtn() {
     return AppBtn(
-      title: widget.title == getTranslated(context, 'SEND_OTP_TITLE')
-          ? getTranslated(context, 'SEND_OTP')
-          : getTranslated(context, 'GET_PASSWORD'),
+      title: widget.title == getTranslated(context, "SEND_OTP_TITLE")
+          ? getTranslated(context, "Send OTP")!
+          : getTranslated(context, "GET_PASSWORD")!,
       btnAnim: buttonSqueezeanimation,
       btnCntrl: buttonController,
       onBtnSelected: () async {
-        if (mobileController.text.trim().length != 10) {
-          setSnackbar("Please enter a valid 10 digit mobile number");
-          await buttonController!.reverse();
-          return;
-        }
         validateAndSubmit();
       },
     );
@@ -434,6 +421,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: primary,
       key: _scaffoldKey,
       body: _isNetworkAvail
           ? Stack(
@@ -441,7 +429,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: back(),
+                  // decoration: back(),
                 ),
                 Image.asset(
                   'assets/images/doodle.png',
@@ -491,7 +479,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            getTranslated(context, "FORGOT_PASSWORDTITILE")!,
+                            'SignUp',
                             style: const TextStyle(
                               color: primary,
                               fontSize: 30,

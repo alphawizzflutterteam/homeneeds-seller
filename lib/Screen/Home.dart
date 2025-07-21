@@ -19,6 +19,7 @@ import 'package:eshopmultivendor/Screen/OrderList.dart';
 import 'package:eshopmultivendor/Screen/TermFeed/Privacy_Policy.dart';
 import 'package:eshopmultivendor/Screen/ProductList.dart';
 import 'package:eshopmultivendor/Screen/WalletHistory.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Helper/Indicator.dart';
+import '../Helper/notification_service.dart';
 import '../main.dart';
 import 'Profile.dart';
 import 'TermFeed/Terms_Conditions.dart';
@@ -133,7 +135,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       systemNavigationBarColor: Colors.transparent,
     ));
     final pushNotificationService = PushNotificationService(context: context);
-    pushNotificationService.initialise();
+    LocalNotificationService.initialize();
+    // pushNotificationService.initialise();
+    firebaseNotificationListener();
     offset = 0;
     total = 0;
     chartList = {0: dayData(), 1: weekData(), 2: monthData()};
@@ -226,7 +230,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         appBar: getAppBar(context),
         drawer: getDrawer(context),
         body: getBodyPart(),
-        // floatingActionButton: floatingBtn(),
+        floatingActionButton: floatingBtn(),
       ),
     );
   }
@@ -704,6 +708,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         } else {
           setSnackbar(msg!);
         }
+        print("totalsoldout${totalsoldOutCount}");
 
         setState(() {
           _isLoading = false;
@@ -1617,7 +1622,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   Future<Null> _refresh() async {
     Completer<Null> completer = new Completer<Null>();
-    await Future.delayed(Duration(seconds: 3)).then(
+    await Future.delayed(Duration(seconds: 5)).then(
       (onvalue) {
         completer.complete();
         offset = 0;
@@ -1631,6 +1636,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         //   getDeliveryBoy();
 
         getZipCodes();
+        initState();
         setState(
           () {
             _isLoading = true;
@@ -1800,7 +1806,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       children: [
         // getCustomerButton(),
         getSoldOutProduct(),
-        // getRattingButton(),
+        getRattingButton(),
       ],
     );
   }
@@ -1819,7 +1825,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 color: primary,
               ),
               Text(
-                "Ratings",
+                "Ratings & Reviews",
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: grey,
@@ -1996,6 +2002,12 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   void dispose() {
     buttonController!.dispose();
     super.dispose();
+  }
+
+  void firebaseNotificationListener() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      _refresh();
+    });
   }
 }
 //==============================================================================

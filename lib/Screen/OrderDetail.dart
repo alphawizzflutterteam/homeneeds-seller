@@ -33,7 +33,6 @@ class OrderDetail extends StatefulWidget {
 
 List<PersonModel> delBoyList = [];
 
-
 class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   ScrollController controller = new ScrollController();
@@ -157,8 +156,9 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
               for (int i = 0; i < tempList[0].itemList!.length; i++)
                 tempList[0].itemList![i].curSelected =
                     tempList[0].itemList![i].status;
-              searchList.isEmpty?
-              searchList.addAll(delBoyList):print("cool");
+              searchList.isEmpty
+                  ? searchList.addAll(delBoyList)
+                  : print("cool");
 
               if (tempList[0].itemList![0].deliveryBoyId != null)
                 selectedDelBoy = delBoyList.indexWhere(
@@ -304,7 +304,7 @@ class StateOrder extends State<OrderDetail> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
-print(delBoyList);
+    print(delBoyList);
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: lightWhite,
@@ -354,17 +354,13 @@ print(delBoyList);
       ),
       body: _isNetworkAvail
           ? WillPopScope(
-        onWillPop: onWill,
-            child:
-
-            Stack(
+              onWillPop: onWill,
+              child: Stack(
                 children: [
                   isLoading
                       ? shimmer()
                       : Column(
                           children: [
-
-
                             Expanded(
                               child: SingleChildScrollView(
                                 controller: controller,
@@ -497,14 +493,13 @@ print(delBoyList);
                   showCircularProgress(_isProgress, primary),
                 ],
               ),
-          )
+            )
           : noInternet(context),
     );
   }
 
-  Future<bool> onWill() async
-  {
-    Navigator.pop(context,true);
+  Future<bool> onWill() async {
+    Navigator.pop(context, true);
     return Future.value();
   }
 
@@ -949,6 +944,15 @@ print(delBoyList);
                 style: TextStyle(color: lightBlack2),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 3),
+              child: Text(
+                tempList[0].roomNumber != null
+                    ? capitalize(tempList[0].roomNumber!)
+                    : "",
+                style: TextStyle(color: lightBlack2),
+              ),
+            ),
             InkWell(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
@@ -1157,60 +1161,60 @@ print(delBoyList);
                                     const EdgeInsets.symmetric(vertical: 5.0),
                                 child: Row(
                                   children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 8.0),
-                                        child: InkWell(
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                color: primary,
-                                              ),
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(5),
-                                              ),
-                                            ),
-                                            padding: EdgeInsets.all(10),
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Text(
-                                                    index1 != -1
-                                                        ? orderItem.deliverBy!
-                                                        : getTranslated(
-                                                            context,
-                                                            "SELECTDELBOY",
-                                                          )!,
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style:
-                                                        Theme.of(this.context)
-                                                            .textTheme
-                                                            .subtitle2!
-                                                            .copyWith(
-                                                              color: primary,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                            ),
-                                                  ),
-                                                ),
-                                                Icon(
-                                                  Icons.arrow_drop_down,
-                                                  color: primary,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          onTap: () {
-                                            delboyDialog(orderItem.status!, i);
-                                          },
-                                        ),
-                                      ),
-                                    ),
+                                    // Expanded(
+                                    //   flex: 1,
+                                    //   child: Padding(
+                                    //     padding:
+                                    //         const EdgeInsets.only(right: 8.0),
+                                    //     child: InkWell(
+                                    //       child: Container(
+                                    //         decoration: BoxDecoration(
+                                    //           border: Border.all(
+                                    //             color: primary,
+                                    //           ),
+                                    //           borderRadius: BorderRadius.all(
+                                    //             Radius.circular(5),
+                                    //           ),
+                                    //         ),
+                                    //         padding: EdgeInsets.all(10),
+                                    //         child: Row(
+                                    //           children: [
+                                    //             Expanded(
+                                    //               child: Text(
+                                    //                 index1 != -1
+                                    //                     ? orderItem.deliverBy!
+                                    //                     : getTranslated(
+                                    //                         context,
+                                    //                         "SELECTDELBOY",
+                                    //                       )!,
+                                    //                 maxLines: 1,
+                                    //                 overflow:
+                                    //                     TextOverflow.ellipsis,
+                                    //                 style:
+                                    //                     Theme.of(this.context)
+                                    //                         .textTheme
+                                    //                         .subtitle2!
+                                    //                         .copyWith(
+                                    //                           color: primary,
+                                    //                           fontWeight:
+                                    //                               FontWeight
+                                    //                                   .bold,
+                                    //                         ),
+                                    //               ),
+                                    //             ),
+                                    //             Icon(
+                                    //               Icons.arrow_drop_down,
+                                    //               color: primary,
+                                    //             )
+                                    //           ],
+                                    //         ),
+                                    //       ),
+                                    //       onTap: () {
+                                    //         delboyDialog(orderItem.status!, i);
+                                    //       },
+                                    //     ),
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               )
@@ -1239,11 +1243,13 @@ print(delBoyList);
       if (_isNetworkAvail) {
         try {
           var parameter = {
+            ORDERID: id,
             STATUS: status,
           };
-          if (item) {
-            parameter[ORDERITEMID] = tempList[0].itemList![index].id;
-          }
+          print("hhhhhhhhhhhhh__________${parameter}");
+          // if (item) {
+          //   parameter[ORDERITEMID] = tempList[0].itemList![index].id;
+          // }
           if (selectedDelBoy != null)
             parameter[DEL_BOY_ID] = searchList[selectedDelBoy!].id;
           print(parameter);
@@ -1302,8 +1308,7 @@ print(delBoyList);
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   bankProof(Order_Model model) {
