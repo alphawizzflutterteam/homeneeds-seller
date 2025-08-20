@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -9,6 +10,7 @@ import 'package:eshopmultivendor/Helper/String.dart';
 import 'package:eshopmultivendor/Model/ProductModel/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'Add_Product.dart';
 import 'Search.dart';
 
@@ -187,7 +189,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                   textAlign: TextAlign.center,
                   style: Theme.of(context)
                       .textTheme
-                      .headline6!
+                      .titleLarge!
                       .copyWith(color: white, fontWeight: FontWeight.normal)),
             ),
           ),
@@ -254,7 +256,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             model.name!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle2!
+                                .titleSmall!
                                 .copyWith(color: lightBlack),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -264,7 +266,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                               Text(CUR_CURRENCY + " " + price.toString() + " ",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle2!
+                                      .titleSmall!
                                       .copyWith(fontWeight: FontWeight.bold)),
                               Text(
                                 double.parse(model
@@ -278,7 +280,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                     : "",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .overline!
+                                    .labelSmall!
                                     .copyWith(
                                         decoration: TextDecoration.lineThrough,
                                         letterSpacing: 0),
@@ -339,7 +341,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                 ? Text(getTranslated(context, "OutOfStock")!,
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle2!
+                        .titleSmall!
                         .copyWith(color: red, fontWeight: FontWeight.bold))
                 : Container(),
           ]),
@@ -580,7 +582,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                               getTranslated(context, "OutOfStock")!,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                     color: red,
                                     fontWeight: FontWeight.bold,
@@ -598,7 +600,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                   model.name!,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle2!
+                      .titleSmall!
                       .copyWith(color: lightBlack),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -630,7 +632,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .overline!
+                                      .labelSmall!
                                       .copyWith(
                                           decoration:
                                               TextDecoration.lineThrough,
@@ -762,7 +764,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
                       getTranslated(context, "SelectVarient")!,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                   Divider(),
@@ -999,7 +1001,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Text(CUR_CURRENCY + " " + price.toString(),
-          style: Theme.of(context).textTheme.headline6),
+          style: Theme.of(context).textTheme.titleLarge),
     );
   }
 
@@ -1016,13 +1018,13 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
           children: <Widget>[
             Text(
               CUR_CURRENCY + " " + price1,
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   decoration: TextDecoration.lineThrough, letterSpacing: 0),
             ),
             Text(" | " + off.toStringAsFixed(2) + "% off",
                 style: Theme.of(context)
                     .textTheme
-                    .overline!
+                    .labelSmall!
                     .copyWith(color: primary, letterSpacing: 0)),
           ],
         ),
@@ -1037,8 +1039,10 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
       child: Text(
         name,
-        style:
-            Theme.of(context).textTheme.subtitle1!.copyWith(color: lightBlack),
+        style: Theme.of(context)
+            .textTheme
+            .titleMedium!
+            .copyWith(color: lightBlack),
       ),
     );
   }
@@ -1063,14 +1067,14 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             EdgeInsetsDirectional.only(top: 19.0, bottom: 16.0),
                         child: Text(
                           getTranslated(context, "StockFilter")!,
-                          style: Theme.of(context).textTheme.headline6,
+                          style: Theme.of(context).textTheme.titleLarge,
                         )),
                     Divider(color: lightBlack),
                     TextButton(
                         child: Text(getTranslated(context, "All")!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(color: lightBlack)),
                         onPressed: () {
                           flag = '';
@@ -1089,7 +1093,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                         child: Text(getTranslated(context, "Soldout")!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(color: lightBlack)),
                         onPressed: () {
                           flag = 'sold';
@@ -1109,7 +1113,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                           getTranslated(context, "Lowinstock")!,
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: lightBlack),
                         ),
                         onPressed: () {
@@ -1153,14 +1157,14 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                           EdgeInsetsDirectional.only(top: 19.0, bottom: 16.0),
                       child: Text(
                         getTranslated(context, "SortBy")!,
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       )),
                   Divider(color: lightBlack),
                   TextButton(
                       child: Text(getTranslated(context, "TopRated")!,
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: lightBlack)),
                       onPressed: () {
                         sortBy = '';
@@ -1181,7 +1185,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                       child: Text(getTranslated(context, "NewestFirst")!,
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: lightBlack)),
                       onPressed: () {
                         sortBy = 'p.date_added';
@@ -1203,7 +1207,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                         getTranslated(context, "OldestFirst")!,
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle1!
+                            .titleMedium!
                             .copyWith(color: lightBlack),
                       ),
                       onPressed: () {
@@ -1226,7 +1230,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                         getTranslated(context, "LOWTOHIGH")!,
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle1!
+                            .titleMedium!
                             .copyWith(color: lightBlack),
                       ),
                       onPressed: () {
@@ -1251,7 +1255,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                         getTranslated(context, "HIGHTOLOW")!,
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle1!
+                            .titleMedium!
                             .copyWith(color: lightBlack),
                       ),
                       onPressed: () {
@@ -1363,7 +1367,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                     getTranslated(context, "PRODUCT")!,
                 style: Theme.of(this.context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(color: fontColor),
               ),
               actions: <Widget>[
@@ -1372,7 +1376,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                       getTranslated(context, "LOGOUTNO")!,
                       style: Theme.of(this.context)
                           .textTheme
-                          .subtitle2!
+                          .titleSmall!
                           .copyWith(
                               color: lightBlack, fontWeight: FontWeight.bold),
                     ),
@@ -1382,8 +1386,11 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                 new TextButton(
                   child: Text(
                     getTranslated(context, "LOGOUTYES")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: fontColor, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: fontColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     // setSnackbar("Not Able To Delete Product in Demo APK");
@@ -1491,7 +1498,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             child: Text(getTranslated(context, "ClearFilters")!,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         fontWeight: FontWeight.normal,
                                         color: fontColor)),
@@ -1570,7 +1577,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                 filterList![index]['name'],
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .subtitle1!
+                                                    .titleMedium!
                                                     .copyWith(
                                                         color: filter ==
                                                                 filterList![
@@ -1616,7 +1623,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                     title: Text(attsubList![i],
                                                         style: Theme.of(context)
                                                             .textTheme
-                                                            .subtitle1!
+                                                            .titleMedium!
                                                             .copyWith(
                                                                 color:
                                                                     lightBlack,

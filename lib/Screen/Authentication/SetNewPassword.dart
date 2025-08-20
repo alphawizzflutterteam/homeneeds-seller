@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'Login.dart';
 
 class SetPass extends StatefulWidget {
@@ -161,7 +163,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
         alignment: Alignment.topLeft,
         child: new Text(
           getTranslated(context, "FORGOT_PASSWORDTITILE")!,
-          style: Theme.of(context).textTheme.subtitle1!.copyWith(
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 color: primary,
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
@@ -239,7 +241,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
       child: TextFormField(
         keyboardType: TextInputType.text,
         obscureText: _isObscure,
-        style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+        style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: fontColor,
               fontWeight: FontWeight.normal,
             ),
@@ -352,7 +354,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
       child: TextFormField(
         keyboardType: TextInputType.text,
         obscureText: _isConfirmObscure,
-        style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+        style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: fontColor,
               fontWeight: FontWeight.normal,
             ),

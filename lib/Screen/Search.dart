@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -264,7 +265,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                               model.name!,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                     color: lightBlack,
                                   ),
@@ -283,7 +284,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                                             " ",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .subtitle1),
+                                            .titleMedium),
                                     Text(
                                       double.parse(model
                                                   .prVarientList![
@@ -299,7 +300,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                                           : "",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .overline!
+                                          .labelSmall!
                                           .copyWith(
                                               decoration:
                                                   TextDecoration.lineThrough,
@@ -337,7 +338,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                                             overflow: TextOverflow.ellipsis,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle2!
+                                                .titleSmall!
                                                 .copyWith(color: lightBlack),
                                           ),
                                         ),
@@ -348,7 +349,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                                             val[index],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle2!
+                                                .titleSmall!
                                                 .copyWith(
                                                     color: lightBlack,
                                                     fontWeight:
@@ -369,15 +370,17 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                                     ),
                                     Text(
                                       " " + productList[index].rating!,
-                                      style:
-                                          Theme.of(context).textTheme.overline,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall,
                                     ),
                                     Text(
                                       " (" +
                                           productList[index].noOfRating! +
                                           ")",
-                                      style:
-                                          Theme.of(context).textTheme.overline,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelSmall,
                                     )
                                   ],
                                 ),
@@ -392,7 +395,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                   ? Text(getTranslated(context, "OutOfStock")!,
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle2!
+                          .titleSmall!
                           .copyWith(color: red, fontWeight: FontWeight.bold))
                   : Container(),
             ],
@@ -524,8 +527,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
         timeInSecForIosWeb: 1,
         backgroundColor: primary,
         textColor: Colors.white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
   _showContent() {
@@ -589,7 +591,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                     getTranslated(context, "PRODUCT")!,
                 style: Theme.of(this.context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(color: fontColor),
               ),
               actions: <Widget>[
@@ -598,7 +600,7 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                       getTranslated(context, "LOGOUTNO")!,
                       style: Theme.of(this.context)
                           .textTheme
-                          .subtitle2!
+                          .titleSmall!
                           .copyWith(
                               color: lightBlack, fontWeight: FontWeight.bold),
                     ),
@@ -608,8 +610,11 @@ class _StateSearch extends State<Search> with TickerProviderStateMixin {
                 new TextButton(
                   child: Text(
                     getTranslated(context, "LOGOUTYES")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: fontColor, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: fontColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     // setSnackbar("Not Able To Delete Product in Demo APK");

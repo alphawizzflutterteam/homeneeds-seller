@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -13,20 +14,19 @@ import 'package:eshopmultivendor/Model/OrdersModel/OrderModel.dart';
 import 'package:eshopmultivendor/Model/ZipCodesModel/ZipCodeModel.dart';
 import 'package:eshopmultivendor/Screen/Add_Product.dart';
 import 'package:eshopmultivendor/Screen/Authentication/Login.dart';
-import 'package:eshopmultivendor/Screen/TermFeed/Contact_Us.dart';
 import 'package:eshopmultivendor/Screen/Customers.dart';
 import 'package:eshopmultivendor/Screen/OrderList.dart';
-import 'package:eshopmultivendor/Screen/TermFeed/Privacy_Policy.dart';
 import 'package:eshopmultivendor/Screen/ProductList.dart';
+import 'package:eshopmultivendor/Screen/TermFeed/Contact_Us.dart';
+import 'package:eshopmultivendor/Screen/TermFeed/Privacy_Policy.dart';
 import 'package:eshopmultivendor/Screen/WalletHistory.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/gestures.dart';
+// import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Helper/Indicator.dart';
+
 import '../Helper/notification_service.dart';
 import '../main.dart';
 import 'Profile.dart';
@@ -99,7 +99,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 //===================================== For Chart ==============================
 
   int curChart = 0;
-  Map<int, LineChartData>? chartList;
+  // Map<int, LineChartData>? chartList;
   List? days = [], dayEarning = [];
   List? months = [], monthEarning = [];
   List? weeks = [], weekEarning = [];
@@ -140,7 +140,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     firebaseNotificationListener();
     offset = 0;
     total = 0;
-    chartList = {0: dayData(), 1: weekData(), 2: monthData()};
+    // chartList = {0: dayData(), 1: weekData(), 2: monthData()};
 
     orderList.clear();
     getSaveDetail();
@@ -370,211 +370,211 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
 //1. LineChartData
 
-  LineChartData dayData() {
-    if (dayEarning!.length == 0) {
-      dayEarning!.add(0);
-      days!.add(0);
-    }
-    List<FlSpot> spots = dayEarning!.asMap().entries.map((e) {
-      return FlSpot(double.parse(days![e.key].toString()),
-          double.parse(e.value.toString()));
-    }).toList();
-
-    return LineChartData(
-      lineTouchData: LineTouchData(enabled: true),
-      lineBarsData: [
-        LineChartBarData(
-          spots: spots,
-          isCurved: false,
-          barWidth: 2,
-          colors: [
-            grad2Color,
-          ],
-          belowBarData: BarAreaData(
-            show: true,
-            colors: [primary.withOpacity(0.5)],
-          ),
-          aboveBarData: BarAreaData(
-            show: true,
-            colors: [fontColor.withOpacity(0.2)],
-          ),
-          dotData: FlDotData(
-            show: false,
-          ),
-        ),
-      ],
-      minY: 0,
-      titlesData: FlTitlesData(
-        bottomTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 3,
-            getTextStyles: (context, value) => const TextStyle(
-                  color: black,
-                  fontSize: 9,
-                ),
-            margin: 10,
-            getTitles: (value) {
-              return value.toInt().toString();
-            }),
-        leftTitles: SideTitles(
-          showTitles: true,
-          getTextStyles: (context, value) => const TextStyle(
-            color: black,
-            fontSize: 9,
-          ),
-        ),
-      ),
-      gridData: FlGridData(
-        show: true,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: fontColor.withOpacity(0.3),
-            strokeWidth: 1,
-          );
-        },
-      ),
-    );
-  }
-
-  //2. catChart
-
-  LineChartData weekData() {
-    if (weekEarning!.length == 0) {
-      weekEarning!.add(0);
-      weeks!.add(0);
-    }
-    List<FlSpot> spots = weekEarning!.asMap().entries.map((e) {
-      return FlSpot(
-          double.parse(e.key.toString()), double.parse(e.value.toString()));
-    }).toList();
-
-    return LineChartData(
-      lineTouchData: LineTouchData(enabled: true),
-      lineBarsData: [
-        LineChartBarData(
-          spots: spots,
-          isCurved: false,
-          barWidth: 2,
-          colors: [
-            grad2Color,
-          ],
-          belowBarData: BarAreaData(
-            show: true,
-            colors: [
-              primary.withOpacity(0.5),
-            ],
-          ),
-          aboveBarData: BarAreaData(
-            show: true,
-            colors: [fontColor.withOpacity(0.2)],
-          ),
-          dotData: FlDotData(
-            show: false,
-          ),
-        ),
-      ],
-      minY: 0,
-      titlesData: FlTitlesData(
-        bottomTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 4,
-            getTextStyles: (context, value) => const TextStyle(
-                  color: black,
-                  fontSize: 9,
-                ),
-            margin: 10,
-            getTitles: (value) {
-              return weeks![value.toInt()].toString();
-            }),
-        leftTitles: SideTitles(
-          showTitles: true,
-          getTextStyles: (context, value) => const TextStyle(
-            color: black,
-            fontSize: 9,
-          ),
-        ),
-      ),
-      gridData: FlGridData(
-        show: true,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: fontColor.withOpacity(0.3),
-            strokeWidth: 1,
-          );
-        },
-      ),
-    );
-  }
-
-  //2. monthData
-
-  LineChartData monthData() {
-    if (monthEarning!.length == 0) {
-      monthEarning!.add(0);
-      months!.add(0);
-    }
-
-    List<FlSpot> spots = monthEarning!.asMap().entries.map((e) {
-      return FlSpot(
-          double.parse(e.key.toString()), double.parse(e.value.toString()));
-    }).toList();
-
-    return LineChartData(
-      lineTouchData: LineTouchData(enabled: true),
-      lineBarsData: [
-        LineChartBarData(
-          spots: spots,
-          isCurved: false,
-          barWidth: 2,
-          colors: [
-            grad2Color,
-          ],
-          belowBarData: BarAreaData(
-            show: true,
-            colors: [primary.withOpacity(0.5)],
-          ),
-          aboveBarData: BarAreaData(
-            show: true,
-            colors: [fontColor.withOpacity(0.2)],
-          ),
-          dotData: FlDotData(
-            show: false,
-          ),
-        ),
-      ],
-      minY: 0,
-      titlesData: FlTitlesData(
-        leftTitles: SideTitles(
-          showTitles: true,
-          getTextStyles: (context, value) => const TextStyle(
-            color: black,
-            fontSize: 9,
-          ),
-        ),
-        bottomTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 3,
-          getTextStyles: (context, value) => const TextStyle(
-            color: black,
-            fontSize: 9,
-          ),
-          margin: 10,
-          getTitles: (value) {
-            return months![value.toInt()];
-          },
-        ),
-      ),
-      gridData: FlGridData(
-        show: true,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: fontColor.withOpacity(0.3),
-            strokeWidth: 1,
-          );
-        },
-      ),
-    );
-  }
+  // LineChartData dayData() {
+  //   if (dayEarning!.length == 0) {
+  //     dayEarning!.add(0);
+  //     days!.add(0);
+  //   }
+  //   List<FlSpot> spots = dayEarning!.asMap().entries.map((e) {
+  //     return FlSpot(double.parse(days![e.key].toString()),
+  //         double.parse(e.value.toString()));
+  //   }).toList();
+  //
+  //   return LineChartData(
+  //     lineTouchData: LineTouchData(enabled: true),
+  //     lineBarsData: [
+  //       LineChartBarData(
+  //         spots: spots,
+  //         isCurved: false,
+  //         barWidth: 2,
+  //         colors: [
+  //           grad2Color,
+  //         ],
+  //         belowBarData: BarAreaData(
+  //           show: true,
+  //           colors: [primary.withOpacity(0.5)],
+  //         ),
+  //         aboveBarData: BarAreaData(
+  //           show: true,
+  //           colors: [fontColor.withOpacity(0.2)],
+  //         ),
+  //         dotData: FlDotData(
+  //           show: false,
+  //         ),
+  //       ),
+  //     ],
+  //     minY: 0,
+  //     titlesData: FlTitlesData(
+  //       bottomTitles: SideTitles(
+  //           showTitles: true,
+  //           reservedSize: 3,
+  //           getTextStyles: (context, value) => const TextStyle(
+  //                 color: black,
+  //                 fontSize: 9,
+  //               ),
+  //           margin: 10,
+  //           getTitles: (value) {
+  //             return value.toInt().toString();
+  //           }),
+  //       leftTitles: SideTitles(
+  //         showTitles: true,
+  //         getTextStyles: (context, value) => const TextStyle(
+  //           color: black,
+  //           fontSize: 9,
+  //         ),
+  //       ),
+  //     ),
+  //     gridData: FlGridData(
+  //       show: true,
+  //       getDrawingHorizontalLine: (value) {
+  //         return FlLine(
+  //           color: fontColor.withOpacity(0.3),
+  //           strokeWidth: 1,
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
+  //
+  // //2. catChart
+  //
+  // LineChartData weekData() {
+  //   if (weekEarning!.length == 0) {
+  //     weekEarning!.add(0);
+  //     weeks!.add(0);
+  //   }
+  //   List<FlSpot> spots = weekEarning!.asMap().entries.map((e) {
+  //     return FlSpot(
+  //         double.parse(e.key.toString()), double.parse(e.value.toString()));
+  //   }).toList();
+  //
+  //   return LineChartData(
+  //     lineTouchData: LineTouchData(enabled: true),
+  //     lineBarsData: [
+  //       LineChartBarData(
+  //         spots: spots,
+  //         isCurved: false,
+  //         barWidth: 2,
+  //         colors: [
+  //           grad2Color,
+  //         ],
+  //         belowBarData: BarAreaData(
+  //           show: true,
+  //           colors: [
+  //             primary.withOpacity(0.5),
+  //           ],
+  //         ),
+  //         aboveBarData: BarAreaData(
+  //           show: true,
+  //           colors: [fontColor.withOpacity(0.2)],
+  //         ),
+  //         dotData: FlDotData(
+  //           show: false,
+  //         ),
+  //       ),
+  //     ],
+  //     minY: 0,
+  //     titlesData: FlTitlesData(
+  //       bottomTitles: SideTitles(
+  //           showTitles: true,
+  //           reservedSize: 4,
+  //           getTextStyles: (context, value) => const TextStyle(
+  //                 color: black,
+  //                 fontSize: 9,
+  //               ),
+  //           margin: 10,
+  //           getTitles: (value) {
+  //             return weeks![value.toInt()].toString();
+  //           }),
+  //       leftTitles: SideTitles(
+  //         showTitles: true,
+  //         getTextStyles: (context, value) => const TextStyle(
+  //           color: black,
+  //           fontSize: 9,
+  //         ),
+  //       ),
+  //     ),
+  //     gridData: FlGridData(
+  //       show: true,
+  //       getDrawingHorizontalLine: (value) {
+  //         return FlLine(
+  //           color: fontColor.withOpacity(0.3),
+  //           strokeWidth: 1,
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
+  //
+  // //2. monthData
+  //
+  // LineChartData monthData() {
+  //   if (monthEarning!.length == 0) {
+  //     monthEarning!.add(0);
+  //     months!.add(0);
+  //   }
+  //
+  //   List<FlSpot> spots = monthEarning!.asMap().entries.map((e) {
+  //     return FlSpot(
+  //         double.parse(e.key.toString()), double.parse(e.value.toString()));
+  //   }).toList();
+  //
+  //   return LineChartData(
+  //     lineTouchData: LineTouchData(enabled: true),
+  //     lineBarsData: [
+  //       LineChartBarData(
+  //         spots: spots,
+  //         isCurved: false,
+  //         barWidth: 2,
+  //         colors: [
+  //           grad2Color,
+  //         ],
+  //         belowBarData: BarAreaData(
+  //           show: true,
+  //           colors: [primary.withOpacity(0.5)],
+  //         ),
+  //         aboveBarData: BarAreaData(
+  //           show: true,
+  //           colors: [fontColor.withOpacity(0.2)],
+  //         ),
+  //         dotData: FlDotData(
+  //           show: false,
+  //         ),
+  //       ),
+  //     ],
+  //     minY: 0,
+  //     titlesData: FlTitlesData(
+  //       leftTitles: SideTitles(
+  //         showTitles: true,
+  //         getTextStyles: (context, value) => const TextStyle(
+  //           color: black,
+  //           fontSize: 9,
+  //         ),
+  //       ),
+  //       bottomTitles: SideTitles(
+  //         showTitles: true,
+  //         reservedSize: 3,
+  //         getTextStyles: (context, value) => const TextStyle(
+  //           color: black,
+  //           fontSize: 9,
+  //         ),
+  //         margin: 10,
+  //         getTitles: (value) {
+  //           return months![value.toInt()];
+  //         },
+  //       ),
+  //     ),
+  //     gridData: FlGridData(
+  //       show: true,
+  //       getDrawingHorizontalLine: (value) {
+  //         return FlLine(
+  //           color: fontColor.withOpacity(0.3),
+  //           strokeWidth: 1,
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
 
   Color generateRandomColor() {
     Random random = Random();
@@ -698,7 +698,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
           weeks = getdata['earnings'][0]["weekly_earnings"]['week'];
           //  if (chartList != null) chartList!.clear();
-          chartList = {0: dayData(), 1: weekData(), 2: monthData()};
+          // chartList = {0: dayData(), 1: weekData(), 2: monthData()};
 
           catCountList = getdata['category_wise_product_count']['counter'];
           catList = getdata['category_wise_product_count']['cat_name'];
@@ -943,7 +943,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       CUR_USERNAME!,
                       style: Theme.of(context)
                           .textTheme
-                          .subtitle1!
+                          .titleMedium!
                           .copyWith(color: white, fontWeight: FontWeight.bold),
                     ),
                     Text(
@@ -954,7 +954,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                           CUR_BALANCE,
                       style: Theme.of(context)
                           .textTheme
-                          .caption!
+                          .bodySmall!
                           .copyWith(color: white),
                     ),
                     Padding(
@@ -968,7 +968,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                             getTranslated(context, "EDIT_PROFILE_LBL")!,
                             style: Theme.of(context)
                                 .textTheme
-                                .caption!
+                                .bodySmall!
                                 .copyWith(color: white),
                           ),
                           Icon(
@@ -1236,9 +1236,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                   padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
                   child: Text(
                     getTranslated(context, 'CHOOSE_LANGUAGE_LBL')!,
-                    style: Theme.of(this.context).textTheme.subtitle1!.copyWith(
-                          color: fontColor,
-                        ),
+                    style:
+                        Theme.of(this.context).textTheme.titleMedium!.copyWith(
+                              color: fontColor,
+                            ),
                   ),
                 ),
                 Divider(color: lightBlack),
@@ -1314,7 +1315,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                   context, '${languageList[index]!}')!,
                               style: Theme.of(this.context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(color: lightBlack),
                             ),
                           )
@@ -1365,7 +1366,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 getTranslated(context, "LOGOUTTXT")!,
                 style: Theme.of(this.context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(color: fontColor),
               ),
               actions: <Widget>[
@@ -1374,7 +1375,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                       getTranslated(context, "LOGOUTNO")!,
                       style: Theme.of(this.context)
                           .textTheme
-                          .subtitle2!
+                          .titleSmall!
                           .copyWith(
                               color: lightBlack, fontWeight: FontWeight.bold),
                     ),
@@ -1384,8 +1385,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 new TextButton(
                   child: Text(
                     getTranslated(context, "LOGOUTYES")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: fontColor, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: fontColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     clearUserSession();
@@ -1553,27 +1557,27 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   //   );
   // }
 
-  List<PieChartSectionData> showingSections() {
-    return List.generate(
-      catCountList!.length,
-      (i) {
-        final isTouched = i == touchedIndex;
-        //  final double opacity = isTouched ? 1 : 0.6;
-
-        final double fontSize = isTouched ? 25 : 16;
-        final double radius = isTouched ? 60 : 50;
-
-        return PieChartSectionData(
-          color: colorList[i],
-          value: double.parse(catCountList![i].toString()),
-          title: "",
-          radius: radius,
-          titleStyle:
-              TextStyle(fontSize: fontSize, color: const Color(0xffffffff)),
-        );
-      },
-    );
-  }
+  // List<PieChartSectionData> showingSections() {
+  //   return List.generate(
+  //     catCountList!.length,
+  //     (i) {
+  //       final isTouched = i == touchedIndex;
+  //       //  final double opacity = isTouched ? 1 : 0.6;
+  //
+  //       final double fontSize = isTouched ? 25 : 16;
+  //       final double radius = isTouched ? 60 : 50;
+  //
+  //       return PieChartSectionData(
+  //         color: colorList[i],
+  //         value: double.parse(catCountList![i].toString()),
+  //         title: "",
+  //         radius: radius,
+  //         titleStyle:
+  //             TextStyle(fontSize: fontSize, color: const Color(0xffffffff)),
+  //       );
+  //     },
+  //   );
+  // }
 //==============================================================================
 //============================ No Internet Widget ==============================
 

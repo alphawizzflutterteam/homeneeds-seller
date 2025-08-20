@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../main.dart';
 import 'Session.dart';
 import 'String.dart';
@@ -41,20 +42,20 @@ class PushNotificationService {
 
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('ic_launcher');
-    final IOSInitializationSettings initializationSettingsIOS =
-        IOSInitializationSettings();
-    final MacOSInitializationSettings initializationSettingsMacOS =
-        MacOSInitializationSettings();
+
+    final DarwinInitializationSettings initializationSettingsDarwin =
+        DarwinInitializationSettings();
+
     final InitializationSettings initializationSettings =
         InitializationSettings(
       android: initializationSettingsAndroid,
-      iOS: initializationSettingsIOS,
-      macOS: initializationSettingsMacOS,
+      iOS: initializationSettingsDarwin,
+      macOS: DarwinInitializationSettings(),
     );
 
     flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
-      onSelectNotification: (String? payload) async {
+      onDidReceiveNotificationResponse: (NotificationResponse response) async {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -89,7 +90,6 @@ class PushNotificationService {
         bool back = await getPrefrenceBool(iSFROMBACK);
         if (message != null && back) {
           var type = message.data['type'] ?? '';
-          var id = '';
           if (type == "commission") {
             Navigator.push(
               context,
@@ -178,17 +178,21 @@ Future<dynamic> myForgroundMessageHandler(RemoteMessage message) async {
 Future<void> generateSimpleNotication(
     String title, String body, String type) async {
   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-    'your channel id',
-    'your channel name',
+    'your_channel_id',
+    'your_channel_name',
     channelDescription: 'your channel description',
     importance: Importance.max,
     priority: Priority.high,
     ticker: 'ticker',
   );
-  var iosDetail = IOSNotificationDetails();
+
+  var iosDetail = DarwinNotificationDetails();
 
   var platformChannelSpecifics = NotificationDetails(
-      android: androidPlatformChannelSpecifics, iOS: iosDetail);
+    android: androidPlatformChannelSpecifics,
+    iOS: iosDetail,
+  );
+
   await flutterLocalNotificationsPlugin.show(
     0,
     title,

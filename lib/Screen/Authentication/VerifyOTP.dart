@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
 import 'package:eshopmultivendor/Helper/ContainerDesing.dart';
@@ -8,9 +9,7 @@ import 'package:eshopmultivendor/Screen/Authentication/SetNewPassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 class VerifyOtp extends StatefulWidget {
@@ -349,7 +348,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         child: new Text(getTranslated(context, "MOBILE_NUMBER_VARIFICATION")!,
             style: Theme.of(context)
                 .textTheme
-                .subtitle1!
+                .titleMedium!
                 .copyWith(color: fontColor, fontWeight: FontWeight.bold)),
       ),
     );
@@ -361,7 +360,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       child: Center(
         child: new Text(
           getTranslated(context, "SENT_VERIFY_CODE_TO_NO_LBL")!,
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: fontColor,
                 fontWeight: FontWeight.normal,
               ),
@@ -383,7 +382,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
           children: [
             Text(
               "+$countrycode-$mobile",
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: fontColor,
                     fontWeight: FontWeight.normal,
                   ),
@@ -469,7 +468,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
             isResendEnabled
                 ? getTranslated(context, 'DIDNT_GET_THE_CODE')!
                 : "Resend OTP available in $_start s",
-            style: Theme.of(context).textTheme.caption!.copyWith(
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: fontColor,
                   fontWeight: FontWeight.normal,
                 ),
@@ -484,7 +483,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                 : null,
             child: Text(
               getTranslated(context, 'RESEND_OTP')!,
-              style: Theme.of(context).textTheme.caption!.copyWith(
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: isResendEnabled
                         ? Theme.of(context).colorScheme.primary
                         : Colors.grey,

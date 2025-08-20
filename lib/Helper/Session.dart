@@ -3,10 +3,11 @@ import 'package:eshopmultivendor/Localization/Demo_Localization.dart';
 import 'package:flutter/material.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shimmer/shimmer.dart';
+
 import 'Color.dart';
 import 'Constant.dart';
 import 'String.dart';
-import 'package:shimmer/shimmer.dart';
 
 //oredrlist
 String capitalize(String s) {
@@ -192,7 +193,7 @@ noIntText(BuildContext context) {
       child: Text(getTranslated(context, "NO_INTERNET")!,
           style: Theme.of(context)
               .textTheme
-              .headline5!
+              .headlineSmall!
               .copyWith(color: primary, fontWeight: FontWeight.normal)));
 }
 
@@ -202,7 +203,7 @@ noIntDec(BuildContext context) {
     child: Text(
       getTranslated(context, "NO_INTERNET_DISC")!,
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headline6!.copyWith(
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
             color: lightBlack2,
             fontWeight: FontWeight.normal,
           ),

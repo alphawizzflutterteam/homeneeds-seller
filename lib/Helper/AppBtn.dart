@@ -52,7 +52,7 @@ class AppBtn extends StatelessWidget {
               ? Text(
                   title!,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
                         color: white,
                         fontWeight: FontWeight.normal,
                       ),

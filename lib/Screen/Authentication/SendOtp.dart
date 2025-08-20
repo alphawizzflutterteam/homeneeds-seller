@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
@@ -6,12 +7,12 @@ import 'package:eshopmultivendor/Helper/Color.dart';
 import 'package:eshopmultivendor/Helper/ContainerDesing.dart';
 import 'package:eshopmultivendor/Helper/Session.dart';
 import 'package:eshopmultivendor/Helper/String.dart';
-import 'package:eshopmultivendor/Screen/TermFeed/Terms_Conditions.dart';
 import 'package:eshopmultivendor/Screen/Authentication/VerifyOTP.dart';
+import 'package:eshopmultivendor/Screen/TermFeed/Terms_Conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import '../TermFeed/Privacy_Policy.dart';
 
 class SendOtp extends StatefulWidget {
@@ -213,7 +214,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         child: new Text(
           getTranslated(context, "SEND_VERIFY_CODE_LBL")!,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: fontColor,
                 fontWeight: FontWeight.normal,
               ),
@@ -276,7 +277,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
       controller: mobileController,
       style: Theme.of(this.context)
           .textTheme
-          .subtitle2!
+          .titleSmall!
           .copyWith(color: fontColor, fontWeight: FontWeight.normal),
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       onSaved: (String? value) {
@@ -290,7 +291,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
           borderRadius: BorderRadius.circular(7.0),
         ),
         hintText: getTranslated(context, "MOBILEHINT_LBL")!,
-        hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+        hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: fontColor,
               fontWeight: FontWeight.normal,
             ),
@@ -344,7 +345,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         children: [
           Text(
             getTranslated(context, "CONTINUE_AGREE_LBL")!,
-            style: Theme.of(context).textTheme.caption!.copyWith(
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: fontColor,
                   fontWeight: FontWeight.normal,
                 ),
@@ -364,7 +365,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                   },
                   child: Text(
                     getTranslated(context, "TERMS_SERVICE_LBL")!,
-                    style: Theme.of(context).textTheme.caption!.copyWith(
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         color: fontColor,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.normal),
@@ -374,7 +375,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
               ),
               Text(
                 getTranslated(context, "AND_LBL")!,
-                style: Theme.of(context).textTheme.caption!.copyWith(
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: fontColor,
                       fontWeight: FontWeight.normal,
                     ),
@@ -389,7 +390,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                 },
                 child: Text(
                   getTranslated(context, "PRIVACY_POLICY_LBL")!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         color: fontColor,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.normal,
@@ -526,7 +527,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         child: Text(
           getTranslated(context, "SEND_VERIFY_CODE_LBL")!,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: fontColor,
                 fontWeight: FontWeight.normal,
               ),

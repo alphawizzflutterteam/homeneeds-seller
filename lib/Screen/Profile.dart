@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -8,12 +9,9 @@ import 'package:eshopmultivendor/Helper/String.dart';
 import 'package:eshopmultivendor/Screen/Authentication/CreateAccount.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-import 'package:time_picker_sheet/widget/sheet.dart';
-import 'package:time_picker_sheet/widget/time_picker.dart';
-import 'change_password_page.dart';
 import 'package:http/http.dart' as http;
+// import 'package:time_picker_sheet/widget/sheet.dart';
+// import 'package:time_picker_sheet/widget/time_picker.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -1107,7 +1105,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "NAME_LBL")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                           color: lightBlack2,
                           fontWeight: FontWeight.normal,
                         ),
@@ -1117,7 +1115,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           name!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1127,7 +1125,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1265,7 +1263,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
               children: [
                 Text(
                   getTranslated(context, "MOBILEHINT_LBL")!,
-                  style: Theme.of(this.context).textTheme.caption!.copyWith(
+                  style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                       color: lightBlack2, fontWeight: FontWeight.normal),
                 ),
                 mobile != null && mobile != ""
@@ -1273,7 +1271,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                         mobile!,
                         style: Theme.of(this.context)
                             .textTheme
-                            .subtitle2!
+                            .titleSmall!
                             .copyWith(
                               color: lightBlack,
                               fontWeight: FontWeight.bold,
@@ -1283,7 +1281,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                         getTranslated(context, "NotAdded")!,
                         style: Theme.of(this.context)
                             .textTheme
-                            .subtitle2!
+                            .titleSmall!
                             .copyWith(
                               color: lightBlack,
                               fontWeight: FontWeight.bold,
@@ -1318,7 +1316,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "Email")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   email != "" && email != null
@@ -1326,7 +1324,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           email!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1336,7 +1334,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1474,7 +1472,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     'City', // getTranslated(context, "Addresh")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                           color: lightBlack2,
                           fontWeight: FontWeight.normal,
                         ),
@@ -1484,7 +1482,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           cityController!.text,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1494,7 +1492,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1633,7 +1631,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "Addresh")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                           color: lightBlack2,
                           fontWeight: FontWeight.normal,
                         ),
@@ -1643,7 +1641,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           address!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1653,7 +1651,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1817,7 +1815,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "StoreName")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   storename != "" && storename != null
@@ -1825,7 +1823,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           storename!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1835,7 +1833,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1974,7 +1972,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "StoreURL")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   storeurl != "" && storeurl != null
@@ -1982,7 +1980,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           storeurl!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -1992,7 +1990,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NoURL")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2131,7 +2129,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "Description")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   storeDesc != "" && storeDesc != null
@@ -2139,7 +2137,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           storeDesc!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2150,7 +2148,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NoURL")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2319,7 +2317,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "AccountNumber")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   accNo != "" && accNo != null
@@ -2327,7 +2325,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           accNo!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2337,7 +2335,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2476,7 +2474,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "AccountName")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   accname != "" && accname != null
@@ -2484,7 +2482,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           accname!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2494,7 +2492,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2633,7 +2631,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "BankCode")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   bankcode != "" && bankcode != null
@@ -2641,7 +2639,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           bankcode!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2651,7 +2649,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2790,7 +2788,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "BankName")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   bankname != "" && bankname != null
@@ -2798,7 +2796,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           bankname!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -2808,7 +2806,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3311,7 +3309,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "Latitute")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   latitutute != "" && latitutute != null
@@ -3319,7 +3317,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           latitutute!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3329,7 +3327,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3468,7 +3466,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "Longitude")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   longitude != "" && longitude != null
@@ -3476,7 +3474,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           longitude!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3486,7 +3484,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3625,7 +3623,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "TaxName")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   taxname != "" && taxname != null
@@ -3633,7 +3631,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           taxname!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3643,7 +3641,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3782,7 +3780,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "TaxNumber")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   taxnumber != "" && taxnumber != null
@@ -3790,7 +3788,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           taxnumber!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3800,7 +3798,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3939,7 +3937,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 children: [
                   Text(
                     getTranslated(context, "PanNumber")!,
-                    style: Theme.of(this.context).textTheme.caption!.copyWith(
+                    style: Theme.of(this.context).textTheme.bodySmall!.copyWith(
                         color: lightBlack2, fontWeight: FontWeight.normal),
                   ),
                   pannumber != "" && pannumber != null
@@ -3947,7 +3945,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           pannumber!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -3957,7 +3955,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                           getTranslated(context, "NotAdded")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle2!
+                              .titleSmall!
                               .copyWith(
                                 color: lightBlack,
                                 fontWeight: FontWeight.bold,
@@ -4100,7 +4098,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
               getTranslated(context, "CHANGE_PASS_LBL")!,
               style: Theme.of(this.context)
                   .textTheme
-                  .subtitle2!
+                  .titleSmall!
                   .copyWith(color: fontColor, fontWeight: FontWeight.bold),
             ),
           ),
@@ -4449,7 +4447,7 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                         getTranslated(context, "CHANGE_PASS_LBL")!,
                         style: Theme.of(this.context)
                             .textTheme
-                            .subtitle1!
+                            .titleMedium!
                             .copyWith(color: fontColor),
                       ),
                     ),
@@ -4567,8 +4565,11 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 ElevatedButton(
                   child: Text(
                     getTranslated(context, "CANCEL")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: lightBlack, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: lightBlack, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -4577,8 +4578,11 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
                 ElevatedButton(
                   child: Text(
                     getTranslated(context, "SAVE_LBL")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: fontColor, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: fontColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     if (curPassController.text.isNotEmpty) {
@@ -4695,152 +4699,152 @@ class Declaration extends State<Profile> with TickerProviderStateMixin {
 
 //==============================================================================
 //========================= everything is completed ============================
-  void _openTimePickerSheet(BuildContext context, String vel) async {
-    final result = await TimePicker.show<DateTime?>(
-      context: context,
-      sheet: TimePickerSheet(
-        sheetTitle: 'Select meeting schedule',
-        minuteTitle: 'Minute',
-        hourTitle: 'Hour',
-        saveButtonText: 'Save',
-      ),
-    );
-
-    if (result != null) {
-      setState(() {
-        dateTimeSelected = result;
-
-        if (vel == "mst") {
-          var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
-          List<String> parts = morningst.split(":");
-          String hour = parts[0];
-          int hourInt = int.parse(hour);
-          print(hourInt);
-          if (hourInt < 5) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 5:00 To 11:59 For Morning");
-          } else if (hourInt > 11) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 5:00 To 11:59 For Morning");
-          } else {
-            mstController.text =
-                "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
-            print("morning start time${mstController.text}");
-          }
-        } else if (vel == "met") {
-          List<String> parts1 = mstController.text.split(":");
-          String hour1 = parts1[0];
-          int hourInt1 = int.parse(hour1);
-          print(hourInt1);
-
-          var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
-          List<String> parts = morningst.split(":");
-          String hour = parts[0];
-          int hourInt = int.parse(hour);
-          print(hourInt);
-          if (hourInt > 11 || hourInt < 5) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 5:00 To 11:59 For Morning");
-          } else {
-            if (hourInt <= hourInt1) {
-              Fluttertoast.showToast(
-                  msg:
-                      "End Time Should Not Be Same and Less Than From Start Time");
-            } else {
-              String rAsString = dateTimeSelected.hour.toString();
-              int numberOfDigits = rAsString.length;
-              print("The number of digits in $rAsString is $numberOfDigits.");
-
-              metController.text =
-                  "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
-              print("morning end time${metController.text}");
-            }
-          }
-        } else if (vel == "est") {
-          var eveningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
-          List<String> parts = eveningst.split(":");
-          String hour = parts[0];
-          int hourInt = int.parse(hour);
-          print(hourInt);
-
-          if (hourInt < 12 || hourInt > 17) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 12:00 To 17:59 For Evening");
-          } else {
-            estController.text =
-                "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
-            print("evening start time${estController.text}");
-          }
-        } else if (vel == "eet") {
-          List<String> parts1 = estController.text.split(":");
-          String hour1 = parts1[0];
-          int hourInt1 = int.parse(hour1);
-          print(hourInt1);
-
-          var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
-
-          List<String> parts = morningst.split(":");
-          String hour = parts[0];
-          int hourInt = int.parse(hour);
-          print(hourInt);
-          if (hourInt < 12 || hourInt > 17) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 12:00 To 17:59 For Evening");
-          } else {
-            if (hourInt <= hourInt1) {
-              Fluttertoast.showToast(
-                  msg:
-                      "End Time Should Not Be Same and Less Than From Start Time");
-            } else {
-              eetController.text =
-                  "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
-              print("evening end time${eetController.text}");
-            }
-          }
-        } else if (vel == "nst") {
-          var eveningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
-          List<String> parts = eveningst.split(":");
-          String hour = parts[0];
-          int hourInt = int.parse(hour);
-          print(hourInt);
-
-          if (hourInt < 18 || hourInt > 23) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 18:00 To 23:59 For Night");
-          } else {
-            nstController.text =
-                "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
-            print("night start time${nstController.text}");
-          }
-        } else if (vel == "net") {
-          List<String> parts1 = nstController.text.split(":");
-          String hour1 = parts1[0];
-          int hourInt1 = int.parse(hour1);
-          print(hourInt1);
-
-          var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
-          List<String> parts = morningst.split(":");
-          String hour = parts[0];
-          int hourInt = int.parse(hour);
-          print(hourInt);
-          if (hourInt < 18 || hourInt > 23) {
-            Fluttertoast.showToast(
-                msg: "You Have To Chose Time From 18:00 To 23:59 For Night");
-          } else {
-            if (hourInt <= hourInt1) {
-              Fluttertoast.showToast(
-                  msg:
-                      "End Time Should Not Be Same and Less Than From Start Time");
-            } else {
-              netController.text =
-                  "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
-              print("night end time${netController.text}");
-            }
-          }
-        }
-      });
-    }
-  }
+//   void _openTimePickerSheet(BuildContext context, String vel) async {
+//     final result = await TimePicker.show<DateTime?>(
+//       context: context,
+//       sheet: TimePickerSheet(
+//         sheetTitle: 'Select meeting schedule',
+//         minuteTitle: 'Minute',
+//         hourTitle: 'Hour',
+//         saveButtonText: 'Save',
+//       ),
+//     );
+//
+//     if (result != null) {
+//       setState(() {
+//         dateTimeSelected = result;
+//
+//         if (vel == "mst") {
+//           var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
+//           List<String> parts = morningst.split(":");
+//           String hour = parts[0];
+//           int hourInt = int.parse(hour);
+//           print(hourInt);
+//           if (hourInt < 5) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 5:00 To 11:59 For Morning");
+//           } else if (hourInt > 11) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 5:00 To 11:59 For Morning");
+//           } else {
+//             mstController.text =
+//                 "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
+//             print("morning start time${mstController.text}");
+//           }
+//         } else if (vel == "met") {
+//           List<String> parts1 = mstController.text.split(":");
+//           String hour1 = parts1[0];
+//           int hourInt1 = int.parse(hour1);
+//           print(hourInt1);
+//
+//           var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
+//           List<String> parts = morningst.split(":");
+//           String hour = parts[0];
+//           int hourInt = int.parse(hour);
+//           print(hourInt);
+//           if (hourInt > 11 || hourInt < 5) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 5:00 To 11:59 For Morning");
+//           } else {
+//             if (hourInt <= hourInt1) {
+//               Fluttertoast.showToast(
+//                   msg:
+//                       "End Time Should Not Be Same and Less Than From Start Time");
+//             } else {
+//               String rAsString = dateTimeSelected.hour.toString();
+//               int numberOfDigits = rAsString.length;
+//               print("The number of digits in $rAsString is $numberOfDigits.");
+//
+//               metController.text =
+//                   "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
+//               print("morning end time${metController.text}");
+//             }
+//           }
+//         } else if (vel == "est") {
+//           var eveningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
+//           List<String> parts = eveningst.split(":");
+//           String hour = parts[0];
+//           int hourInt = int.parse(hour);
+//           print(hourInt);
+//
+//           if (hourInt < 12 || hourInt > 17) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 12:00 To 17:59 For Evening");
+//           } else {
+//             estController.text =
+//                 "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
+//             print("evening start time${estController.text}");
+//           }
+//         } else if (vel == "eet") {
+//           List<String> parts1 = estController.text.split(":");
+//           String hour1 = parts1[0];
+//           int hourInt1 = int.parse(hour1);
+//           print(hourInt1);
+//
+//           var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
+//
+//           List<String> parts = morningst.split(":");
+//           String hour = parts[0];
+//           int hourInt = int.parse(hour);
+//           print(hourInt);
+//           if (hourInt < 12 || hourInt > 17) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 12:00 To 17:59 For Evening");
+//           } else {
+//             if (hourInt <= hourInt1) {
+//               Fluttertoast.showToast(
+//                   msg:
+//                       "End Time Should Not Be Same and Less Than From Start Time");
+//             } else {
+//               eetController.text =
+//                   "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
+//               print("evening end time${eetController.text}");
+//             }
+//           }
+//         } else if (vel == "nst") {
+//           var eveningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
+//           List<String> parts = eveningst.split(":");
+//           String hour = parts[0];
+//           int hourInt = int.parse(hour);
+//           print(hourInt);
+//
+//           if (hourInt < 18 || hourInt > 23) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 18:00 To 23:59 For Night");
+//           } else {
+//             nstController.text =
+//                 "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
+//             print("night start time${nstController.text}");
+//           }
+//         } else if (vel == "net") {
+//           List<String> parts1 = nstController.text.split(":");
+//           String hour1 = parts1[0];
+//           int hourInt1 = int.parse(hour1);
+//           print(hourInt1);
+//
+//           var morningst = "${dateTimeSelected.hour}:${dateTimeSelected.minute}";
+//           List<String> parts = morningst.split(":");
+//           String hour = parts[0];
+//           int hourInt = int.parse(hour);
+//           print(hourInt);
+//           if (hourInt < 18 || hourInt > 23) {
+//             Fluttertoast.showToast(
+//                 msg: "You Have To Chose Time From 18:00 To 23:59 For Night");
+//           } else {
+//             if (hourInt <= hourInt1) {
+//               Fluttertoast.showToast(
+//                   msg:
+//                       "End Time Should Not Be Same and Less Than From Start Time");
+//             } else {
+//               netController.text =
+//                   "${twoDigits(dateTimeSelected.hour)}:${twoDigits(dateTimeSelected.minute)}";
+//               print("night end time${netController.text}");
+//             }
+//           }
+//         }
+//       });
+//     }
+//   }
 
   DateTime dateTimeSelected = DateTime.now();
   String twoDigits(int n) => n.toString().padLeft(2, '0');

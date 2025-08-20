@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -12,9 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../../Helper/Color.dart';
+
 import '../Home.dart';
-import 'CreateAccount.dart';
 import 'NumberVerify.dart';
 import 'SendOtp.dart';
 
@@ -330,7 +330,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
         children: [
           Text(
             getTranslated(context, "CONTINUE_AGREE_LBL")!,
-            style: Theme.of(context).textTheme.caption!.copyWith(
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: fontColor,
                   fontWeight: FontWeight.normal,
                 ),
@@ -352,7 +352,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                   },
                   child: Text(
                     getTranslated(context, 'TERMS_SERVICE_LBL')!,
-                    style: Theme.of(context).textTheme.caption!.copyWith(
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         color: fontColor,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.normal),
@@ -364,7 +364,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                 getTranslated(context, "AND_LBL")!,
                 style: Theme.of(context)
                     .textTheme
-                    .caption!
+                    .bodySmall!
                     .copyWith(color: fontColor, fontWeight: FontWeight.normal),
               ),
               SizedBox(
@@ -381,7 +381,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
                 },
                 child: Text(
                   getTranslated(context, "PRIVACYPOLICY")!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         color: fontColor,
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.normal,
@@ -501,7 +501,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
             },
             child: Text(
               " Sign Up ",
-              style: Theme.of(context).textTheme.caption!.copyWith(
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: primary,
                     decoration: TextDecoration.underline,
                     fontWeight: FontWeight.bold,
@@ -567,7 +567,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
             size: 20,
           ),
           hintText: getTranslated(context, "Mobile Number")!,
-          hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                 color: lightBlack2,
                 fontWeight: FontWeight.normal,
               ),
@@ -707,7 +707,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
               hintText: getTranslated(context, "PASSHINT_LBL"),
               hintStyle: Theme.of(context)
                   .textTheme
-                  .subtitle2!
+                  .titleSmall!
                   .copyWith(color: lightBlack2, fontWeight: FontWeight.normal),
               fillColor: white,
               contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),

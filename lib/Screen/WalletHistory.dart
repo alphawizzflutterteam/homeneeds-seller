@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -185,7 +186,7 @@ class _WalletHistoryState extends State<WalletHistory>
                   ),
                   Text(
                     " " + getTranslated(context, "CURBAL_LBL")!,
-                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: grey,
                           fontWeight: FontWeight.bold,
                         ),
@@ -195,7 +196,7 @@ class _WalletHistoryState extends State<WalletHistory>
               Text(CUR_CURRENCY + " " + CUR_BALANCE,
                   style: Theme.of(context)
                       .textTheme
-                      .headline6!
+                      .titleLarge!
                       .copyWith(color: black, fontWeight: FontWeight.bold)),
               SimBtn(
                 size: 0.8,
@@ -313,7 +314,7 @@ class _WalletHistoryState extends State<WalletHistory>
                         getTranslated(context, "SEND_REQUEST")!,
                         style: Theme.of(this.context)
                             .textTheme
-                            .subtitle1!
+                            .titleMedium!
                             .copyWith(color: fontColor),
                       ),
                     ),
@@ -334,7 +335,7 @@ class _WalletHistoryState extends State<WalletHistory>
                                     getTranslated(context, "WITHDRWAL_AMT")!,
                                 hintStyle: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: lightBlack,
                                         fontWeight: FontWeight.normal),
@@ -354,7 +355,7 @@ class _WalletHistoryState extends State<WalletHistory>
                                 hintText: BANK_DETAIL,
                                 hintStyle: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: lightBlack,
                                         fontWeight: FontWeight.normal),
@@ -372,8 +373,11 @@ class _WalletHistoryState extends State<WalletHistory>
                 new ElevatedButton(
                   child: Text(
                     getTranslated(context, "CANCEL")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: lightBlack, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: lightBlack, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     Navigator.pop(context);
@@ -382,8 +386,11 @@ class _WalletHistoryState extends State<WalletHistory>
                 new ElevatedButton(
                   child: Text(
                     getTranslated(context, "SEND_LBL")!,
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: fontColor, fontWeight: FontWeight.bold),
+                    style: Theme.of(this.context)
+                        .textTheme
+                        .titleSmall!
+                        .copyWith(
+                            color: fontColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
                     final form = _formkey.currentState!;

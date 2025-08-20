@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
 import 'package:eshopmultivendor/Helper/Constant.dart';
 import 'package:eshopmultivendor/Helper/Session.dart';
 import 'package:eshopmultivendor/Helper/SimBtn.dart';
 import 'package:eshopmultivendor/Helper/String.dart';
+import 'package:eshopmultivendor/Helper/inputChipUxScreen.dart';
 import 'package:eshopmultivendor/Model/Attribute%20Models/AttributeModel/AttributesModel.dart';
 import 'package:eshopmultivendor/Model/Attribute%20Models/AttributeSetModel/AttributeSetModel.dart';
 import 'package:eshopmultivendor/Model/Attribute%20Models/AttributeValueModel/AttributeValue.dart';
@@ -15,12 +17,12 @@ import 'package:eshopmultivendor/Model/ProductModel/Variants.dart';
 import 'package:eshopmultivendor/Model/TaxesModel/TaxesModel.dart';
 import 'package:eshopmultivendor/Model/ZipCodesModel/ZipCodeModel.dart';
 import 'package:eshopmultivendor/Screen/Home.dart';
-import 'package:eshopmultivendor/Helper/inputChipUxScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:sticky_headers/sticky_headers.dart';
+
 import 'Media.dart';
 import 'ProductList.dart';
 
@@ -547,7 +549,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
         validator: (val) => validateProduct(val, context),
         decoration: InputDecoration(
           hintText: getTranslated(context, "PRODUCTHINT_TXT")!,
-          hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                 color: Colors.grey[600],
                 fontWeight: FontWeight.normal,
               ),
@@ -822,14 +824,14 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Tax")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                         Text(
                           getTranslated(context, "0%")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],
@@ -986,7 +988,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                               getTranslated(context, "Select Attribute")!,
                               style: Theme.of(this.context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(color: fontColor),
                             ),
                           ],
@@ -1123,7 +1125,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Indicator")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],
@@ -1765,7 +1767,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Deliverable Type")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],
@@ -1993,7 +1995,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                       getTranslated(context, "Select Zipcodes")!,
                       style: Theme.of(this.context)
                           .textTheme
-                          .subtitle1!
+                          .titleMedium!
                           .copyWith(color: fontColor),
                     ),
                   ),
@@ -3180,7 +3182,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Video Type")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],
@@ -3364,7 +3366,10 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                 TextButton(
                   style: curSelPos == 0
                       ? TextButton.styleFrom(
-                          foregroundColor: Colors.white, backgroundColor: primary, disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                          foregroundColor: Colors.white,
+                          backgroundColor: primary,
+                          disabledForegroundColor:
+                              Colors.grey.withOpacity(0.38),
                         )
                       : null,
                   onPressed: () {
@@ -3401,7 +3406,10 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                     ? TextButton(
                         style: curSelPos == 2
                             ? TextButton.styleFrom(
-                                foregroundColor: Colors.white, backgroundColor: primary, disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                                foregroundColor: Colors.white,
+                                backgroundColor: primary,
+                                disabledForegroundColor:
+                                    Colors.grey.withOpacity(0.38),
                               )
                             : null,
                         onPressed: () {
@@ -4036,7 +4044,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                 filled: true,
                 fillColor: lightWhite,
                 hintText: getTranslated(context, "Select Attributes")!,
-                hintStyle: Theme.of(context).textTheme.caption,
+                hintStyle: Theme.of(context).textTheme.bodySmall,
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 prefixIconConstraints:
@@ -4246,7 +4254,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Type")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],
@@ -4829,7 +4837,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Type")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],
@@ -5250,7 +5258,7 @@ class _AddProductState extends State<AddProduct> with TickerProviderStateMixin {
                           getTranslated(context, "Select Stock Type")!,
                           style: Theme.of(this.context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: fontColor),
                         ),
                       ],

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:eshopmultivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshopmultivendor/Helper/AppBtn.dart';
 import 'package:eshopmultivendor/Helper/Color.dart';
@@ -428,7 +429,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                       ),
                       Text(
                         getTranslated(context, "ORDER")!,
-                        style: Theme.of(context).textTheme.caption!.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.bold,
                               color: grey,
                             ),
@@ -472,7 +473,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                       ),
                       Text(
                         getTranslated(context, "RECEIVED_LBL")!,
-                        style: Theme.of(context).textTheme.caption!.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.bold,
                               color: grey,
                             ),
@@ -512,7 +513,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                       ),
                       Text(
                         getTranslated(context, "PROCESSED_LBL")!,
-                        style: Theme.of(context).textTheme.caption!.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.bold,
                               color: grey,
                             ),
@@ -552,7 +553,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                       ),
                       Text(
                         getTranslated(context, "SHIPED_LBL")!,
-                        style: Theme.of(context).textTheme.caption!.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               fontWeight: FontWeight.bold,
                               color: grey,
                             ),
@@ -600,7 +601,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                     ),
                     Text(
                       getTranslated(context, "DELIVERED_LBL")!,
-                      style: Theme.of(context).textTheme.caption!.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: grey,
                           ),
@@ -642,7 +643,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                     ),
                     Text(
                       getTranslated(context, "CANCELLED_LBL")!,
-                      style: Theme.of(context).textTheme.caption!.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: grey,
                           ),
@@ -682,7 +683,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                     ),
                     Text(
                       getTranslated(context, "RETURNED_LBL")!,
-                      style: Theme.of(context).textTheme.caption!.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: grey,
                           ),
@@ -1037,7 +1038,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                       'Filter By',
                       style: Theme.of(context)
                           .textTheme
-                          .headline6!
+                          .titleLarge!
                           .copyWith(color: fontColor),
                     ),
                   ),
@@ -1076,7 +1077,7 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                           ),
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(color: lightBlack)),
                       onPressed: () {
                         setState(() {
@@ -1129,7 +1130,10 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
               ),
               style: ElevatedButton.styleFrom(
                 side: BorderSide(color: primary),
-                foregroundColor: Colors.white,backgroundColor: primary, disabledForegroundColor: Colors.grey.withOpacity(0.38), disabledBackgroundColor: Colors.grey.withOpacity(0.12),
+                foregroundColor: Colors.white,
+                backgroundColor: primary,
+                disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                disabledBackgroundColor: Colors.grey.withOpacity(0.12),
               ),
             )),
         Container(
@@ -1140,7 +1144,10 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
               onPressed: () => _endDate(context),
               child: Text(end == null ? 'End Date' : end!),
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,backgroundColor: primary, disabledForegroundColor: Colors.grey.withOpacity(0.38), disabledBackgroundColor: Colors.grey.withOpacity(0.12),
+                foregroundColor: Colors.white,
+                backgroundColor: primary,
+                disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                disabledBackgroundColor: Colors.grey.withOpacity(0.12),
               ),
             )),
         Expanded(
@@ -1160,11 +1167,15 @@ class _OrderListState extends State<OrderList> with TickerProviderStateMixin {
                 getOrder();
               },
               child: Center(
-                child: Icon(Icons.close,color: white,),
+                child: Icon(
+                  Icons.close,
+                  color: white,
+                ),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: primary,
-    disabledForegroundColor: Colors.grey.withOpacity(0.38), disabledBackgroundColor: Colors.grey.withOpacity(0.12),
+                disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                disabledBackgroundColor: Colors.grey.withOpacity(0.12),
                 padding: EdgeInsets.all(0),
               ),
             ),
