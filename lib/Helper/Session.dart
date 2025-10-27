@@ -356,15 +356,26 @@ double width = 0;
 //------------------------------------------------------------------------------
 //============ connectivity_plus for checking internet connectivity ============
 
+// Future<bool> isNetworkAvailable() async {
+//   var connectivityResult = await (Connectivity().checkConnectivity());
+//   if (connectivityResult == ConnectivityResult.mobile) {
+//     return true;
+//   } else if (connectivityResult == ConnectivityResult.wifi) {
+//     return true;
+//   }
+//   return false;
+// }
+
 Future<bool> isNetworkAvailable() async {
   var connectivityResult = await (Connectivity().checkConnectivity());
-  if (connectivityResult == ConnectivityResult.mobile) {
+  if (connectivityResult.contains(ConnectivityResult.mobile)) {
     return true;
-  } else if (connectivityResult == ConnectivityResult.wifi) {
+  } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
     return true;
   }
   return false;
 }
+
 
 //------------------------------------------------------------------------------
 //=======================  Shared Preference List ==============================

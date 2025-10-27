@@ -960,13 +960,13 @@ class ImagePickerGC {
 
     switch (source) {
       case ImgSource.Camera:
-        return await ImagePicker().getImage(
+        return await ImagePicker().pickImage(
           source: ImageSource.camera,
           maxWidth: maxWidth,
           maxHeight: maxHeight,
         );
       case ImgSource.Gallery:
-        return await ImagePicker().getImage(
+        return await ImagePicker().pickImage(
           source: ImageSource.gallery,
           maxWidth: maxWidth,
           maxHeight: maxHeight,
@@ -997,7 +997,7 @@ class ImagePickerGC {
                   InkWell(
                     onTap: () async {
                       ImagePicker()
-                          .getImage(
+                          .pickImage(
                         source: ImageSource.gallery,
                         maxWidth: maxWidth,
                         maxHeight: maxHeight,
@@ -1023,7 +1023,7 @@ class ImagePickerGC {
                   InkWell(
                     onTap: () async {
                       ImagePicker()
-                          .getImage(
+                          .pickImage(
                         source: ImageSource.camera,
                         maxWidth: maxWidth,
                         maxHeight: maxHeight,
