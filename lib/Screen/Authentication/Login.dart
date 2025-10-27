@@ -696,7 +696,10 @@ class _LoginState extends State<Login> with TickerProviderStateMixin {
               suffixIcon: IconButton(
                 icon: Icon(
                   _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: fontColor,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.black,
+                  size: 25,
                 ),
                 onPressed: () {
                   setState(() {
